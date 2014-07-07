@@ -10,4 +10,8 @@ public class DashBoardActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dash_board);
 	}
+	
+	public void nothing(){
+	
+	}
 }
