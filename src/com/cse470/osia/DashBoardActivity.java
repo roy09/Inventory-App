@@ -14,4 +14,8 @@ public class DashBoardActivity extends Activity {
 	public void nothing(){
 	
 	}
+	
+	public void whateva(){
+		
+	}
 }
