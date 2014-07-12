@@ -18,16 +18,36 @@ public final class R {
         public static final int view_inventory=0x7f020004;
     }
     public static final class id {
-        public static final int btnAddProduct=0x7f060000;
-        public static final int btnSalesOrder=0x7f060002;
-        public static final int btnSeeReport=0x7f060003;
-        public static final int btnViewIntentory=0x7f060001;
+        public static final int btnAddProduct=0x7f06000b;
+        public static final int btnSalesOrder=0x7f06000d;
+        public static final int btnSeeReport=0x7f06000e;
+        public static final int btnSubmit=0x7f060005;
+        public static final int btnViewIntentory=0x7f06000c;
+        public static final int etCostingPrice=0x7f060009;
+        public static final int etNormalPrice=0x7f060007;
+        public static final int etProductName=0x7f060006;
+        public static final int etQuantity=0x7f060008;
+        public static final int spCategory=0x7f06000a;
+        public static final int tvCostingPrice=0x7f060003;
+        public static final int tvNormalPrice=0x7f060002;
+        public static final int tvProductCategory=0x7f060001;
+        public static final int tvProductName=0x7f060000;
+        public static final int tvQuantity=0x7f060004;
     }
     public static final class layout {
-        public static final int activity_dash_board=0x7f030000;
+        public static final int activity_add_product=0x7f030000;
+        public static final int activity_dash_board=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int hello_world=0x7f040002;
+        public static final int product_category=0x7f040004;
+        public static final int product_cost=0x7f040006;
+        public static final int product_name=0x7f040003;
+        public static final int product_price=0x7f040005;
+        public static final int product_quanity=0x7f040007;
+        public static final int product_save=0x7f040008;
+        public static final int title_activity_add_product=0x7f040001;
     }
     public static final class style {
         /** 
