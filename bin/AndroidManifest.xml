@@ -26,6 +26,14 @@
             android:name="com.cse470.osia.AddProduct"
             android:label="@string/title_activity_add_product" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.DatabaseHandler"
+            android:label="@string/title_activity_database_handler" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.ViewInventory"
+            android:label="@string/title_activity_view_inventory" >
+        </activity>
     </application>
 
 </manifest>

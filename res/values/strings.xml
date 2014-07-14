@@ -4,13 +4,13 @@
     <string name="app_name">OSIA</string>
     <string name="title_activity_add_product">AddProduct</string>
     <string name="hello_world">Hello world!</string>
-    
-    
     <string name="product_name">Name</string>
     <string name="product_category">Category</string>
     <string name="product_price">Unit price</string>
     <string name="product_cost">Costing</string>
     <string name="product_quanity">Quantity</string>
     <string name="product_save">Save</string>
+    <string name="title_activity_database_handler">DatabaseHandler</string>
+    <string name="title_activity_view_inventory">ViewInventory</string>
 
 </resources>
