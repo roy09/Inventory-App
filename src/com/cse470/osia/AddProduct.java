@@ -1,14 +1,20 @@
 package com.cse470.osia;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 public class AddProduct extends Activity {
-
+	
+	List<String> categories = new ArrayList<String>();
+	
+	
 	// TODO: change some var to int
 	String productName;
 	String productCategory;
@@ -22,6 +28,20 @@ public class AddProduct extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_product);
+		
+		// Adding some categoreis
+		categories.add("Ink");
+		categories.add("Paper");
+		categories.add("Khata");
+		categories.add("Toy");
+		
+		Spinner category = (Spinner) findViewById(R.id.spCategory);
+		
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, categories);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
+		category.setAdapter(dataAdapter);
 	}
 	
 	public void validationChecker(View view){
