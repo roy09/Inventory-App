@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/tvProductNameVI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvProductCategoryVI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvProductNameVI"
+        android:layout_alignBottom="@+id/tvProductNameVI"
+        android:layout_toRightOf="@+id/tvProductNameVI"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/etProductNormalPriceVI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvProductCategoryVI"
+        android:layout_alignBottom="@+id/tvProductCategoryVI"
+        android:layout_toRightOf="@+id/tvProductCategoryVI"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/etProductCostingPriceVI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etProductNormalPriceVI"
+        android:layout_toRightOf="@+id/etProductNormalPriceVI"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/etProductCategoryVI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etProductCostingPriceVI"
+        android:layout_alignBottom="@+id/etProductCostingPriceVI"
+        android:layout_toRightOf="@+id/etProductCostingPriceVI"
+        android:text="TextView" />
+ 
+</RelativeLayout>
