@@ -12,5 +12,7 @@
     <string name="product_save">Save</string>
     <string name="title_activity_database_handler">DatabaseHandler</string>
     <string name="title_activity_view_inventory">ViewInventory</string>
+    <string name="title_activity_see_report">SeeReport</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

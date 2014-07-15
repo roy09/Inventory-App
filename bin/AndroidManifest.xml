@@ -34,6 +34,10 @@
             android:name="com.cse470.osia.ViewInventory"
             android:label="@string/title_activity_view_inventory" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.SeeReport"
+            android:label="@string/title_activity_see_report" >
+        </activity>
     </application>
 
 </manifest>
