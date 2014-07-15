@@ -1,8 +1,14 @@
 package com.cse470.osia;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class SeeReport extends Activity {
 
@@ -18,5 +24,6 @@ public class SeeReport extends Activity {
 		getMenuInflater().inflate(R.menu.see_report, menu);
 		return true;
 	}
-
+	
+	
 }

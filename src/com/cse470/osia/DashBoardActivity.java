@@ -23,11 +23,13 @@ public class DashBoardActivity extends Activity {
 	}
 	
 	public void salesOrder(View view){
-		
+		Intent intent = new Intent (this, SalesOrder.class);
+		startActivity(intent);
 	}
 	
 	public void seeReport(View view){
-		
+		Intent intent = new Intent (this, SeeReport.class);
+		startActivity(intent);
 	}
 	
 	

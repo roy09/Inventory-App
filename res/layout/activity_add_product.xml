@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvCostingPrice"
-        android:text="@string/product_quanity"
+        android:text="@string/product_quantity"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button

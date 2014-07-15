@@ -38,6 +38,10 @@
             android:name="com.cse470.osia.SeeReport"
             android:label="@string/title_activity_see_report" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.SalesOrder"
+            android:label="@string/title_activity_sales_order" >
+        </activity>
     </application>
 
 </manifest>
