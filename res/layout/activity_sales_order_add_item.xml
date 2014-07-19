@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SalesOrderAddItem" >
+
+    <Spinner
+        android:id="@+id/spAddItemCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvAddItemCategory" />
+
+    <TextView
+        android:id="@+id/tvAddItemProcductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spAddItemCategory"
+        android:text="@string/product_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteAddItemProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvAddItemProcductName"
+        android:layout_toRightOf="@+id/tvAddItemCategory"
+        android:inputType="text"
+        android:ems="10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvAddItemProductQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvAddItemProcductName"
+        android:text="@string/product_quantity"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etAddItemProductQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/autoCompleteAddItemProductName"
+        android:layout_alignTop="@+id/tvAddItemProductQuantity"
+        android:ems="10"
+        android:inputType="number" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvAddItemUnitPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/etAddItemProductQuantity"
+        android:layout_below="@+id/etAddItemProductQuantity"
+        android:text="@string/product_price"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvAddItemCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvAddItemProcductName"
+        android:layout_alignParentLeft="true"
+        android:text="@string/product_category"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvAddItemTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemUnitPrice"
+        android:layout_below="@+id/tvAddItemUnitPrice"
+        android:layout_marginTop="24dp"
+        android:text="@string/total_ammount"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnAddItem"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemTotalPrice"
+        android:layout_alignRight="@+id/tvAddItemUnitPrice"
+        android:layout_below="@+id/tvAddItemTotalPrice"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_item" />
+
+</RelativeLayout>

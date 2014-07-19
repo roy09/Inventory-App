@@ -28,52 +28,68 @@ public final class R {
         public static final int view_inventory=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001a;
-        public static final int add_order=0x7f080019;
+        public static final int action_settings=0x7f080026;
+        public static final int add_order=0x7f080025;
+        public static final int autoCompleteAddItemProductName=0x7f080019;
+        public static final int btnAddItem=0x7f08001e;
         public static final int btnAddProduct=0x7f08000b;
         public static final int btnSalesOrder=0x7f08000d;
         public static final int btnSeeReport=0x7f08000e;
         public static final int btnSubmit=0x7f080005;
         public static final int btnViewIntentory=0x7f08000c;
-        public static final int editText1=0x7f080011;
+        public static final int etAddItemProductQuantity=0x7f08001b;
         public static final int etCostingPrice=0x7f080009;
         public static final int etNormalPrice=0x7f080007;
-        public static final int etProductCategoryVI=0x7f080018;
-        public static final int etProductCostingPriceVI=0x7f080017;
+        public static final int etProductCategoryVI=0x7f080024;
+        public static final int etProductCostingPriceVI=0x7f080023;
         public static final int etProductName=0x7f080006;
-        public static final int etProductNormalPriceVI=0x7f080016;
+        public static final int etProductNormalPriceVI=0x7f080022;
         public static final int etQuantity=0x7f080008;
-        public static final int productList=0x7f08000f;
+        public static final int etSalesCustomerName=0x7f080012;
+        public static final int lvSalesAddedItem=0x7f080014;
+        public static final int productList=0x7f08001f;
+        public static final int setSalesDate=0x7f080013;
+        public static final int spAddItemCategory=0x7f080016;
         public static final int spCategory=0x7f08000a;
-        public static final int textView1=0x7f080010;
-        public static final int textView2=0x7f080013;
-        public static final int textView3=0x7f080012;
+        public static final int svSalesOrder=0x7f08000f;
+        public static final int textView1=0x7f080015;
+        public static final int tvAddItemCategory=0x7f080017;
+        public static final int tvAddItemProcductName=0x7f080018;
+        public static final int tvAddItemProductQuantity=0x7f08001a;
+        public static final int tvAddItemTotalPrice=0x7f08001d;
+        public static final int tvAddItemUnitPrice=0x7f08001c;
         public static final int tvCostingPrice=0x7f080003;
         public static final int tvNormalPrice=0x7f080002;
         public static final int tvProductCategory=0x7f080001;
-        public static final int tvProductCategoryVI=0x7f080015;
+        public static final int tvProductCategoryVI=0x7f080021;
         public static final int tvProductName=0x7f080000;
-        public static final int tvProductNameVI=0x7f080014;
+        public static final int tvProductNameVI=0x7f080020;
         public static final int tvQuantity=0x7f080004;
+        public static final int tvSalesCustomer=0x7f080011;
+        public static final int tvSalesOrderNo=0x7f080010;
     }
     public static final class layout {
         public static final int activity_add_product=0x7f030000;
         public static final int activity_dash_board=0x7f030001;
         public static final int activity_sales_order=0x7f030002;
-        public static final int activity_see_report=0x7f030003;
-        public static final int activity_view_inventory=0x7f030004;
-        public static final int add_item_popup=0x7f030005;
+        public static final int activity_sales_order_add_item=0x7f030003;
+        public static final int activity_see_report=0x7f030004;
+        public static final int activity_view_inventory=0x7f030005;
         public static final int product_row=0x7f030006;
     }
     public static final class menu {
         public static final int sales_order=0x7f070000;
-        public static final int see_report=0x7f070001;
+        public static final int sales_order_add_item=0x7f070001;
+        public static final int see_report=0x7f070002;
     }
     public static final class string {
         public static final int action_settings=0x7f05000c;
         public static final int add_item=0x7f05000d;
         public static final int app_name=0x7f050000;
+        public static final int ask_for_name=0x7f050011;
+        public static final int customer_name=0x7f050010;
         public static final int hello_world=0x7f050002;
+        public static final int net_payable=0x7f050012;
         public static final int product_category=0x7f050004;
         public static final int product_cost=0x7f050006;
         public static final int product_name=0x7f050003;
@@ -83,8 +99,10 @@ public final class R {
         public static final int title_activity_add_product=0x7f050001;
         public static final int title_activity_database_handler=0x7f050009;
         public static final int title_activity_sales_order=0x7f05000e;
+        public static final int title_activity_sales_order_add_item=0x7f050013;
         public static final int title_activity_see_report=0x7f05000b;
         public static final int title_activity_view_inventory=0x7f05000a;
+        public static final int total_ammount=0x7f05000f;
     }
     public static final class style {
         /** 

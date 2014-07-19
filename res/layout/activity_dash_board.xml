@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#2f73a4"
     tools:context="${packageName}.${activityClass}" >
 
     <LinearLayout
@@ -17,6 +18,7 @@
             android:layout_height="match_parent"
             android:layout_weight=".5"
             android:src="@drawable/add_product"
+            android:text = "@string/title_activity_add_product"
             android:onClick="addProduct" />
 
         <ImageButton

@@ -3,11 +3,14 @@ package com.cse470.osia;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SalesOrder extends Activity {
@@ -31,31 +34,12 @@ public class SalesOrder extends Activity {
 		switch(item.getItemId()) {
 
 		case R.id.add_order:
-			LayoutInflater li = LayoutInflater.from(this);
-			View promptsView = li.inflate(R.layout.add_item_popup, null);
-
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setView(promptsView);
-			//final TextView textView = (TextView) promptsView.findViewById(R.id.textView1);
-			//textView.setText("PopUp is working!");
-			//final EditText userInput = (EditText) promptsView.findViewById(R.id.player2Input);
-			alertDialogBuilder
-			.setCancelable(true)
-			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					// add items to the database;
-
-				}
-			})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					dialog.cancel();
-				}
-			});
-
-			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();
-
+			Bundle dataBundle = new Bundle();
+            dataBundle.putInt("id", 0);
+            Intent intent = new Intent(getApplicationContext(),com.cse470.osia.SalesOrderAddItem.class);
+            intent.putExtras(dataBundle);
+            startActivity(intent);
+            return true; 
 		default: 
 			return super.onOptionsItemSelected(item);
 
