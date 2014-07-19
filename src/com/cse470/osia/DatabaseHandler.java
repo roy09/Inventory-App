@@ -12,7 +12,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// Database Data
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "inventory";
+	private static final String DATABASE_NAME = "inventory.db";
 
 	// List of tables
 	private static final String TABLE_PRODUCT = "product";
@@ -25,7 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String PRODUCT_CATEGORY = "productCategory";
 	private static final String PRODUCT_NORMAL_PRICE = "productNormalPrice";
 	private static final String PRODUCT_COSTING_PRICE = "productProductPrice";
-	private static final String PRODUCT_QUANTITY = "productQuality";
+	private static final String PRODUCT_QUANTITY = "productQuantity";
 
 	private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + TABLE_PRODUCT + "(" + PRODUCT_ID 
 			+ " INT PRIMARY KEY, " + PRODUCT_NAME + " TEXT, " + PRODUCT_CATEGORY + " TEXT, " 
@@ -68,8 +68,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db){
 
 		db.execSQL(CREATE_PRODUCT_TABLE);
-		db.execSQL(CREATE_ORDER_INFO_TABLE);
-		db.execSQL(CREATE_SALES_ORDER_TABLE);
+//		db.execSQL(CREATE_ORDER_INFO_TABLE);
+//		db.execSQL(CREATE_SALES_ORDER_TABLE);
 	}
 
 	@Override
@@ -104,20 +104,89 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 
-
-	public ArrayList <String> getAllProducts()  // FROM TABLE_PRODUCT
+	// Get Product Names
+	public ArrayList <String> getAllProductsName()
 	{
 		ArrayList <String> array_list = new ArrayList <String>();
 		//hp = new HashMap();
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor res =  db.rawQuery( "select * from product", null );
-		res.moveToFirst();
-		while(res.isAfterLast() == false){
-			array_list.add(res.getString(res.getColumnIndex(PRODUCT_NAME)));
-			res.moveToNext();
+		Cursor cursor =  db.rawQuery( "select * from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+			cursor.moveToNext();
 		}
+		
+		db.close();
 		return array_list;
 	}
+	
+	// Get Product Categories
+	public ArrayList <String> getAllProductsCategory()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_CATEGORY)));
+			cursor.moveToNext();
+		}
+		
+		db.close();
+		return array_list;
+	}
+	
+	// Get product normal price
+	public ArrayList <String> getAllProductsNormalPrice()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NORMAL_PRICE)));
+			cursor.moveToNext();
+		}
+		
+		db.close();
+		return array_list;
+	}
+	
+	// Get product costing
+	public ArrayList <String> getAllProductsCostingPrice()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_COSTING_PRICE)));
+			cursor.moveToNext();
+		}
+		
+		db.close();
+		return array_list;
+	}
+	
+	// Get product quantity
+	public ArrayList <String> getAllProductsQuantity()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_QUANTITY)));
+			cursor.moveToNext();
+		}
+		
+		db.close();
+		return array_list;
+	}
+	
+	
+	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	

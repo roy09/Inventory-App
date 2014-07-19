@@ -11,7 +11,12 @@ import android.widget.ListView;
 public class ViewInventory extends Activity {
 
 	ListView listview;
-	List<String> productList = new ArrayList<String>();
+	List<String> productName = new ArrayList<String>();
+	List<String> productCategory = new ArrayList<String>();
+	List<String> productNormalPrice = new ArrayList<String>();
+	List<String> productCostingPrice = new ArrayList<String>();
+	List<String> productQuantity = new ArrayList<String>();
+	
 	
 	DatabaseHandler db = new DatabaseHandler(this);
 	
@@ -20,16 +25,17 @@ public class ViewInventory extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_inventory);
 		
-		productList = db.getAllProducts();
-		
-		
+		productName = db.getAllProductsName();
+		productCategory = db.getAllProductsCategory();
+		productNormalPrice = db.getAllProductsNormalPrice();
+		productCostingPrice = db.getAllProductsCostingPrice();
+		productQuantity = db.getAllProductsCategory();
 		
 
 		
 		listview = (ListView) findViewById(R.id.productList);
-//		listview.setAdapter(new ProductAdapter(this, productList));
-		ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, productList);
-		listview.setAdapter(adapter);
+		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
+		
 		
 	}
 }

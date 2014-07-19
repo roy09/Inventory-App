@@ -59,7 +59,7 @@ public class SalesOrderAddItem extends Activity {
 		
 		// managing auto completion
 		db = new DatabaseHandler (this);
-		ArrayList <String> product_list = db.getAllProducts();
+		ArrayList <String> product_list = db.getAllProductsName();
 		
 		ArrayAdapter <String> productAdapter = new ArrayAdapter <String> (this, android.R.layout.simple_dropdown_item_1line, product_list);
 		product_name = (AutoCompleteTextView) findViewById(R.id.autoCompleteAddItemProductName);

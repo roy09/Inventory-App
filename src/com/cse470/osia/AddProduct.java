@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -52,7 +53,7 @@ public class AddProduct extends Activity {
 		this.productName = name.getText().toString();
 		
 		Spinner category = (Spinner) findViewById(R.id.spCategory);
-		this.productCategory = category.toString();
+		this.productCategory = category.getSelectedItem().toString();
 		
 		EditText normalPrice = (EditText) findViewById(R.id.etNormalPrice);
 		this.productNormalPrice = normalPrice.getText().toString();
@@ -63,7 +64,7 @@ public class AddProduct extends Activity {
 		EditText quantity = (EditText) findViewById(R.id.etQuantity);
 		this.productQuantity = quantity.getText().toString();
 		
-//		Log.d("LEL", this.productName + " " + this.productCategory + " " + this.productNormalPrice + " " + this.productCostingPrice + " " + this.productQuantity);
+		Log.d("LEL", this.productName + " " + this.productCategory + " " + this.productNormalPrice + " " + this.productCostingPrice + " " + this.productQuantity);
 		
 		Toast toast = null; 
 		try{
@@ -73,6 +74,7 @@ public class AddProduct extends Activity {
 		
 		} catch(Exception e){
 			toast = Toast.makeText(this, "Product couldn't be added", Toast.LENGTH_LONG);
+			e.printStackTrace();
 		} finally {
 			toast.show();
 
