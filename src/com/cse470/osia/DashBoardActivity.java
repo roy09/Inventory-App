@@ -19,7 +19,8 @@ public class DashBoardActivity extends Activity {
 	}
 	
 	public void viewInventory(View view){
-		
+		Intent intent = new Intent(this, ViewInventory.class);
+		startActivity(intent);
 	}
 	
 	public void salesOrder(View view){

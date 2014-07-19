@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class AddProduct extends Activity {
 	
@@ -29,7 +31,8 @@ public class AddProduct extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_product);
 		
-		// Adding some categoreis
+		// Adding some categories
+		// TODO: Add a central category db
 		categories.add("Ink");
 		categories.add("Paper");
 		categories.add("Khata");
@@ -62,7 +65,20 @@ public class AddProduct extends Activity {
 		
 //		Log.d("LEL", this.productName + " " + this.productCategory + " " + this.productNormalPrice + " " + this.productCostingPrice + " " + this.productQuantity);
 		
-		db.addNewProduct(new Product(productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
+		Toast toast = null; 
+		try{
+			db.addNewProduct(new Product(productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
+			toast = Toast.makeText(this, "Product successfully added", Toast.LENGTH_LONG);
+			
+		
+		} catch(Exception e){
+			toast = Toast.makeText(this, "Product couldn't be added", Toast.LENGTH_LONG);
+		} finally {
+			toast.show();
+
+			Intent intent = new Intent (this, DashBoardActivity.class);
+			startActivity(intent);
+		}
 	}
 	
 	
