@@ -17,7 +17,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// List of tables
 	private static final String TABLE_PRODUCT = "product";
 	private static final String TABLE_ORDER_INFO = "orderInfo";
-	private static final String TABLE_SALES_ORDER = "salesOder";
+	private static final String TABLE_SALES_ORDER = "salesOrder";
+	private static final String TABLE_DEALER = "dealerTable";
 
 	// Table product
 	private static final String PRODUCT_ID = "id";
@@ -55,7 +56,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ " INT NOT NULL, " + SUBTOTAL_PRICE + " INT NOT NULL, " + ORDER_NO + " INTEGER FOREIGN KEY (" + ORDER_NO + ") REFERENCES " 
 			+ TABLE_SALES_ORDER + " (" + SALES_NO + ")" +")";
 
-
+	// Table dealer
+	private static final String DEALER_NAME = "dealerName";
+	private static final String DEALER_PHONE = "dealerPhone";
+	private static final String DEALER_EMAIL = "dealerEmail";
+	private static final String DEALER_ADDRESS = "dealerAddress";
+	
+	private static final String CREATE_DEALER_TABLE = "CREATE TABLE " + TABLE_DEALER + " (" + DEALER_NAME + " TEXT PRIMARY KEY, "
+			+ DEALER_PHONE + " TEXT, " + DEALER_EMAIL + " TEXT, " + DEALER_ADDRESS + " TEXT " + ")";
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,6 +78,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_PRODUCT_TABLE);
 //		db.execSQL(CREATE_ORDER_INFO_TABLE);
 //		db.execSQL(CREATE_SALES_ORDER_TABLE);
+		db.execSQL(CREATE_DEALER_TABLE);
 	}
 
 	@Override
