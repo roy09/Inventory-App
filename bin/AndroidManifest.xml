@@ -46,6 +46,10 @@
             android:name="com.cse470.osia.SalesOrderAddItem"
             android:label="@string/title_activity_sales_order_add_item" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.purchaseOrder.OrderActivity"
+            android:label="@string/title_activity_order" >
+        </activity>
     </application>
 
 </manifest>

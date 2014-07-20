@@ -1,5 +1,7 @@
 package com.cse470.osia;
 
+import com.cse470.osia.purchaseOrder.OrderActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +20,11 @@ public class DashBoardActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void purchaseOrder(View view){
+		Intent intent = new Intent(this, OrderActivity.class);
+		startActivity(intent);
+	}
+	
 	public void viewInventory(View view){
 		Intent intent = new Intent(this, ViewInventory.class);
 		startActivity(intent);
@@ -29,7 +36,7 @@ public class DashBoardActivity extends Activity {
 	}
 	
 	public void seeReport(View view){
-		Intent intent = new Intent (this, SeeReport.class);
+		Intent intent = new Intent (this, OrderActivity.class);
 		startActivity(intent);
 	}
 	
