@@ -1,24 +1,27 @@
 package com.cse470.osia;
 
+import java.util.Calendar;
+
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Button;
 
 public class SalesOrder extends Activity {
+	
+	
+	
+	Button setDate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_order);
+		
+		setDate  = (Button) findViewById(R.id.setSalesDate);
+		setCurrentDate();
 	}
 
 	@Override
@@ -45,6 +48,22 @@ public class SalesOrder extends Activity {
 
 		}
 
+	}
+
+	
+	/**
+	 * set date on button
+	 */
+	public void setCurrentDate() {
+		final Calendar c = Calendar.getInstance();
+		
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		int month = c.get(Calendar.MONTH);
+		int year = c.get(Calendar.YEAR);
+		
+		setDate.setText(new StringBuilder()
+			.append(month + 1).append("-").append(day).append("-")
+			.append(year).append(" "));
 	}
 
 }

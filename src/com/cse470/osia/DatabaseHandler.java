@@ -1,6 +1,8 @@
 package com.cse470.osia;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -68,8 +70,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db){
 
 		db.execSQL(CREATE_PRODUCT_TABLE);
-//		db.execSQL(CREATE_ORDER_INFO_TABLE);
-//		db.execSQL(CREATE_SALES_ORDER_TABLE);
+		db.execSQL(CREATE_SALES_ORDER_TABLE);
+		db.execSQL(CREATE_ORDER_INFO_TABLE);
 	}
 
 	@Override
@@ -121,6 +123,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return array_list;
 	}
 	
+	//Get category based product name
+	public ArrayList <String> getCategoryBasedProductName(String category) {
+		ArrayList <String> array_list = new ArrayList <String>();
+		//hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product where productCategory = \"" +category + "\"", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+			cursor.moveToNext();
+		}
+		
+		db.close();
+		return array_list;
+	}
+	
 	// Get Product Categories
 	public ArrayList <String> getAllProductsCategory()
 	{
@@ -153,6 +171,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return array_list;
 	}
 	
+	// Get a product's unit price
+	public String getUnitPriceOfProduct(String product) {
+		String price;
+		Queue <String> array_list = new LinkedList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from product where productName = \"" + product + "\"", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NORMAL_PRICE)));
+			cursor.moveToNext();
+		}
+		price = array_list.poll();
+		return price;
+	}
+	
 	// Get product costing
 	public ArrayList <String> getAllProductsCostingPrice()
 	{
@@ -169,7 +202,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return array_list;
 	}
 	
-	// Get product quantity
+	// Get all products quantity
 	public ArrayList <String> getAllProductsQuantity()
 	{
 		ArrayList <String> array_list = new ArrayList <String>();
@@ -184,6 +217,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
 	
 	
 	
