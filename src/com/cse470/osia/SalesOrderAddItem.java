@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SalesOrderAddItem extends Activity {
 	
@@ -55,7 +57,7 @@ public class SalesOrderAddItem extends Activity {
 		/**
 		 * creating text field's objects
 		 */
-		product_name = (AutoCompleteTextView) findViewById(R.id.autoCompleteAddItemProductName);
+		product_name = (AutoCompleteTextView) findViewById (R.id.autoCompleteAddItemProductName);
 		product_quantity = (EditText) findViewById(R.id.etAddItemProductQuantity);
 		unit_price = (TextView) findViewById(R.id.tvSalesAddItemUnitPrice);
 		subTotal = (TextView) findViewById(R.id.tvSalesAddItemSubtotal);		
@@ -91,6 +93,31 @@ public class SalesOrderAddItem extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.sales_order_add_item, menu);
 		return true;
+	}
+	
+	/**
+	 * add Item button click listener
+	 */
+	public void addItem(View v) {
+		Toast toast = null;
+		String productName = getProductName();
+		int unitPrice = getUnitPrice();
+		int quantity = getQuantity();
+		int subtotal = getSubtotal();
+		try {
+			db.addNewItemSalesOrder(productName, unitPrice, quantity, subtotal);
+			toast = Toast.makeText(this, "Item successfully added", Toast.LENGTH_LONG);
+		}
+		catch(Exception e) {
+			toast = Toast.makeText(this, "Item couldn't be added", Toast.LENGTH_LONG);
+			e.printStackTrace();
+		}
+		finally {
+			toast.show();
+			Intent intent = new Intent (this, SalesOrder.class);
+			startActivity(intent);
+			finish();
+		}
 	}
 	
 	/**
@@ -231,6 +258,40 @@ public class SalesOrderAddItem extends Activity {
 
 		product_name.setThreshold(1);
 		product_name.setAdapter(productAdapter);
+	}
+	
+	/**
+	 * get values from text fields
+	 */
+	public String getProductName() {
+		String productName = product_name.getText().toString();
+		return productName;
+	}
+	public int getQuantity() {
+		int quantity;
+		String getQ = product_quantity.getText().toString();
+		if (getQ.equals(""))
+			return 0;
+		quantity = Integer.parseInt(getQ);
+		return quantity;
+	}
+	public int getUnitPrice() {
+		int price;
+		String unitPrice = unit_price.getText().toString();
+		if (unitPrice.equals(""))
+			price = 0;
+		else
+			price = Integer.parseInt(unitPrice);
+		return price;
+	}
+	public int getSubtotal() {
+		int price;
+		String subtotal = subTotal.getText().toString();
+		if (subtotal.equals(""))
+			price = 0;
+		else
+			price = Integer.parseInt(subtotal);
+		return price;
 	}
 
 }

@@ -17,8 +17,8 @@
     <string name="add_item">Add item</string>
     <string name="title_activity_sales_order">SalesOrder</string>
     <string name="total_ammount">Subtotal</string>
-    <string name="customer_name">Customer</string>
-    <string name="ask_for_name">Type your name</string>
+    <string name="customer_name">Customer:</string>
+    <string name="ask_for_name">Name</string>
     <string name="net_payable">Net Payable</string>
     <string name="title_activity_sales_order_add_item">SalesOrderAddItem</string>
 

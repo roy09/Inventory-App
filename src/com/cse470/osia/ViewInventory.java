@@ -18,13 +18,13 @@ public class ViewInventory extends Activity {
 	List<String> productQuantity = new ArrayList<String>();
 	
 	
-	DatabaseHandler db = new DatabaseHandler(this);
+	DatabaseHandler db;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_inventory);
-		
+		db = new DatabaseHandler(this);
 		productName = db.getAllProductsName();
 		productCategory = db.getAllProductsCategory();
 		productNormalPrice = db.getAllProductsNormalPrice();

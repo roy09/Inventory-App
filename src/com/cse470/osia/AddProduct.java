@@ -25,13 +25,13 @@ public class AddProduct extends Activity {
 	String productCostingPrice;
 	String productQuantity;
 	
-	DatabaseHandler db = new DatabaseHandler(this);
+	DatabaseHandler db;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_product);
-		
+		db = new DatabaseHandler(this);
 		// Adding some categories
 		// TODO: Add a central category db
 		categories.add("Ink");
@@ -80,6 +80,8 @@ public class AddProduct extends Activity {
 
 			Intent intent = new Intent (this, DashBoardActivity.class);
 			startActivity(intent);
+			
+			finish();
 		}
 	}
 	

@@ -1,27 +1,71 @@
 package com.cse470.osia;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class SalesOrder extends Activity {
 	
 	
+	/**
+	 * text fields
+	 */
 	
-	Button setDate;
+	TextView setDate;
+	TextView orderNo;
+	ListView orderList;
+	EditText customer;
+	TextView netPayable;
+	/**
+	 * ArrayLists for handling the added item.
+	 */
+	List <String> productName = new ArrayList<String>();
+	List <String> productQuantity = new ArrayList<String>();
+	List <String> perUnitPrice = new ArrayList<String>();
+	List <String> subtotal = new ArrayList<String>();
+	
+	/**
+	 * database object
+	 */
+	DatabaseHandler db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_order);
+		db = new DatabaseHandler(this);
 		
-		setDate  = (Button) findViewById(R.id.setSalesDate);
+		setDate  = (TextView) findViewById(R.id.tvSetSalesDate);
+		orderNo = (TextView) findViewById(R.id.tvSalesOrderNo);
+		customer = (EditText) findViewById(R.id.etSalesCustomerName);
+		netPayable = (TextView) findViewById(R.id.textView1);
+		orderList = (ListView) findViewById(R.id.lvSalesAddedItem);
+		
+		/**
+		 * get items from the database
+		 */
+		productName = db.getAllSalesAddedProductName();
+		productQuantity = db.getAllSalesAddedProductQuantity();
+		perUnitPrice = db.getAllSalesAddedProductUnitPrice();
+		subtotal = db.getAllSalesAddedProductSubtotalPrice();
+		
+		
+		orderList.setAdapter(new SalesProductAdapter(this, productName, productQuantity, perUnitPrice, subtotal));
+		setNetPayable();
 		setCurrentDate();
+		setCurrentOrder();
+		
+		
+		
 	}
 
 	@Override
@@ -49,7 +93,23 @@ public class SalesOrder extends Activity {
 		}
 
 	}
+	
+	/**
+	 * set net payable money on textView
+	 */
+	
+	public void setNetPayable() {
+		int grandTotal = db.getNetPayable();
+		netPayable.setText("" + grandTotal);
+	}
 
+	/**
+	 * set sales orderNo on textView
+	 */
+	public void setCurrentOrder() {
+		int salesNo = db.getSalesOrderNo();
+		orderNo.setText("" + salesNo);
+	}
 	
 	/**
 	 * set date on button

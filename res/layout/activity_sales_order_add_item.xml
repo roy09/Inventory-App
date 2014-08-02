@@ -90,6 +90,7 @@
         android:layout_alignLeft="@+id/tvAddItemTotalPrice"
         android:layout_alignRight="@+id/etAddItemProductQuantity"
         android:layout_below="@+id/tvAddItemTotalPrice"
+        android:onClick="addItem"
         android:text="@string/add_item" />
 
     <TextView
