@@ -21,5 +21,6 @@
     <string name="ask_for_name">Name</string>
     <string name="net_payable">Net Payable</string>
     <string name="title_activity_sales_order_add_item">SalesOrderAddItem</string>
+    <string name="clear">Clear</string>
 
 </resources>

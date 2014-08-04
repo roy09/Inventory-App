@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSalesNetPayable"
         android:layout_alignParentBottom="true"
+        android:onClick="checkout"
         android:text="Checkout" />
 
     <TextView

@@ -275,6 +275,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 	
 	/**
+	 * remove a sales added item
+	 */
+	
+	public void removeSalesAddedItem(String product) {
+		int salesNo = getSalesOrderNo();
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		db.delete(TABLE_SALES_ORDER_INFO, ORDER_NO + " = ? and " + ADDED_PRODUCT + " = ?", 
+				new String [] {salesNo+"", product});
+		
+		db.close();
+	}
+	
+	/**
+	 * remove all added product of a sales order
+	 */
+	
+	public void removeAllSalesAddedProduct() {
+		int salesNo = getSalesOrderNo();
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+//		db.execSQL( "delete from " + TABLE_SALES_ORDER_INFO + " where " 
+//				+ ORDER_NO + " = " + salesNo, null );
+		
+		db.delete(TABLE_SALES_ORDER_INFO, ORDER_NO + " = ?",
+				new String[] {(salesNo+"")} );
+		
+		db.close();
+		
+	}
+	
+	/**
 	 *  getAllSalesAddedProductName()
 	 * @return arrayList <String>
 	 */
@@ -284,8 +317,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		int salesNo = getSalesOrderNo();
 		
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor =  db.rawQuery( "select * from " + TABLE_SALES_ORDER_INFO + " where " 
-				+ ORDER_NO + " = " + salesNo, null );
+		Cursor cursor =  db.rawQuery( "select * from " + TABLE_SALES_ORDER_INFO 
+				+ " where "	+ ORDER_NO + " = " + salesNo, null );
 		
 		
 		array_list.add("Item");

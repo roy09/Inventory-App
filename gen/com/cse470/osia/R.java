@@ -28,7 +28,7 @@ public final class R {
         public static final int view_inventory=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f08002e;
+        public static final int action_settings=0x7f08002f;
         public static final int add_order=0x7f08002d;
         public static final int autoCompleteAddItemProductName=0x7f08001b;
         public static final int btnAddItem=0x7f080020;
@@ -38,6 +38,7 @@ public final class R {
         public static final int btnSubmit=0x7f080005;
         public static final int btnViewIntentory=0x7f08000c;
         public static final int button1=0x7f080016;
+        public static final int clear_items=0x7f08002e;
         public static final int etAddItemProductQuantity=0x7f08001d;
         public static final int etCostingPrice=0x7f080009;
         public static final int etNormalPrice=0x7f080007;
@@ -96,6 +97,7 @@ public final class R {
         public static final int add_item=0x7f05000d;
         public static final int app_name=0x7f050000;
         public static final int ask_for_name=0x7f050011;
+        public static final int clear=0x7f050014;
         public static final int customer_name=0x7f050010;
         public static final int hello_world=0x7f050002;
         public static final int net_payable=0x7f050012;

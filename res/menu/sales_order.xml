@@ -1,9 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
         android:id="@+id/add_order"
-        android:orderInCategory="100"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/add_item"/>
+        android:showAsAction="always"
+        android:title="@string/add_item">
+    </item>
+    <item
+        android:id="@+id/clear_items"
+        android:showAsAction="always"
+        android:title="@string/clear">
+    </item>
 
 </menu>

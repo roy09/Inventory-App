@@ -29,9 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvAddItemProcductName"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/tvAddItemCategory"
-        android:inputType="text"
         android:ems="10"
+        android:inputType="text"
         android:text="" />
 
     <TextView
@@ -48,10 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/autoCompleteAddItemProductName"
+        android:layout_alignRight="@+id/autoCompleteAddItemProductName"
         android:layout_alignTop="@+id/tvAddItemProductQuantity"
-        android:text="1"
         android:ems="10"
-        android:inputType="number" >
+        android:inputType="number"
+        android:text="1" >
+
     </EditText>
 
     <TextView
@@ -87,8 +90,8 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvAddItemTotalPrice"
-        android:layout_alignRight="@+id/etAddItemProductQuantity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/tvAddItemTotalPrice"
         android:onClick="addItem"
         android:text="@string/add_item" />
