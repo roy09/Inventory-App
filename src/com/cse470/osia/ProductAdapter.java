@@ -24,6 +24,7 @@ public class ProductAdapter extends BaseAdapter {
 			List<String> productNormalPrice, List<String> productCostingPrice, List<String> productQuantity){
 		this.context = context;
 		this.productName = productName;
+		this.productNormalPrice = productNormalPrice;
 		this.productCategory = productCategory;
 		this.productCostingPrice = productCostingPrice;
 		this.productQuantity = productQuantity;
@@ -58,14 +59,14 @@ public class ProductAdapter extends BaseAdapter {
 
 		// Set Product Price
 		TextView productNormalPrice = (TextView) vi.findViewById(R.id.tvProductNormalPriceVI);
-		productNormalPrice.setText(this.productCategory.get(position));
+		productNormalPrice.setText(this.productNormalPrice.get(position));
 
 		// Set Product Costing
 		TextView productCostingPrice = (TextView) vi.findViewById(R.id.tvProductCostingPriceVI);
 		productCostingPrice.setText(this.productCostingPrice.get(position));
 
 		// Set Product Quantity
-		TextView productQuantity = (TextView) vi.findViewById(R.id.tvProductCategoryVI);
+		TextView productQuantity = (TextView) vi.findViewById(R.id.tvProductQuantityVI);
 		productQuantity.setText(this.productQuantity.get(position));
 
 		return vi;

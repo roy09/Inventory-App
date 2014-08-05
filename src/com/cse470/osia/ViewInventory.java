@@ -29,9 +29,7 @@ public class ViewInventory extends Activity {
 		productCategory = db.getAllProductsCategory();
 		productNormalPrice = db.getAllProductsNormalPrice();
 		productCostingPrice = db.getAllProductsCostingPrice();
-		productQuantity = db.getAllProductsCategory();
-		
-
+		productQuantity = db.getAllProductsQuantity();
 		
 		listview = (ListView) findViewById(R.id.productList);
 		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
