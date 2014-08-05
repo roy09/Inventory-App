@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#2f73a4"
+    android:orientation="vertical"
     tools:context="${packageName}.${activityClass}" >
 
     <LinearLayout
@@ -12,14 +12,30 @@
         android:layout_weight=".5"
         android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/btnAddProduct"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_weight=".5"
-            android:src="@drawable/add_product"
-            android:text = "@string/title_activity_add_product"
-            android:onClick="addProduct" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/btnAddProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:onClick="addProduct"
+                android:src="@drawable/add_product"
+                android:text="@string/title_activity_add_product" />
+
+            <ImageButton
+                android:id="@+id/btnPurchaseOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:onClick="purchaseOrder"
+                android:src="@drawable/add_product"
+                android:text="@string/title_activity_add_product" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/btnViewIntentory"
@@ -27,9 +43,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:layout_weight=".5"
-            android:src="@drawable/view_inventory"
-            android:onClick="viewInventory" />
-
+            android:onClick="viewInventory"
+            android:src="@drawable/view_inventory" />
     </LinearLayout>
 
     <LinearLayout
@@ -42,17 +57,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight=".5"
-            android:src="@drawable/sales_order"
-            android:onClick="salesOrder" />
+            android:onClick="salesOrder"
+            android:src="@drawable/sales_order" />
 
         <ImageButton
             android:id="@+id/btnSeeReport"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight=".5"
-            android:src="@drawable/see_report"
-            android:onClick="seeReport" />
-
+            android:onClick="seeReport"
+            android:src="@drawable/see_report" />
     </LinearLayout>
 
 </LinearLayout>
