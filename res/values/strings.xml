@@ -22,5 +22,6 @@
     <string name="net_payable">Net Payable</string>
     <string name="title_activity_sales_order_add_item">SalesOrderAddItem</string>
     <string name="clear">Clear</string>
+    <string name="title_activity_purchase_order">PurchaseOrder</string>
 
 </resources>

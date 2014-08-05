@@ -81,12 +81,13 @@ public final class R {
     public static final class layout {
         public static final int activity_add_product=0x7f030000;
         public static final int activity_dash_board=0x7f030001;
-        public static final int activity_sales_order=0x7f030002;
-        public static final int activity_sales_order_add_item=0x7f030003;
-        public static final int activity_see_report=0x7f030004;
-        public static final int activity_view_inventory=0x7f030005;
-        public static final int product_row=0x7f030006;
-        public static final int sales_product_row=0x7f030007;
+        public static final int activity_purchase_order=0x7f030002;
+        public static final int activity_sales_order=0x7f030003;
+        public static final int activity_sales_order_add_item=0x7f030004;
+        public static final int activity_see_report=0x7f030005;
+        public static final int activity_view_inventory=0x7f030006;
+        public static final int product_row=0x7f030007;
+        public static final int sales_product_row=0x7f030008;
     }
     public static final class menu {
         public static final int sales_order=0x7f070000;
@@ -110,6 +111,7 @@ public final class R {
         public static final int product_save=0x7f050008;
         public static final int title_activity_add_product=0x7f050001;
         public static final int title_activity_database_handler=0x7f050009;
+        public static final int title_activity_purchase_order=0x7f050015;
         public static final int title_activity_sales_order=0x7f05000e;
         public static final int title_activity_sales_order_add_item=0x7f050013;
         public static final int title_activity_see_report=0x7f05000b;
