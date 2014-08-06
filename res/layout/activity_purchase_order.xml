@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/purchaseOrderNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/purchaseOrderNo"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/purchaseOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/purchaseOrderNo"
+        android:text="@string/purchaseOrder"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvNameOfDealer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+		android:layout_below="@+id/purchaseOrder"
+        android:text="Dealer Name: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvDealerPhoneNoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvNameOfDealer"
+        android:text="Phone No" />
+
+    <TextView
+        android:id="@+id/tvDealerPhoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNameOfDealer"
+        android:layout_toRightOf="@+id/tvDealerPhoneNoText"
+        android:ems="10"
+        android:inputType="phone" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvDealerEmailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvDealerPhoneNo"
+        android:layout_toRightOf="@+id/tvDealerPhoneNo"
+        android:ems="10"
+        android:text="Email" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/etDealerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvDealerPhoneNo"
+        android:layout_toRightOf="@+id/tvDealerEmailText"
+        android:ems="10"
+        android:text="***" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvDealerAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDealerPhoneNo"
+        android:ems="10"
+        android:text="Address" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvDealerAddress"
+        android:layout_marginTop="23dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Done" />
+
+    <EditText
+        android:id="@+id/etDealerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNameOfDealer"
+        android:layout_toLeftOf="@+id/etDealerEmail"
+        android:layout_toRightOf="@+id/tvNameOfDealer"
+        android:ems="10"
+        android:clickable="true" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>
