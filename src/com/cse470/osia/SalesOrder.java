@@ -58,7 +58,7 @@ public class SalesOrder extends Activity {
 		setDate  = (TextView) findViewById(R.id.tvSetSalesDate);
 		orderNo = (TextView) findViewById(R.id.tvSalesOrderNo);
 		customer = (EditText) findViewById(R.id.etSalesCustomerName);
-		netPayable = (TextView) findViewById(R.id.textView1);
+		netPayable = (TextView) findViewById(R.id.tvNameOfDealerTO);
 		orderList = (ListView) findViewById(R.id.lvSalesAddedItem);
 		
 		/**

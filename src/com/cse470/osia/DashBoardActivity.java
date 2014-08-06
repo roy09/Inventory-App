@@ -33,5 +33,10 @@ public class DashBoardActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void purchaseOrder(View view){
+		Intent intent = new Intent(this, PurchaseOrderDealer.class);
+		startActivity(intent);
+	}
+	
 	
 }

@@ -50,6 +50,14 @@
             android:name="com.cse470.osia.PurchaseOrder"
             android:label="@string/title_activity_purchase_order" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.PurchaseOrderDealer"
+            android:label="@string/title_activity_purchase_order_dealer" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.AddDealer"
+            android:label="@string/title_activity_add_dealer" >
+        </activity>
     </application>
 
 </manifest>

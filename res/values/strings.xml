@@ -23,5 +23,9 @@
     <string name="title_activity_sales_order_add_item">SalesOrderAddItem</string>
     <string name="clear">Clear</string>
     <string name="title_activity_purchase_order">PurchaseOrder</string>
+    <string name="purchaseOrderNo">001</string>
+    <string name="purchaseOrder">Order No: </string>
+    <string name="title_activity_purchase_order_dealer">PurchaseOrderDealer</string>
+    <string name="title_activity_add_dealer">AddDealer</string>
 
 </resources>
