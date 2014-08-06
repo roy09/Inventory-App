@@ -19,7 +19,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// List of tables
 	private static final String TABLE_PRODUCT = "product";
 	private static final String TABLE_SALES_ORDER_INFO = "salesOrderInfo";
-	private static final String TABLE_SALES_ORDER = "salesOder";
+	private static final String TABLE_SALES_ORDER = "salesOrder";
+	private static final String TABLE_DEALER = "dealerTable";
 
 	// Table product
 	private static final String PRODUCT_ID = "id";
@@ -92,6 +93,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ SALES_NO
 			+ ")" + ")";
 
+	// Table dealer
+	private static final String DEALER_NAME = "dealerName";
+	private static final String DEALER_PHONE = "dealerPhone";
+	private static final String DEALER_EMAIL = "dealerEmail";
+	private static final String DEALER_ADDRESS = "dealerAddress";
+	
+	private static final String CREATE_DEALER_TABLE = "CREATE TABLE IF NOT EXISTS "
+			+ TABLE_DEALER
+			+ " ("
+			+ DEALER_NAME
+			+ " TEXT PRIMARY KEY, "
+			+ DEALER_PHONE
+			+ " TEXT, "
+			+ DEALER_EMAIL
+			+ " TEXT, "
+			+ DEALER_ADDRESS
+			+ " TEXT " + ")";
+
+	
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public DatabaseHandler(Context context) {
@@ -104,6 +124,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_PRODUCT_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_INFO_TABLE);
+		db.execSQL(CREATE_DEALER_TABLE);
 	}
 
 	@Override
