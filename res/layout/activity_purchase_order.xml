@@ -68,7 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Checkout" />
+        android:text="Checkout"
+        android:onClick="checkout" />
 
     <TextView
         android:id="@+id/tvNameOfDealer"

@@ -93,7 +93,7 @@ public class PurchaseOrder extends Activity {
 		setOrderListItemClickListener();
 		// setOrderListChoiceModeListener();
 		setNetPayable();
-		// setCurrentDate();
+		setCurrentDate();
 		// setCurrentOrder();
 	}
 
@@ -210,7 +210,14 @@ public class PurchaseOrder extends Activity {
 	 * onClick listener for checkout (salesOrder) insert on TABLE_SALES_ORDER
 	 */
 	public void checkout(View v) {
-
+		DatabaseHandler db = new DatabaseHandler(this);
+		
+		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
+		
+		
+		Toast bhudu = Toast.makeText(getApplicationContext(), productsToAdd.get(1), Toast.LENGTH_LONG);
+		bhudu.show();
+		
 	}
 
 	// /**
@@ -227,6 +234,7 @@ public class PurchaseOrder extends Activity {
 		int grandTotal = db.getNetPayable();
 		netPayable.setText("" + grandTotal);
 	}
+
 	//
 	// /**
 	// * set sales orderNo on textView
@@ -236,17 +244,17 @@ public class PurchaseOrder extends Activity {
 	// purchaseOrderNo.setText("" + salesNo);
 	// }
 	//
-	// /**
-	// * set date on button
-	// */
-	// public void setCurrentDate() {
-	// final Calendar c = Calendar.getInstance();
-	//
-	// int day = c.get(Calendar.DAY_OF_MONTH);
-	// int month = c.get(Calendar.MONTH);
-	// int year = c.get(Calendar.YEAR);
-	//
-	// purchaseOrderDate.setText(new StringBuilder().append(day).append("-")
-	// .append(month + 1).append("-").append(year).append(" "));
-	// }
+	/**
+	 * set date on button
+	 */
+	public void setCurrentDate() {
+		final Calendar c = Calendar.getInstance();
+
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		int month = c.get(Calendar.MONTH);
+		int year = c.get(Calendar.YEAR);
+
+		purchaseOrderDate.setText(new StringBuilder().append(day).append("-")
+				.append(month + 1).append("-").append(year).append(" "));
+	}
 }
