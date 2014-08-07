@@ -75,7 +75,7 @@ public class PurchaseOrder extends Activity {
 		TextView dealerAddress = (TextView) findViewById(R.id.tvDealerAddress);
 		dealerAddress.setText(this.dealerAddress);
 
-		netPayable = (TextView) findViewById(R.id.subtotalPO);
+		netPayable = (TextView) findViewById(R.id.totalValuePO);
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
 
 		// Adding up stuff to the list
@@ -92,7 +92,7 @@ public class PurchaseOrder extends Activity {
 
 		setOrderListItemClickListener();
 		// setOrderListChoiceModeListener();
-		// setNetPayable();
+		setNetPayable();
 		// setCurrentDate();
 		// setCurrentOrder();
 	}
@@ -205,14 +205,14 @@ public class PurchaseOrder extends Activity {
 	}
 
 	// //
-	// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// /**
-	// * onClick listener for checkout (salesOrder) insert on TABLE_SALES_ORDER
-	// */
-	// public void checkout(View v) {
-	//
-	// }
-	//
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * onClick listener for checkout (salesOrder) insert on TABLE_SALES_ORDER
+	 */
+	public void checkout(View v) {
+
+	}
+
 	// /**
 	// * hardware back button listener clear the list if yes.
 	// */
@@ -223,10 +223,10 @@ public class PurchaseOrder extends Activity {
 	// * set net payable money on textView
 	// */
 	//
-	// public void setNetPayable() {
-	// int grandTotal = db.getNetPayable();
-	// netPayable.setText("" + grandTotal);
-	// }
+	public void setNetPayable() {
+		int grandTotal = db.getNetPayable();
+		netPayable.setText("" + grandTotal);
+	}
 	//
 	// /**
 	// * set sales orderNo on textView
