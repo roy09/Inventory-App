@@ -328,6 +328,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
+	public ArrayList<String> getEverythingAboutDealer(String dealerName){
+		ArrayList<String> dealerInfo = new ArrayList<String>();
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + TABLE_DEALER + " where " + DEALER_NAME + " = " +  '"' + dealerName + '"', null);
+		cursor.moveToFirst();
+		
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_NAME)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_PHONE)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_EMAIL)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_ADDRESS)));
+//		while (cursor.isAfterLast() == false) {
+//			dealerInfo[count] = cursor.getString(cursor
+//					.getColumnIndex(infos[count]));
+//			cursor.moveToNext();
+//			count++;
+//		}
+		
+		db.close();
+		return dealerInfo;
+	}
 	/**
 	 * FUNCTIONS OF TABLE_SALES_ORDER_INFO ADDED_PRODUCT ADDED_PRODUCT_CATEGORY
 	 * PER_UNIT_PRICE ORDER_QUANTITY SUBTOTAL_PRICE ORDER_ID +

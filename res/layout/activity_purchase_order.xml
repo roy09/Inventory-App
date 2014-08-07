@@ -23,7 +23,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/tvNameOfDealer"
+        android:id="@+id/tvNameOfDealerHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -32,50 +32,43 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/tvDealerPhoneNoText"
+        android:id="@+id/tvDealerPhoneHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvNameOfDealer"
+        android:layout_below="@+id/tvNameOfDealerHeader"
         android:text="Phone No" />
 
     <TextView
         android:id="@+id/tvDealerPhoneNo"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvNameOfDealer"
-        android:layout_toRightOf="@+id/tvDealerPhoneNoText"
+        android:layout_below="@+id/tvNameOfDealerHeader"
+        android:layout_toRightOf="@+id/tvDealerPhoneHeader"
         android:ems="10"
         android:inputType="phone" >
     </TextView>
 
     <TextView
-        android:id="@+id/tvDealerEmailText"
+        android:id="@+id/tvDealerEmailHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvDealerPhoneNo"
+        android:layout_toLeftOf="@+id/purchaseOrder"
         android:layout_toRightOf="@+id/tvDealerPhoneNo"
         android:ems="10"
         android:text="Email" >
+
     </TextView>
 
     <TextView
-        android:id="@+id/etDealerEmail"
+        android:id="@+id/tvDealerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvDealerPhoneNo"
-        android:layout_toRightOf="@+id/tvDealerEmailText"
+        android:layout_toRightOf="@+id/tvDealerEmailHeader"
         android:ems="10"
-        android:text="***" >
-    </TextView>
-
-    <TextView
-        android:id="@+id/tvDealerAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDealerPhoneNo"
-        android:ems="10"
-        android:text="Address" >
+        android:text="" >
     </TextView>
 
     <ListView
@@ -83,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvDealerAddress"
+        android:layout_below="@+id/tvDealerAddressHeader"
         android:layout_marginTop="23dp" >
     </ListView>
 
@@ -95,17 +88,34 @@
         android:layout_alignParentRight="true"
         android:text="Done" />
 
-    <EditText
-        android:id="@+id/etDealerName"
+    <TextView
+        android:id="@+id/tvNameOfDealer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvNameOfDealer"
-        android:layout_toLeftOf="@+id/etDealerEmail"
-        android:layout_toRightOf="@+id/tvNameOfDealer"
-        android:ems="10"
-        android:clickable="true" >
+        android:layout_alignBaseline="@+id/tvNameOfDealerHeader"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tvNameOfDealerHeader"
+        android:clickable="true"
+        android:ems="10" >
 
-        <requestFocus />
-    </EditText>
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvDealerAddressHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvDealerPhoneHeader"
+        android:layout_toLeftOf="@+id/tvDealerPhoneNo"
+        android:ems="10"
+        android:text="Address" />
+
+    <TextView
+        android:id="@+id/tvDealerAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvDealerAddressHeader"
+        android:layout_alignBaseline="@+id/tvDealerAddressHeader"
+        android:text="" />
 
 </RelativeLayout>
