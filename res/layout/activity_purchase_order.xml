@@ -5,24 +5,6 @@
     tools:context="${packageName}.${activityClass}" >
 
     <TextView
-        android:id="@+id/purchaseOrderNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/purchaseOrderNo"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <TextView
-        android:id="@+id/purchaseOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/purchaseOrderNo"
-        android:text="@string/purchaseOrder"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/tvNameOfDealerHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,10 +33,9 @@
 
     <TextView
         android:id="@+id/tvDealerEmailHeader"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvDealerPhoneNo"
-        android:layout_toLeftOf="@+id/purchaseOrder"
         android:layout_toRightOf="@+id/tvDealerPhoneNo"
         android:ems="10"
         android:text="Email" >
@@ -65,28 +46,29 @@
         android:id="@+id/tvDealerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDealerPhoneNo"
+        android:layout_alignBaseline="@+id/tvDealerEmailHeader"
         android:layout_toRightOf="@+id/tvDealerEmailHeader"
         android:ems="10"
-        android:text="" >
+        android:text="HH" >
     </TextView>
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/purchaseOrderList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvDealerAddressHeader"
+        android:layout_above="@+id/subtotalPO"
         android:layout_marginTop="23dp" >
     </ListView>
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:id="@+id/checkoutPO"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Done" />
+        android:text="Checkout" />
 
     <TextView
         android:id="@+id/tvNameOfDealer"
@@ -117,5 +99,49 @@
         android:layout_toRightOf="@+id/tvDealerAddressHeader"
         android:layout_alignBaseline="@+id/tvDealerAddressHeader"
         android:text="" />
+
+    <TextView
+        android:id="@+id/subtotalPO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/checkoutPO"
+        android:text="Subtotal "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/totalValuePO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/subtotalPO"
+        android:layout_alignBottom="@+id/subtotalPO"
+        android:layout_alignParentRight="true"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/purchaseOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/purchaseOrder"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/purchaseOrderNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/subtotalPO"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/tvSetPurchaseDatePO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="SetDate"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

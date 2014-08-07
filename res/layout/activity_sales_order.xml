@@ -48,7 +48,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/checkoutPO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSalesNetPayable"
@@ -90,7 +90,7 @@
         android:id="@+id/tvSalesNetPayable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/checkoutPO"
         android:layout_alignRight="@+id/tvSalesOrderNo"
         android:text="@string/net_payable"
         android:textAppearance="?android:attr/textAppearanceLarge" />

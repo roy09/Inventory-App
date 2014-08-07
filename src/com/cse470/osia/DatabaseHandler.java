@@ -307,7 +307,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		ContentValues values = new ContentValues();
 		values.put(DEALER_NAME, dealerName);
 		values.put(DEALER_PHONE, dealerPhone);
-		values.put(DEALER_EMAIL, dealerAddress);
+		values.put(DEALER_EMAIL, dealerEmail);
 		values.put(DEALER_ADDRESS, dealerAddress);
 		
 		db.insert(TABLE_DEALER, null, values);

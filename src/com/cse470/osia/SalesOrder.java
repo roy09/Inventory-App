@@ -32,6 +32,7 @@ public class SalesOrder extends Activity {
 	ListView orderList;
 	EditText customer;
 	TextView netPayable;
+	
 	/**
 	 * ArrayLists for handling the added item.
 	 */
