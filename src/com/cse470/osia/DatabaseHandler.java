@@ -20,7 +20,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_PRODUCT = "product";
 	private static final String TABLE_SALES_ORDER_INFO = "salesOrderInfo";
 	private static final String TABLE_SALES_ORDER = "salesOder";
-
+	private static final String TABLE_USER_INFO = "userInfo";
+	
+	// Table userInfo
+	private static final String USER_ID = "user_id";
+	private static final String USER_NAME = "name";
+	private static final String USER_USERNAME = "username";
+	private static final String USER_PASSWORD = "password";
+	private static final String USER_EMAIL = "email";
+	private static final String USER_PHONE = "phone";
+	
+	private static final String CREATE_USER_INFO_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_USER_INFO + " (" + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+			+ USER_NAME + " TEXT NOT NULL, " + USER_USERNAME + " TEXT NOT NULL, " + USER_PASSWORD + " TEXT NOT NULL, " + USER_EMAIL + " TEXT NOT NULL, " + USER_PHONE + " TEXT NOT NULL " + ")";
+	
+	
 	// Table product
 	private static final String PRODUCT_ID = "id";
 	private static final String PRODUCT_NAME = "productName";
@@ -73,6 +86,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_PRODUCT_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_INFO_TABLE);
+		db.execSQL(CREATE_USER_INFO_TABLE);
 	}
 
 	@Override
@@ -80,10 +94,60 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER_INFO);
-
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
 		onCreate(db);
 	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	/**
+	 * ALL THE FUNCTIONS OF TABLE_USER_INFO
+	 */
+	// add new user
+	void addNewUser (String name, String username, String password, String email, String phone) {
+		//SQLiteDatabase db = this.getWritableDatabase();
 
+		ContentValues values = new ContentValues();
+		values.put(USER_NAME, name);
+		values.put(USER_USERNAME, username);
+		values.put(USER_PASSWORD, password);
+		values.put(USER_EMAIL, email);
+		values.put(USER_PHONE, phone);
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.insert(TABLE_USER_INFO, null, values);
+		db.close();
+	}
+	
+	// get password of a specific user
+	public String getUserPassword(String username) {
+		String password;
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select "+ USER_PASSWORD +" from " + TABLE_USER_INFO
+				+ " where " + USER_USERNAME + " = '"+ username + "'", null );
+
+		cursor.moveToFirst();
+		password = cursor.getString(0);
+		
+		db.close();
+		return password;
+	}
+	
+	// get all the username(s)
+	public ArrayList <String> getAllUsernames()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		//hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from " + TABLE_USER_INFO, null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_USERNAME)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
 	/**

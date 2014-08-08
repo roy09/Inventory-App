@@ -49,8 +49,10 @@
         android:layout_alignTop="@+id/tvSalesNetPayable"
         android:layout_toRightOf="@+id/tvSalesOrderNo"
         android:background="@drawable/textbox_round_corner"
-        android:paddingLeft="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
         android:text="0"
+        android:gravity="right"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -71,7 +73,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/tvSalesOrder"
         android:background="@drawable/textbox_round_corner"
-        android:paddingLeft="10dp"
+        android:paddingLeft="12dp"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -96,7 +98,8 @@
         android:background="@drawable/textbox_round_corner"
         android:ems="10"
         android:hint="@string/ask_for_name"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="12dp" 
+        android:paddingRight="12dp"/>
 
     <ListView
         android:id="@+id/lvSalesAddedItem"

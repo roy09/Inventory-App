@@ -33,5 +33,13 @@ public class DashBoardActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void purchaseOrder (View view) {
+		
+	}
+	
+	public void userInfo (View view) {
+		
+	}
+	
 	
 }

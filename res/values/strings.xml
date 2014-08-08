@@ -24,5 +24,6 @@
     <string name="clear">Clear</string>
     <string name="title_activity_user_login">UserLogin</string>
     <string name="title_activity_user_sign_up">UserSignUp</string>
+    <string name="dashboard">OSIA|Dashboard</string>
 
 </resources>
