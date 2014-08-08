@@ -23,6 +23,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_SALES_ORDER_INFO = "salesOrderInfo";
 	private static final String TABLE_SALES_ORDER = "salesOrder";
 	private static final String TABLE_DEALER = "dealerTable";
+	private static final String TABLE_PURCHASE_ORDER = "purchaseOrder";
+	private static final String TABLE_PURCHASE_ORDER_INFRO = "purchaseOrderInfo";
 
 	// Table product
 	private static final String PRODUCT_ID = "id";
@@ -297,61 +299,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
-	 * CRUD for TABLE DEALER
-	 */
-	
-	void addNewDealer(String dealerName, String dealerPhone, String dealerEmail, String dealerAddress){
-		SQLiteDatabase db = this.getReadableDatabase();
-		
-		ContentValues values = new ContentValues();
-		values.put(DEALER_NAME, dealerName);
-		values.put(DEALER_PHONE, dealerPhone);
-		values.put(DEALER_EMAIL, dealerEmail);
-		values.put(DEALER_ADDRESS, dealerAddress);
-		
-		db.insert(TABLE_DEALER, null, values);
-		db.close();
-	}
-	
-	public ArrayList<String> getAllDealerName() {
-		ArrayList<String> array_list = new ArrayList<String>();
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("select * from " + TABLE_DEALER, null);
-		cursor.moveToFirst();
-		while (cursor.isAfterLast() == false) {
-			array_list.add(cursor.getString(cursor
-					.getColumnIndex(DEALER_NAME)));
-			cursor.moveToNext();
-		}
-
-		db.close();
-		return array_list;
-	}
-	
-	public ArrayList<String> getEverythingAboutDealer(String dealerName){
-		ArrayList<String> dealerInfo = new ArrayList<String>();
-		
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("select * from " + TABLE_DEALER + " where " + DEALER_NAME + " = " +  '"' + dealerName + '"', null);
-		cursor.moveToFirst();
-		
-		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_NAME)));
-		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_PHONE)));
-		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_EMAIL)));
-		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_ADDRESS)));
-//		while (cursor.isAfterLast() == false) {
-//			dealerInfo[count] = cursor.getString(cursor
-//					.getColumnIndex(infos[count]));
-//			cursor.moveToNext();
-//			count++;
-//		}
-		
-		db.close();
-		return dealerInfo;
-	}
 	/**
 	 * FUNCTIONS OF TABLE_SALES_ORDER_INFO ADDED_PRODUCT ADDED_PRODUCT_CATEGORY
 	 * PER_UNIT_PRICE ORDER_QUANTITY SUBTOTAL_PRICE ORDER_ID +
@@ -568,6 +516,62 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 		
 		db.close();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+	 * CRUD for TABLE DEALER
+	 */
+	
+	void addNewDealer(String dealerName, String dealerPhone, String dealerEmail, String dealerAddress){
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(DEALER_NAME, dealerName);
+		values.put(DEALER_PHONE, dealerPhone);
+		values.put(DEALER_EMAIL, dealerEmail);
+		values.put(DEALER_ADDRESS, dealerAddress);
+		
+		db.insert(TABLE_DEALER, null, values);
+		db.close();
+	}
+	
+	public ArrayList<String> getAllDealerName() {
+		ArrayList<String> array_list = new ArrayList<String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + TABLE_DEALER, null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(DEALER_NAME)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
+	
+	public ArrayList<String> getEverythingAboutDealer(String dealerName){
+		ArrayList<String> dealerInfo = new ArrayList<String>();
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + TABLE_DEALER + " where " + DEALER_NAME + " = " +  '"' + dealerName + '"', null);
+		cursor.moveToFirst();
+		
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_NAME)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_PHONE)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_EMAIL)));
+		dealerInfo.add(cursor.getString(cursor.getColumnIndex(DEALER_ADDRESS)));
+//		while (cursor.isAfterLast() == false) {
+//			dealerInfo[count] = cursor.getString(cursor
+//					.getColumnIndex(infos[count]));
+//			cursor.moveToNext();
+//			count++;
+//		}
+		
+		db.close();
+		return dealerInfo;
 	}
 
 }
