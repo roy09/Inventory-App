@@ -9,6 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -539,6 +541,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		db.close();
 		return fk;
+	}
+	
+	void updateProductQuantity(String productName, String operation, int num){
+		int newAmount = 0;
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		// Getting the previous value from the right row
+		Cursor cursor = db.rawQuery("SELECT  * FROM " + TABLE_PRODUCT + " WHERE " + PRODUCT_NAME + " = " + '"' + "Moto G" + '"', null);
+		
+		if(cursor.moveToFirst()){
+			String amount = cursor.getString(cursor.getColumnIndex(PRODUCT_QUANTITY));
+			if (operation == "positive"){
+				newAmount = Integer.parseInt(amount) + num;
+			} else {
+				newAmount = Integer.parseInt(amount) - num;
+			}
+		}
+		
+		// updating the row
+		try{
+			db.execSQL("update product set productQuantity = " + newAmount + " where productName = " + '"' + productName + '"');
+		} catch (Exception e){
+			Log.e("error", "error while setting product quantity change");
+		} 
+		
+		
+		db.close();
 	}
 
 }

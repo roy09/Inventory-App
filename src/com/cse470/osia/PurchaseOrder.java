@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -213,10 +214,25 @@ public class PurchaseOrder extends Activity {
 		DatabaseHandler db = new DatabaseHandler(this);
 		
 		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
+		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
 		
+		int counter = 1;
+		if (productsToAdd.size() > 1){
+			for(String product: productsToAdd){
+				if (product != "Item"){
+					Log.d("baal", productAmount.get(counter));
+					db.updateProductQuantity(product, "positive", Integer.parseInt(productAmount.get(counter)));
+					counter++;
+				}
+			}
+		}
 		
-		Toast bhudu = Toast.makeText(getApplicationContext(), productsToAdd.get(1), Toast.LENGTH_LONG);
-		bhudu.show();
+//		int counter = 1;
+//		while(productsToAdd.size() >= counter){
+//			db.updateProductQuantity(productsToAdd.get(counter), "positive", Integer.parseInt(productAmount.get(counter)));
+//			counter++;
+//		}
+
 		
 	}
 
