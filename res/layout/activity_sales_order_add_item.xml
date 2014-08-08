@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".SalesOrderAddItem" >
 
     <Spinner
@@ -13,16 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/tvAddItemCategory" />
-
-    <TextView
-        android:id="@+id/tvAddItemProcductName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/spAddItemCategory"
-        android:text="@string/product_name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:background="#ffffff"
+        android:layout_toRightOf="@+id/tvAddItemUnitPrice" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteAddItemProductName"
@@ -30,49 +23,78 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvAddItemProcductName"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/tvAddItemCategory"
+        android:layout_alignTop="@+id/tvAddItemProcductName"
+        android:layout_toRightOf="@+id/tvAddItemUnitPrice"
+        android:background="@drawable/textbox_round_corner"
+        android:paddingLeft="10dp"
         android:ems="10"
         android:inputType="text"
         android:text="" />
-
-    <TextView
-        android:id="@+id/tvAddItemProductQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvAddItemProcductName"
-        android:text="@string/product_quantity"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/etAddItemProductQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/autoCompleteAddItemProductName"
-        android:layout_alignRight="@+id/autoCompleteAddItemProductName"
+        android:layout_alignBottom="@+id/tvAddItemProductQuantity"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tvAddItemProductQuantity"
+        android:layout_toRightOf="@+id/tvAddItemUnitPrice"
+        android:background="@drawable/textbox_round_corner"
         android:ems="10"
         android:inputType="number"
+        android:paddingLeft="10dp"
         android:text="1" >
 
     </EditText>
 
     <TextView
-        android:id="@+id/tvAddItemUnitPrice"
+        android:id="@+id/tvSalesAddItemUnitPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etAddItemProductQuantity"
-        android:text="Unit Price:	"
+        android:layout_alignBottom="@+id/tvAddItemUnitPrice"
+        android:layout_alignLeft="@+id/etAddItemProductQuantity"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvAddItemUnitPrice"
+        android:background="@drawable/textbox_round_corner"
+        android:paddingLeft="10dp"
+        android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/tvAddItemCategory"
+        android:id="@+id/tvSalesAddItemSubtotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvAddItemProcductName"
-        android:layout_alignParentLeft="true"
-        android:text="@string/product_category"
+        android:layout_alignBottom="@+id/tvAddItemTotalPrice"
+        android:layout_alignLeft="@+id/tvSalesAddItemUnitPrice"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvAddItemTotalPrice"
+        android:background="@drawable/textbox_round_corner"
+        android:paddingLeft="10dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnAddItem"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemTotalPrice"
+        android:layout_alignRight="@+id/tvSalesAddItemSubtotal"
+        android:layout_below="@+id/tvAddItemTotalPrice"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/btn_danger"
+        android:onClick="addItem"
+        android:text="@string/add_item" />
+
+    <TextView
+        android:id="@+id/tvAddItemUnitPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemProductQuantity"
+        android:layout_below="@+id/tvAddItemProductQuantity"
+        android:layout_marginTop="14dp"
+        android:text="Unit Price:	"
+        android:textColor="#ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -81,38 +103,41 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvAddItemUnitPrice"
         android:layout_below="@+id/tvAddItemUnitPrice"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="14dp"
         android:text="Subtotal:		"
+        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btnAddItem"
-        style="?android:attr/buttonStyleSmall"
+    <TextView
+        android:id="@+id/tvAddItemProductQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemProcductName"
+        android:layout_below="@+id/tvAddItemProcductName"
+        android:layout_marginTop="14dp"
+        android:text="@string/product_quantity"
+        android:textColor="#ffffff"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvAddItemProcductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAddItemCategory"
+        android:layout_below="@+id/spAddItemCategory"
+        android:layout_marginTop="14dp"
+        android:text="@string/product_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/tvAddItemCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvAddItemTotalPrice"
-        android:onClick="addItem"
-        android:text="@string/add_item" />
-
-    <TextView
-        android:id="@+id/tvSalesAddItemUnitPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvAddItemUnitPrice"
-        android:layout_alignBottom="@+id/tvAddItemUnitPrice"
-        android:layout_toRightOf="@+id/tvAddItemUnitPrice"
-        android:text="0"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/tvSalesAddItemSubtotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAddItem"
-        android:layout_toRightOf="@+id/tvAddItemTotalPrice"
-        android:text="0"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignTop="@+id/spAddItemCategory"
+        android:text="@string/product_category"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

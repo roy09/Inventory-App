@@ -6,28 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".SalesOrder" >
-
-    <ListView
-        android:id="@+id/lvSalesAddedItem"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_above="@+id/tvSalesNetPayable"
-        android:layout_alignLeft="@+id/tvSalesCustomer"
-        android:layout_below="@+id/tvSalesCustomer"
-        android:layout_marginTop="16dp" >
-
-    </ListView>
-
-    <TextView
-        android:id="@+id/tvSalesOrderNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvSalesOrder"
-        android:layout_alignBottom="@+id/tvSalesOrder"
-        android:layout_toRightOf="@+id/tvSalesOrder"
-        android:text="0"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvSetSalesDate"
@@ -36,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/etSalesCustomerName"
         android:text="SetDate"
+        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -45,14 +26,17 @@
         android:layout_alignBottom="@+id/etSalesCustomerName"
         android:layout_alignParentLeft="true"
         android:text="@string/customer_name"
+        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvSalesNetPayable"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_danger"
         android:onClick="checkout"
         android:text="Checkout" />
 
@@ -60,10 +44,45 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvSalesNetPayable"
         android:layout_alignBottom="@+id/tvSalesNetPayable"
         android:layout_alignRight="@+id/lvSalesAddedItem"
+        android:layout_alignTop="@+id/tvSalesNetPayable"
+        android:layout_toRightOf="@+id/tvSalesOrderNo"
+        android:background="@drawable/textbox_round_corner"
+        android:paddingLeft="10dp"
         android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvSalesNetPayable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:text="@string/net_payable"
+        android:textColor="#EEEEEE"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvSalesOrderNo"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvSalesOrder"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvSalesOrder"
+        android:background="@drawable/textbox_round_corner"
+        android:paddingLeft="10dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvSalesOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Order no: 	"
+        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -72,27 +91,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvSetSalesDate"
-        android:layout_toRightOf="@+id/tvSalesCustomer"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/tvSalesOrder"
+        android:background="@drawable/textbox_round_corner"
         android:ems="10"
-        android:hint="@string/ask_for_name" />
+        android:hint="@string/ask_for_name"
+        android:paddingLeft="10dp" />
 
-    <TextView
-        android:id="@+id/tvSalesOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvSetSalesDate"
-        android:layout_alignBottom="@+id/tvSetSalesDate"
-        android:layout_alignLeft="@+id/tvSalesCustomer"
-        android:text="Order no: 	"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <ListView
+        android:id="@+id/lvSalesAddedItem"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_above="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvSalesCustomer"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="14dp"
+        android:background="#EEEEEE" >
 
-    <TextView
-        android:id="@+id/tvSalesNetPayable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignRight="@+id/tvSalesOrderNo"
-        android:text="@string/net_payable"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    </ListView>
 
 </RelativeLayout>

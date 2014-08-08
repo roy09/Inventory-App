@@ -46,6 +46,14 @@
             android:name="com.cse470.osia.SalesOrderAddItem"
             android:label="@string/title_activity_sales_order_add_item" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.UserLogin"
+            android:label="@string/title_activity_user_login" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.UserSignUp"
+            android:label="@string/title_activity_user_sign_up" >
+        </activity>
     </application>
 
 </manifest>

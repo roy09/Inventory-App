@@ -139,7 +139,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
+	//Get all Distinct categories
+	public ArrayList <String> getDistinctProductsCategory()
+	{
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select distinct " + PRODUCT_CATEGORY +" from product", null );
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false){
+			array_list.add(cursor.getString(cursor.getColumnIndex(PRODUCT_CATEGORY)));
+			cursor.moveToNext();
+		}
 
+		db.close();
+		return array_list;
+	}
+	
 	// Get Product Categories
 	public ArrayList <String> getAllProductsCategory()
 	{
