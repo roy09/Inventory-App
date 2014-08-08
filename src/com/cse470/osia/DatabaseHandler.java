@@ -140,6 +140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ DEALER_ADDRESS + " TEXT " + ")";
 
 	// Table Sales Order Track
+	private static final String SALES_ORDER_TRACK_SERIAL = "salesSerial";
 	private static final String SALES_ORDER_TRACK_DATE = "salesDate";
 	private static final String SALES_ORDER_TRACK_NAME_OF_PRODUCT = "salesNameOfProduct";
 	private static final String SALES_ORDER_TRACK_SOLD_TO = "salesSoldTo";
@@ -149,8 +150,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CREATE_SALES_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_SALES_ORDER_TRACK
 			+ " ("
+			+ SALES_ORDER_TRACK_SERIAL
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
 			+ SALES_ORDER_TRACK_DATE
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT, "
 			+ SALES_ORDER_TRACK_NAME_OF_PRODUCT
 			+ " TEXT, "
 			+ SALES_ORDER_TRACK_SOLD_TO
@@ -161,6 +164,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ " TEXT " + ")";
 
 	// Table Purchase Order Track
+	private static final String PURCHASE_ORDER_TRACK_SERIAL = "purchaseSerial";
 	private static final String PURCHASE_ORDER_TRACK_DATE = "purchaseDate";
 	private static final String PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT = "purchaseNameOfProduct";
 	private static final String PURCHASE_ORDER_TRACK_SOLD_TO = "purchaseSoldTo";
@@ -170,8 +174,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CREATE_PURCHASE_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_PURCHASE_ORDER_TRACK
 			+ " ("
+			+ PURCHASE_ORDER_TRACK_SERIAL
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
 			+ PURCHASE_ORDER_TRACK_DATE
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT, "
 			+ PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT
 			+ " TEXT, "
 			+ PURCHASE_ORDER_TRACK_SOLD_TO
@@ -813,6 +819,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		db.close();
 		return dealerInfo;
+	}
+	
+	// Adding purchase list log to SALES ORDER TRACK TABLE
+	void addSalesRecord(Product product) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(SALES_ORDER_TRACK_DATE, product.getProductName());
+		values.put(SALES_ORDER_TRACK_NAME_OF_PRODUCT, product.getProductCategory());
+		values.put(SALES_ORDER_TRACK_SOLD_TO, product.getNormalPrice());
+		values.put(SALES_ORDER_TRACK_QUANTITY, product.getCostingPrice());
+		values.put(SALES_ORDER_TRACK_PROFIT, product.getQuantity());
+
+		db.insert(TABLE_SALES_ORDER_TRACK, null, values);
+		db.close();
 	}
 
 }
