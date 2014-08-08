@@ -300,24 +300,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return array_list;
 	}
 
-	// Get category based product name
-	public ArrayList<String> getCategoryBasedProductName(String category) {
-		ArrayList<String> array_list = new ArrayList<String>();
-		// hp = new HashMap();
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(
-				"select * from product where productCategory = \"" + category
-						+ "\"", null);
-		cursor.moveToFirst();
-		while (cursor.isAfterLast() == false) {
-			array_list
-					.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
-			cursor.moveToNext();
-		}
-
-		db.close();
-		return array_list;
-	}
 
 	// Get all Distinct categories
 	public ArrayList<String> getDistinctProductsCategory() {
@@ -417,7 +399,105 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
+	// Category based updates
+	
+	// Get category based product name
+		public ArrayList<String> getCategoryBasedProductName(String category) {
+			ArrayList<String> array_list = new ArrayList<String>();
+			// hp = new HashMap();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from product where productCategory = \"" + category
+							+ "\"", null);
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list
+						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+				cursor.moveToNext();
+			}
 
+			db.close();
+			return array_list;
+		}
+		
+		// Get category based product category
+		public ArrayList<String> getCategoryBasedCategoryName(String category) {
+			ArrayList<String> array_list = new ArrayList<String>();
+			// hp = new HashMap();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from product where productCategory = \"" + category
+							+ "\"", null);
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list
+						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_CATEGORY)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+		}
+		
+		// Get category based product normal price
+		public ArrayList<String> getCategoryBasedProductNormalPrice(String category) {
+			ArrayList<String> array_list = new ArrayList<String>();
+			// hp = new HashMap();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from product where productCategory = \"" + category
+							+ "\"", null);
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list
+						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NORMAL_PRICE)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+		}
+		
+		// Get category based product costing price
+		public ArrayList<String> getCategoryBasedProductCostingPrice(String category) {
+			ArrayList<String> array_list = new ArrayList<String>();
+			// hp = new HashMap();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from product where productCategory = \"" + category
+							+ "\"", null);
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list
+						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_COSTING_PRICE)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+		}
+		
+		// Get category based product Quantity
+		public ArrayList<String> getCategoryBasedProductQuantity(String category) {
+			ArrayList<String> array_list = new ArrayList<String>();
+			// hp = new HashMap();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from product where productCategory = \"" + category
+							+ "\"", null);
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list
+						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_QUANTITY)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+		}
+		
+		
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
