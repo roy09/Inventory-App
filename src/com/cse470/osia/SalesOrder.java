@@ -184,6 +184,9 @@ public class SalesOrder extends Activity {
 		
 		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
 		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
+//		String soldTo = customer.getText().toString();
+//		String date = setDate.getText().toString();
+//		String[] profits = new String[productsToAdd.size()];
 		
 		int counter = 1;
 		if (productsToAdd.size() > 1){
@@ -191,10 +194,16 @@ public class SalesOrder extends Activity {
 				if (product != "Item"){
 					Log.d("baal", productAmount.get(counter));
 					db.updateProductQuantity(product, "negative", Integer.parseInt(productAmount.get(counter)));
+//					profits[counter] = String.valueOf(Integer.parseInt(db.getUnitPriceOfProduct(product)) * Integer.parseInt(productAmount.get(counter)));
 					counter++;
+					
+//					db.addSalesRecord(date,
 				}
 			}
 		}
+		
+		
+
 		
 		db.removeAllSalesAddedProduct();
 //		Intent intent = new Intent(this, DashBoardActivity.class);
