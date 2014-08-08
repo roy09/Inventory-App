@@ -35,7 +35,10 @@ public class ViewInventory extends Activity {
 		productQuantity = db.getAllProductsQuantity();
 		
 		Spinner selectCategory = (Spinner) findViewById(R.id.VIselectCategory);
-		
+		ArrayList<String> productCategories = db.getDistinctProductsCategory();
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+			     android.R.layout.simple_spinner_item, productCategories);
+		selectCategory.setAdapter(adapter);
 		
 		listview = (ListView) findViewById(R.id.productList);
 		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
