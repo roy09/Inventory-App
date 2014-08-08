@@ -38,5 +38,9 @@ public class DashBoardActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void userInfo (View view) {
+		
+	}
+	
 	
 }

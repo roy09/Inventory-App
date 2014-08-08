@@ -3,11 +3,13 @@
 
     <item
         android:id="@+id/add_order"
+        android:icon="@drawable/ic_action_new"
         android:showAsAction="always"
         android:title="@string/add_item">
     </item>
     <item
         android:id="@+id/clear_items"
+        android:icon="@drawable/ic_action_discard"
         android:showAsAction="always"
         android:title="@string/clear">
     </item>

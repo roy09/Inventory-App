@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#656D78"
+    tools:context=".UserSignUp" >
+
+    <EditText
+        android:id="@+id/etSignUpCustomerUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSignUpCustomerName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Username"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="@drawable/textbox_round_corner" />
+
+    <EditText
+        android:id="@+id/etSignUpCustomerPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSignUpCustomerUsername"
+        android:layout_below="@+id/etSignUpCustomerUsername"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/textbox_round_corner"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/etSignUpCustomerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSignUpCustomerPassword"
+        android:layout_alignRight="@+id/etSignUpCustomerPassword"
+        android:layout_below="@+id/etSignUpCustomerPassword"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Email address"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="@drawable/textbox_round_corner"/>
+
+    <EditText
+        android:id="@+id/etSignUpCustomerPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSignUpCustomerEmail"
+        android:layout_alignRight="@+id/etSignUpCustomerEmail"
+        android:layout_below="@+id/etSignUpCustomerEmail"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/textbox_round_corner"
+        android:ems="10"
+        android:hint="Phone number"
+        android:inputType="phone"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
+
+    <EditText
+        android:id="@+id/etSignUpCustomerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSignUpCustomerUsername"
+        android:layout_below="@+id/tvSignUpStatement"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textbox_round_corner"
+        android:ems="10"
+        android:hint="Your Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
+
+    <TextView
+        android:id="@+id/tvSignUpStatement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Create you OSIA Acoount"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/signup" />
+
+    <Button
+        android:id="@+id/customerSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSignUpCustomerPhone"
+        android:layout_alignRight="@+id/tvSignUpStatement"
+        android:layout_below="@+id/checkBox1"
+        android:layout_marginTop="14dp"
+        android:onClick="signUp"
+        android:background="@drawable/btn_danger"
+        android:text="Sign up" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSignUpCustomerPhone"
+        android:layout_centerHorizontal="true"
+        android:onClick="onCheck"
+        android:text="I agree to the terms of services"
+        android:textColor="#eeeeee" />
+
+</RelativeLayout>

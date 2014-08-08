@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -87,13 +90,37 @@ public class SalesOrderAddItem extends Activity {
 		
 		
 	}
-
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * options menu
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.sales_order_add_item, menu);
 		return true;
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		switch(item.getItemId()) {
+		
+		case R.id.inventory:
+			Intent intent = new Intent(this, ViewInventory.class);
+			startActivity(intent);
+            //this.finish();
+            return true;
+		
+	
+		default: 
+			return super.onOptionsItemSelected(item);
+
+		}
+
+	}	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	/**
 	 * add Item button click listener
@@ -104,6 +131,19 @@ public class SalesOrderAddItem extends Activity {
 		int unitPrice = getUnitPrice();
 		int quantity = getQuantity();
 		int subtotal = getSubtotal();
+		if (subtotal == 0) {
+			toast = Toast.makeText(this, "No item added", Toast.LENGTH_LONG);
+			toast.show();
+			return;
+		}
+		
+		// CHECK AVAILABILITY
+//		if (!itemAvailable()) {
+//			toast = Toast.makeText(this, "This item is out of stock", Toast.LENGTH_LONG);
+//			toast.show();
+//			return;
+//		}
+		
 		try {
 			db.addNewItemSalesOrder(productName, unitPrice, quantity, subtotal);
 			toast = Toast.makeText(this, "Item successfully added", Toast.LENGTH_LONG);

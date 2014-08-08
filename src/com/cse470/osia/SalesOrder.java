@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +33,8 @@ public class SalesOrder extends Activity {
 	ListView orderList;
 	EditText customer;
 	TextView netPayable;
-	
+
+	Button checkout;
 	/**
 	 * ArrayLists for handling the added item.
 	 */
@@ -60,9 +61,10 @@ public class SalesOrder extends Activity {
 		setDate  = (TextView) findViewById(R.id.tvSetSalesDate);
 		orderNo = (TextView) findViewById(R.id.tvSalesOrderNo);
 		customer = (EditText) findViewById(R.id.etSalesCustomerName);
-		netPayable = (TextView) findViewById(R.id.tvNameOfDealerTO);
+		//customer = (EditText) findViewById(R.id.etSalesCustomerName);
+		netPayable = (TextView) findViewById(R.id.textView1);
 		orderList = (ListView) findViewById(R.id.lvSalesAddedItem);
-		
+		checkout = (Button) findViewById(R.id.button1);
 		/**
 		 * get items from the database
 		 */

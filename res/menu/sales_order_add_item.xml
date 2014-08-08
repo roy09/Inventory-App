@@ -1,9 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:id="@+id/inventory"
+        android:icon="@drawable/ic_action_inventory"
+        android:title="@string/title_activity_view_inventory"
+        android:showAsAction="always">
+    </item>
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+    
 
 </menu>

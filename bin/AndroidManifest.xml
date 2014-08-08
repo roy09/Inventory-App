@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.cse470.osia.DashBoardActivity"
+            android:name="com.cse470.osia.UserLogin"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +57,14 @@
         <activity
             android:name="com.cse470.osia.AddDealer"
             android:label="@string/title_activity_add_dealer" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.DashBoardActivity"
+            android:label="@string/dashboard">
+        </activity>
+        <activity
+            android:name="com.cse470.osia.UserSignUp"
+            android:label="@string/title_activity_user_sign_up" >
         </activity>
     </application>
 
