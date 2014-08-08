@@ -79,8 +79,8 @@ public class AddProduct extends Activity {
 		} finally {
 			toast.show();
 
-			Intent intent = new Intent (this, DashBoardActivity.class);
-			startActivity(intent);
+//			Intent intent = new Intent (this, DashBoardActivity.class);
+//			startActivity(intent);
 			
 			finish();
 		}

@@ -51,6 +51,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ USER_EMAIL
 			+ " TEXT NOT NULL, " + USER_PHONE + " TEXT NOT NULL " + ")";
 
+	// Table salesOrder
+	private static final String PURCHASE_NO = "purchaseNo";
+	private static final String PURCHASE_DATE = "purchaseDate";
+	private static final String CUSTOMER_NAME = "customer";
+	private static final String TOTAL_AMMOUNT = "totalAmmount";
+
+	private static final String CREATE_PURCHASE_ORDER_TABLE = "CREATE TABLE IF NOT EXISTS "
+			+ TABLE_SALES_ORDER
+			+ " ("
+			+ PURCHASE_NO
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+			+ CUSTOMER_NAME
+			+ " TEXT NOT NULL, "
+			+ PURCHASE_DATE
+			+ " TEXT NOT NULL, "
+			+ TOTAL_AMMOUNT + " INT NOT NULL" + ")";
+
+	
 	// Table product
 	private static final String PRODUCT_ID = "id";
 	private static final String PRODUCT_NAME = "productName";
@@ -58,6 +76,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String PRODUCT_NORMAL_PRICE = "productNormalPrice";
 	private static final String PRODUCT_COSTING_PRICE = "productProductPrice";
 	private static final String PRODUCT_QUANTITY = "productQuantity";
+	private static final String PURCHASE_ID = "purchase_id"; //foreign key of table purchase order
 
 	private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_PRODUCT
@@ -71,13 +90,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ PRODUCT_NORMAL_PRICE
 			+ " TEXT, "
 			+ PRODUCT_COSTING_PRICE
-			+ " TEXT, " + PRODUCT_QUANTITY + " TEXT " + ")";
+			+ " TEXT, " + PRODUCT_QUANTITY + " TEXT " 
+			//FOREIGN KEY CONSTRAINT
+			+ PURCHASE_ID 
+			+ " INTEGER REFERENCES "
+			+ TABLE_PURCHASE_ORDER
+			+ " (" + PURCHASE_NO+ ")" 
+			+ ")";
 
 	// Table salesOrder
 	private static final String SALES_NO = "salesNo";
 	private static final String SALES_DATE = "salesDate";
-	private static final String CUSTOMER_NAME = "customer";
-	private static final String TOTAL_AMMOUNT = "totalAmmount";
+//	private static final String CUSTOMER_NAME = "customer";		//WRITTEN BEFORE
+//	private static final String TOTAL_AMMOUNT = "totalAmmount"; //SAME
 
 	private static final String CREATE_SALES_ORDER_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_SALES_ORDER
@@ -91,8 +116,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ TOTAL_AMMOUNT + " INT NOT NULL" + ")";
 
 	// Table orderInfo
-	private static final String ORDER_NO = "orderNo"; // Foreign key of
-	// TABLE_SALES_ORDER
+	private static final String ORDER_NO = "orderNo"; // Foreign key of TABLE_SALES_ORDER
 	// references salesNo
 	private static final String ORDER_ID = "orderId"; // Primary key of this
 	// table
@@ -188,22 +212,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
+		
+		db.execSQL(CREATE_USER_INFO_TABLE);
+		db.execSQL(CREATE_PURCHASE_ORDER_TABLE);
 		db.execSQL(CREATE_PRODUCT_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_INFO_TABLE);
 		db.execSQL(CREATE_DEALER_TABLE);
-		db.execSQL(CREATE_USER_INFO_TABLE);
 		db.execSQL(CREATE_SALES_ORDER_TRACK_TABLE);
 		db.execSQL(CREATE_PURCHASE_ORDER_TRACK_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PURCHASE_ORDER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER_INFO);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEALER);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER_TRACK);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PURCHASE_ORDER_TRACK);
+		
 		onCreate(db);
 	}
 
