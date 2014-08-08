@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -176,7 +177,26 @@ public class SalesOrder extends Activity {
 	 * onClick listener for checkout (salesOrder)
 	 * insert on TABLE_SALES_ORDER
 	 */
-	public void checkout (View v) {
+	public void checkout(View v) {
+		DatabaseHandler db = new DatabaseHandler(this);
+		
+		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
+		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
+		
+		int counter = 1;
+		if (productsToAdd.size() > 1){
+			for(String product: productsToAdd){
+				if (product != "Item"){
+					Log.d("baal", productAmount.get(counter));
+					db.updateProductQuantity(product, "negative", Integer.parseInt(productAmount.get(counter)));
+					counter++;
+				}
+			}
+		}
+		
+		db.removeAllSalesAddedProduct();
+		Intent intent = new Intent(this, DashBoardActivity.class);
+		startActivity(intent);
 		
 	}
 	

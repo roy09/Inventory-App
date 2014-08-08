@@ -227,12 +227,9 @@ public class PurchaseOrder extends Activity {
 			}
 		}
 		
-//		int counter = 1;
-//		while(productsToAdd.size() >= counter){
-//			db.updateProductQuantity(productsToAdd.get(counter), "positive", Integer.parseInt(productAmount.get(counter)));
-//			counter++;
-//		}
-
+		db.removeAllSalesAddedProduct();
+		Intent intent = new Intent(this, DashBoardActivity.class);
+		startActivity(intent);
 		
 	}
 
