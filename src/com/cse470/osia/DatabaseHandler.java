@@ -25,7 +25,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_DEALER = "dealerTable";
 	private static final String TABLE_PURCHASE_ORDER = "purchaseOrder";
 	private static final String TABLE_PURCHASE_ORDER_INFRO = "purchaseOrderInfo";
-	
+	private static final String TABLE_SALES_ORDER_TRACK = "salesOrderTrack";
+	private static final String TABLE_PURCHASE_ORDER_TRACK = "purchaseOrderTrack";
 	private static final String TABLE_USER_INFO = "userInfo";
 	
 	// Table userInfo
@@ -128,6 +129,47 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ DEALER_ADDRESS
 			+ " TEXT " + ")";
 
+	// Table Sales Order Track
+	private static final String SALES_ORDER_TRACK_DATE = "salesDate";
+	private static final String SALES_ORDER_TRACK_NAME_OF_PRODUCT = "salesNameOfProduct";
+	private static final String SALES_ORDER_TRACK_SOLD_TO = "salesSoldTo";
+	private static final String SALES_ORDER_TRACK_QUANTITY = "salesQuantity";
+	private static final String SALES_ORDER_TRACK_PROFIT = "salesProfit";
+	
+	private static final String CREATE_SALES_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
+			+ TABLE_SALES_ORDER_TRACK
+			+ " ("
+			+ SALES_ORDER_TRACK_DATE
+			+ " TEXT PRIMARY KEY, "
+			+ SALES_ORDER_TRACK_NAME_OF_PRODUCT
+			+ " TEXT, "
+			+ SALES_ORDER_TRACK_SOLD_TO
+			+ " TEXT, "
+			+ SALES_ORDER_TRACK_QUANTITY
+			+ " TEXT, " 
+			+ SALES_ORDER_TRACK_PROFIT
+			+ " TEXT "+ ")";
+	
+	// Table Purchase Order Track
+	private static final String PURCHASE_ORDER_TRACK_DATE = "purchaseDate";
+	private static final String PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT = "purchaseNameOfProduct";
+	private static final String PURCHASE_ORDER_TRACK_SOLD_TO = "purchaseSoldTo";
+	private static final String PURCHASE_ORDER_TRACK_QUANTITY = "purchaseQuantity";
+	private static final String PURCHASE_ORDER_TRACK_PROFIT = "purchaseProfit";
+	
+	private static final String CREATE_PURCHASE_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
+			+ TABLE_PURCHASE_ORDER_TRACK
+			+ " ("
+			+ PURCHASE_ORDER_TRACK_DATE
+			+ " TEXT PRIMARY KEY, "
+			+ PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT
+			+ " TEXT, "
+			+ PURCHASE_ORDER_TRACK_SOLD_TO
+			+ " TEXT, "
+			+ PURCHASE_ORDER_TRACK_QUANTITY
+			+ " TEXT, " 
+			+ PURCHASE_ORDER_TRACK_PROFIT
+			+ " TEXT "+ ")";
 	
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -143,6 +185,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_SALES_ORDER_INFO_TABLE);
 		db.execSQL(CREATE_DEALER_TABLE);
 		db.execSQL(CREATE_USER_INFO_TABLE);
+		db.execSQL(CREATE_SALES_ORDER_TRACK_TABLE);
+		db.execSQL(CREATE_PURCHASE_ORDER_TRACK_TABLE);
 	}
 
 	@Override
