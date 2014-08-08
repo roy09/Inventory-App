@@ -59,10 +59,24 @@ public class UserLogin extends Activity {
 			Toast.makeText(this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
 			return;
 		}
-		pb.setVisibility(View.VISIBLE);
-		Intent intent = new Intent(this, DashBoardActivity.class);
-		startActivity(intent);
-		finish();
+		if (username.startsWith("store.")) {
+			pb.setVisibility(View.VISIBLE);
+			Bundle dataBundle = new Bundle();
+			dataBundle.putString("username", username);
+			Intent intent = new Intent(this, DashBoardActivity.class);
+			intent.putExtras(dataBundle);
+			startActivity(intent);
+			finish();
+		}
+		else {
+			pb.setVisibility(View.VISIBLE);
+			Bundle dataBundle = new Bundle();
+			dataBundle.putString("username", username);
+			Intent intent = new Intent(this, CustomerDashBoardActivity.class);
+			intent.putExtras(dataBundle);
+			startActivity(intent);
+			finish();
+		}
 
 	}
 

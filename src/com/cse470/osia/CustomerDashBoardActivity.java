@@ -1,15 +1,23 @@
 package com.cse470.osia;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 public class CustomerDashBoardActivity extends Activity {
-
+	
+	String username;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_customer_dash_board);
+		
+		Bundle extras = getIntent().getExtras();
+		username = extras.getString("username");
+		
 	}
 
 	@Override
@@ -17,6 +25,29 @@ public class CustomerDashBoardActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.customer_dash_board, menu);
 		return true;
+	}
+	
+	public void purchaseOrder(View v) {
+		Intent intent = new Intent (this, SalesOrder.class);
+		startActivity(intent);
+	}
+	
+	public void viewInventory (View v) {
+		Intent intent = new Intent (this, ViewInventory.class);
+		startActivity(intent);
+	}
+	
+	public void seeReport (View v) {
+		Intent intent = new Intent (this, SeeReport.class);
+		startActivity(intent);
+	}
+	
+	public void userInfo (View v) {
+		Bundle dataBundle = new Bundle();
+		dataBundle.putString("username", username);
+		Intent intent = new Intent(this, UserInfoActivity.class);
+		intent.putExtras(dataBundle);
+		startActivity(intent);
 	}
 
 }

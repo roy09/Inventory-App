@@ -7,10 +7,15 @@ import android.view.View;
 
 public class DashBoardActivity extends Activity {
 
+	String username;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dash_board);
+		
+		Bundle extras = getIntent().getExtras();
+		username = extras.getString("username");
 	}
 	
 	public void addProduct(View view){
@@ -39,7 +44,11 @@ public class DashBoardActivity extends Activity {
 	}
 	
 	public void userInfo (View view) {
-		
+		Bundle dataBundle = new Bundle();
+		dataBundle.putString("username", username);
+		Intent intent = new Intent(this, PurchaseOrderDealer.class);
+		intent.putExtras(dataBundle);
+		startActivity(intent);
 	}
 	
 	
