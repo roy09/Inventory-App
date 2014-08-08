@@ -47,9 +47,11 @@ public final class R {
         public static final int view_inventory=0x7f020017;
     }
     public static final class id {
-        public static final int action_settings=0x7f080065;
+        public static final int VIListViewHeader=0x7f08005c;
+        public static final int VIselectCategory=0x7f08005d;
+        public static final int action_settings=0x7f080067;
         public static final int addDealer=0x7f080008;
-        public static final int add_order=0x7f080066;
+        public static final int add_order=0x7f080068;
         public static final int autoCompleteAddItemProductName=0x7f08003a;
         public static final int btnAddItem=0x7f080041;
         public static final int btnAddProduct=0x7f080019;
@@ -67,13 +69,14 @@ public final class R {
         public static final int changePassword=0x7f08004b;
         public static final int checkBox1=0x7f08005a;
         public static final int checkoutPO=0x7f080028;
-        public static final int clear_items=0x7f080067;
+        public static final int clear_items=0x7f080069;
         public static final int customerSignUp=0x7f080059;
         public static final int dealerListHead=0x7f08002e;
         public static final int dealerNameList=0x7f08002f;
         public static final int deleteAccount=0x7f08004c;
         public static final int email=0x7f080047;
         public static final int etAddItemProductQuantity=0x7f08003c;
+        public static final int etCategory=0x7f080013;
         public static final int etCostingPrice=0x7f080012;
         public static final int etDealerAddressAD=0x7f080007;
         public static final int etDealerEmailAD=0x7f080006;
@@ -89,11 +92,11 @@ public final class R {
         public static final int etSignUpCustomerPhone=0x7f080057;
         public static final int etSignUpCustomerUsername=0x7f080053;
         public static final int imageView1=0x7f08004e;
-        public static final int inventory=0x7f080068;
-        public static final int listSalesProduct=0x7f080064;
-        public static final int listSalesQuantity=0x7f080061;
-        public static final int listSalesSubtotal=0x7f080063;
-        public static final int listSalesUnitPrice=0x7f080062;
+        public static final int inventory=0x7f08006a;
+        public static final int listSalesProduct=0x7f080066;
+        public static final int listSalesQuantity=0x7f080063;
+        public static final int listSalesSubtotal=0x7f080065;
+        public static final int listSalesUnitPrice=0x7f080064;
         public static final int logout=0x7f08004d;
         public static final int lvSalesAddedItem=0x7f080035;
         public static final int name=0x7f080046;
@@ -107,7 +110,6 @@ public final class R {
         public static final int signIn=0x7f08004f;
         public static final int signUp=0x7f080050;
         public static final int spAddItemCategory=0x7f080038;
-        public static final int spCategory=0x7f080013;
         public static final int subtotalPO=0x7f080027;
         public static final int textView1=0x7f080015;
         public static final int textView3=0x7f080043;
@@ -135,12 +137,12 @@ public final class R {
         public static final int tvNameOfDealerTO=0x7f080000;
         public static final int tvNormalPrice=0x7f08000b;
         public static final int tvProductCategory=0x7f08000a;
-        public static final int tvProductCategoryVI=0x7f08005d;
-        public static final int tvProductCostingPriceVI=0x7f08005f;
+        public static final int tvProductCategoryVI=0x7f08005f;
+        public static final int tvProductCostingPriceVI=0x7f080061;
         public static final int tvProductName=0x7f080009;
-        public static final int tvProductNameVI=0x7f08005c;
-        public static final int tvProductNormalPriceVI=0x7f08005e;
-        public static final int tvProductQuantityVI=0x7f080060;
+        public static final int tvProductNameVI=0x7f08005e;
+        public static final int tvProductNormalPriceVI=0x7f080060;
+        public static final int tvProductQuantityVI=0x7f080062;
         public static final int tvQuantity=0x7f08000d;
         public static final int tvSalesAddItemSubtotal=0x7f08003f;
         public static final int tvSalesAddItemUnitPrice=0x7f08003e;
