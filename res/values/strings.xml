@@ -30,5 +30,7 @@
     <string name="title_activity_user_login">UserLogin</string>
     <string name="title_activity_user_sign_up">UserSignUp</string>
     <string name="dashboard">OSIA|Dashboard</string>
+    <string name="title_activity_customer_dash_board">CustomerDashBoardActivity</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
 
 </resources>

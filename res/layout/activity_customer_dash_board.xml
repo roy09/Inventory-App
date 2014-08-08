@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="${packageName}.${activityClass}" >
+
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="500dp"
+	    android:layout_centerHorizontal="true"
+	    android:layout_centerVertical="true" >
+
+	    <Button
+	        android:id="@+id/btnCustomerUserInfo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/textView1"
+	        android:layout_toRightOf="@+id/textView1"
+	        android:layout_marginTop="25dp"
+	        android:layout_marginLeft="15dp"
+	        android:background="@drawable/user_info"
+	        android:onClick="userInfo" />
+
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:text="" />
+
+	    <Button
+	        android:id="@+id/btnCustomerSeeReports"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/textView1"
+	        android:layout_toLeftOf="@+id/textView1"
+	        android:layout_marginTop="25dp"
+	        android:layout_marginRight="15dp"
+	        android:background="@drawable/see_reports"
+	        android:onClick="seeReport" />
+
+	    <Button
+	        android:id="@+id/btnCustomerPurchaseOrder"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/textView1"
+	        android:layout_marginBottom="25dp"
+	        android:layout_marginRight="15dp"
+	        android:layout_toLeftOf="@+id/textView1"
+	        android:background="@drawable/purchase_order"
+	        android:onClick="purchaseOrder" />
+
+	    <Button
+	        android:id="@+id/btnCustomerViewInventory"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/textView1"
+	        android:layout_marginBottom="25dp"
+	        android:layout_marginLeft="15dp"
+	        android:layout_toRightOf="@+id/textView1"
+	        android:background="@drawable/view_inventory"
+	        android:onClick="viewInventory" />
+
+	</RelativeLayout>
+
+</RelativeLayout>

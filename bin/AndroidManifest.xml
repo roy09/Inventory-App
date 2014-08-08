@@ -60,11 +60,19 @@
         </activity>
         <activity
             android:name="com.cse470.osia.DashBoardActivity"
-            android:label="@string/dashboard">
+            android:label="@string/dashboard" >
         </activity>
         <activity
             android:name="com.cse470.osia.UserSignUp"
             android:label="@string/title_activity_user_sign_up" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.CustomerDashBoardActivity"
+            android:label="@string/title_activity_customer_dash_board" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.UserInfoActivity"
+            android:label="@string/title_activity_user_info" >
         </activity>
     </application>
 
