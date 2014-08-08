@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class DashBoardActivity extends Activity {
 
@@ -16,6 +17,9 @@ public class DashBoardActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		username = extras.getString("username");
+
+		Toast.makeText(getApplicationContext(), "Logged in as " + username, Toast.LENGTH_SHORT).show();  
+
 	}
 	
 	public void addProduct(View view){

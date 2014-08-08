@@ -131,6 +131,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="5dp"
         android:background="#8CC152"
+        android:onClick="changePassword"
         android:text="Change password" />
 
     <Button
@@ -142,6 +143,7 @@
         android:layout_alignRight="@+id/phone"
         android:layout_alignTop="@+id/changePassword"
         android:background="#DA4453"
+        android:onClick="deleteAccount"
         android:text="Drop account" />
 
     <Button
@@ -154,6 +156,7 @@
         android:layout_below="@+id/changePassword"
         android:layout_marginTop="14dp"
         android:background="#F6BB42"
+        android:onClick="logout"
         android:text="Logout" />
 
 </RelativeLayout>

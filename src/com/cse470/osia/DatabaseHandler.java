@@ -92,10 +92,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// Table orderInfo
 	private static final String ORDER_NO = "orderNo"; // Foreign key of
-														// TABLE_SALES_ORDER
-														// references salesNo
+	// TABLE_SALES_ORDER
+	// references salesNo
 	private static final String ORDER_ID = "orderId"; // Primary key of this
-														// table
+	// table
 	private static final String ADDED_PRODUCT = "addedProduct";
 	private static final String ADDED_PRODUCT_CATEGORY = "addedProductCategory";
 	private static final String PER_UNIT_PRICE = "perUnitPrice";
@@ -207,12 +207,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * ALL THE FUNCTIONS OF TABLE_USER_INFO
 	 */
 	// add new user
-	void addNewUser(String name, String username, String password,
+	public void addNewUser(String name, String username, String password,
 			String email, String phone) {
 		// SQLiteDatabase db = this.getWritableDatabase();
 
@@ -227,26 +227,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_USER_INFO, null, values);
 		db.close();
 	}
-	
-	// get info of a specific user
-	// get password of a specific user
-		public ArrayList <String> getUserInfo(String username) {
-			ArrayList <String> array_list = new ArrayList <String>();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor =  db.rawQuery( "select * from " + TABLE_USER_INFO
-					+ " where " + USER_USERNAME + " = '"+ username + "'", null );
 
-			cursor.moveToFirst();
-			array_list.add(cursor.getString(cursor.getColumnIndex(USER_NAME)));			
-			array_list.add(cursor.getString(cursor.getColumnIndex(USER_USERNAME)));
-			array_list.add(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
-			array_list.add(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
-			array_list.add(cursor.getString(cursor.getColumnIndex(USER_PHONE)));
-			
-			db.close();
-			return array_list;
-		}
-		
+	// get info of a specific user
+	public ArrayList <String> getUserInfo(String username) {
+		ArrayList <String> array_list = new ArrayList <String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor =  db.rawQuery( "select * from " + TABLE_USER_INFO
+				+ " where " + USER_USERNAME + " = '"+ username + "'", null );
+
+		cursor.moveToFirst();
+		array_list.add(cursor.getString(cursor.getColumnIndex(USER_NAME)));			
+		array_list.add(cursor.getString(cursor.getColumnIndex(USER_USERNAME)));
+		array_list.add(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
+		array_list.add(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
+		array_list.add(cursor.getString(cursor.getColumnIndex(USER_PHONE)));
+
+		db.close();
+		return array_list;
+	}
+
 	// get password of a specific user
 	public String getUserPassword(String username) {
 		String password;
@@ -279,8 +278,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
+	/**
+	 * remove a user
+	 */
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public void deleteUser(String username) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		db.delete(TABLE_USER_INFO, USER_USERNAME + " = ?",
+				new String[] {username});
+
+		db.close();
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * All CRUD(Create, Read, Update, Delete Operation FUNCTIONS OF
@@ -311,7 +323,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list
-					.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
 			cursor.moveToNext();
 		}
 
@@ -418,105 +430,105 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
-	
+
 	// Category based updates
-	
+
 	// Get category based product name
-		public ArrayList<String> getCategoryBasedProductName(String category) {
-			ArrayList<String> array_list = new ArrayList<String>();
-			// hp = new HashMap();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor = db.rawQuery(
-					"select * from product where productCategory = \"" + category
-							+ "\"", null);
-			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
-				array_list
-						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
-				cursor.moveToNext();
-			}
-
-			db.close();
-			return array_list;
+	public ArrayList<String> getCategoryBasedProductName(String category) {
+		ArrayList<String> array_list = new ArrayList<String>();
+		// hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from product where productCategory = \"" + category
+				+ "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+			cursor.moveToNext();
 		}
-		
-		// Get category based product category
-		public ArrayList<String> getCategoryBasedCategoryName(String category) {
-			ArrayList<String> array_list = new ArrayList<String>();
-			// hp = new HashMap();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor = db.rawQuery(
-					"select * from product where productCategory = \"" + category
-							+ "\"", null);
-			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
-				array_list
-						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_CATEGORY)));
-				cursor.moveToNext();
-			}
 
-			db.close();
-			return array_list;
-		}
-		
-		// Get category based product normal price
-		public ArrayList<String> getCategoryBasedProductNormalPrice(String category) {
-			ArrayList<String> array_list = new ArrayList<String>();
-			// hp = new HashMap();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor = db.rawQuery(
-					"select * from product where productCategory = \"" + category
-							+ "\"", null);
-			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
-				array_list
-						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NORMAL_PRICE)));
-				cursor.moveToNext();
-			}
+		db.close();
+		return array_list;
+	}
 
-			db.close();
-			return array_list;
+	// Get category based product category
+	public ArrayList<String> getCategoryBasedCategoryName(String category) {
+		ArrayList<String> array_list = new ArrayList<String>();
+		// hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from product where productCategory = \"" + category
+				+ "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_CATEGORY)));
+			cursor.moveToNext();
 		}
-		
-		// Get category based product costing price
-		public ArrayList<String> getCategoryBasedProductCostingPrice(String category) {
-			ArrayList<String> array_list = new ArrayList<String>();
-			// hp = new HashMap();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor = db.rawQuery(
-					"select * from product where productCategory = \"" + category
-							+ "\"", null);
-			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
-				array_list
-						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_COSTING_PRICE)));
-				cursor.moveToNext();
-			}
 
-			db.close();
-			return array_list;
-		}
-		
-		// Get category based product Quantity
-		public ArrayList<String> getCategoryBasedProductQuantity(String category) {
-			ArrayList<String> array_list = new ArrayList<String>();
-			// hp = new HashMap();
-			SQLiteDatabase db = this.getReadableDatabase();
-			Cursor cursor = db.rawQuery(
-					"select * from product where productCategory = \"" + category
-							+ "\"", null);
-			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
-				array_list
-						.add(cursor.getString(cursor.getColumnIndex(PRODUCT_QUANTITY)));
-				cursor.moveToNext();
-			}
+		db.close();
+		return array_list;
+	}
 
-			db.close();
-			return array_list;
+	// Get category based product normal price
+	public ArrayList<String> getCategoryBasedProductNormalPrice(String category) {
+		ArrayList<String> array_list = new ArrayList<String>();
+		// hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from product where productCategory = \"" + category
+				+ "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NORMAL_PRICE)));
+			cursor.moveToNext();
 		}
-		
-		
+
+		db.close();
+		return array_list;
+	}
+
+	// Get category based product costing price
+	public ArrayList<String> getCategoryBasedProductCostingPrice(String category) {
+		ArrayList<String> array_list = new ArrayList<String>();
+		// hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from product where productCategory = \"" + category
+				+ "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_COSTING_PRICE)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
+
+	// Get category based product Quantity
+	public ArrayList<String> getCategoryBasedProductQuantity(String category) {
+		ArrayList<String> array_list = new ArrayList<String>();
+		// hp = new HashMap();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from product where productCategory = \"" + category
+				+ "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list
+			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_QUANTITY)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
+
+
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -698,6 +710,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
 
 	public int getNetPayable() {
 		int salesNo = getSalesOrderNo();
@@ -756,7 +769,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		db.close();
 	}
-
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * table purchase order
+	 */
+	
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -784,7 +801,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list
-					.add(cursor.getString(cursor.getColumnIndex(DEALER_NAME)));
+			.add(cursor.getString(cursor.getColumnIndex(DEALER_NAME)));
 			cursor.moveToNext();
 		}
 
