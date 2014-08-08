@@ -217,6 +217,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 	}
 	
+	// get info of a specific user
+	// get password of a specific user
+		public ArrayList <String> getUserInfo(String username) {
+			ArrayList <String> array_list = new ArrayList <String>();
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor =  db.rawQuery( "select * from " + TABLE_USER_INFO
+					+ " where " + USER_USERNAME + " = '"+ username + "'", null );
+
+			cursor.moveToFirst();
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_NAME)));			
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_USERNAME)));
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
+			array_list.add(cursor.getString(cursor.getColumnIndex(USER_PHONE)));
+			
+			db.close();
+			return array_list;
+		}
+		
 	// get password of a specific user
 	public String getUserPassword(String username) {
 		String password;

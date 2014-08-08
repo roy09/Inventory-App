@@ -52,8 +52,8 @@ public class UserInfoActivity extends Activity {
 	}
 	
 	public void setInfo() {
-		List<String> userInfo = new ArrayList<String>();
-		//userInfo = db.getUserInfo();
+		ArrayList<String> userInfo = new ArrayList<String>();
+		userInfo = db.getUserInfo(username);
 		password = userInfo.get(2);
 		mName.setText(userInfo.get(0));
 		mUsername.setText(userInfo.get(1));
