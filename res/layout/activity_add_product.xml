@@ -98,8 +98,8 @@
         android:layout_alignParentRight="true"
         android:ems="10" />
 
-    <Spinner
-        android:id="@+id/spCategory"
+    <AutoCompleteTextView
+        android:id="@+id/etCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvProductCategory"

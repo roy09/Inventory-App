@@ -6,9 +6,12 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -25,6 +28,8 @@ public class AddProduct extends Activity {
 	String productCostingPrice;
 	String productQuantity;
 	
+	AutoCompleteTextView productCategorySelect;
+	
 	DatabaseHandler db;
 	
 	@Override
@@ -39,21 +44,17 @@ public class AddProduct extends Activity {
 		categories.add("Khata");
 		categories.add("Toy");
 		
-		Spinner category = (Spinner) findViewById(R.id.spCategory);
+		productCategorySelect = (AutoCompleteTextView) findViewById(R.id.etCategory);
 		
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, categories);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		
-		category.setAdapter(dataAdapter);
+		setAutoCompletion();
 	}
 	
 	public void validationChecker(View view){
 		EditText name = (EditText) findViewById(R.id.etProductName);
 		this.productName = name.getText().toString();
 		
-		Spinner category = (Spinner) findViewById(R.id.spCategory);
-		this.productCategory = category.getSelectedItem().toString();
+		AutoCompleteTextView category = (AutoCompleteTextView) findViewById(R.id.etCategory);
+		this.productCategory = category.getText().toString();
 		
 		EditText normalPrice = (EditText) findViewById(R.id.etNormalPrice);
 		this.productNormalPrice = normalPrice.getText().toString();
@@ -83,6 +84,19 @@ public class AddProduct extends Activity {
 			
 			finish();
 		}
+	}
+	
+	public void setAutoCompletion() {
+		
+		ArrayList <String> categoryList;
+		
+		categoryList = db.getDistinctProductsCategory();
+		
+		
+		ArrayAdapter <String> productAdapter = new ArrayAdapter <String> (this, android.R.layout.simple_dropdown_item_1line, categoryList);
+
+		productCategorySelect.setThreshold(1);
+		productCategorySelect.setAdapter(productAdapter);
 	}
 	
 	

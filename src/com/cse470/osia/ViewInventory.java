@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 public class ViewInventory extends Activity {
 
@@ -33,9 +34,11 @@ public class ViewInventory extends Activity {
 		productCostingPrice = db.getAllProductsCostingPrice();
 		productQuantity = db.getAllProductsQuantity();
 		
+		Spinner selectCategory = (Spinner) findViewById(R.id.VIselectCategory);
+		
+		
 		listview = (ListView) findViewById(R.id.productList);
 		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
-		
-		
+			
 	}
 }
