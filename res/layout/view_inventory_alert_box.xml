@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp" >
+
+    <TextView
+        android:id="@+id/tvProductNameAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/product_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etNormalPriceAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvNormalPriceAB"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvNormalPriceAB"
+        android:layout_toRightOf="@+id/tvNormalPriceAB"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/etQuantityAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvQuantityAB"
+        android:layout_alignLeft="@+id/etCostingPriceAB"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvQuantityAB"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/etCostingPriceAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvCostingPriceAB"
+        android:layout_alignLeft="@+id/etNormalPriceAB"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvCostingPriceAB"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/etCategoryAB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvProductCategoryAB"
+        android:layout_alignLeft="@+id/etNormalPriceAB"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvProductCategoryAB" />
+
+    <TextView
+        android:id="@+id/tvProductCategoryAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvNormalPriceAB"
+        android:layout_below="@+id/tvProductNameAB"
+        android:layout_marginTop="15dp"
+        android:text="@string/product_category"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etProductNameAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvProductNameAB"
+        android:layout_alignLeft="@+id/etCategoryAB"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvProductNameAB"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvNormalPriceAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvCostingPriceAB"
+        android:layout_below="@+id/etCategoryAB"
+        android:layout_marginTop="14dp"
+        android:text="@string/product_price"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvCostingPriceAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvQuantityAB"
+        android:layout_below="@+id/tvNormalPriceAB"
+        android:layout_marginTop="14dp"
+        android:text="@string/product_cost"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvQuantityAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvProductNameAB"
+        android:layout_below="@+id/tvCostingPriceAB"
+        android:layout_marginTop="15dp"
+        android:text="@string/product_quantity"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

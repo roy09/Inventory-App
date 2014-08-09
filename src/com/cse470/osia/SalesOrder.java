@@ -137,7 +137,7 @@ public class SalesOrder extends Activity {
             Intent intent = new Intent(getApplicationContext(),com.cse470.osia.SalesOrderAddItem.class);
             intent.putExtras(dataBundle);
             startActivity(intent);
-            //this.finish();
+            finish();
             return true;
 		
 		case R.id.clear_items:
@@ -184,21 +184,52 @@ public class SalesOrder extends Activity {
 		
 		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
 		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
+		String soldTo = customer.getText().toString();
+		String date = setDate.getText().toString();
+		String[] profits = new String[productsToAdd.size()];
+		
+		if (soldTo.equals("")) {
+			Toast.makeText(getApplicationContext(), "Customer name required", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
 				if (product != "Item"){
 					Log.d("baal", productAmount.get(counter));
+					db.addNewSalesOrder(date, soldTo, getNetPayable());
+//							Integer.parseInt(productAmount.get(counter)));
 					db.updateProductQuantity(product, "negative", Integer.parseInt(productAmount.get(counter)));
+					int unitPrice = Integer.parseInt(db.getUnitPriceOfProduct(product));
+					int unitSold = Integer.parseInt(productAmount.get(counter));
+					int unitCosting = Integer.parseInt(db.getUnitCostingOfProduct(product));
+					
+					profits[counter] = String.valueOf((unitPrice - unitCosting) * unitSold);
+					
+					db.addSalesRecord(date, product, soldTo, productAmount.get(counter), profits[counter]);
+					
 					counter++;
+					
+					
 				}
 			}
 		}
 		
+		
+
+		
 		db.removeAllSalesAddedProduct();
-		Intent intent = new Intent(this, DashBoardActivity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(this, DashBoardActivity.class);
+//		startActivity(intent);
+		finish();
+		
+//		Bundle dataBundle = new Bundle();
+//		dataBundle.putString("username", com.cse470.osia.DashBoardActivity.username);
+//		Intent intent = new Intent(this, DashBoardActivity.class);
+//		intent.putExtras(dataBundle);
+//		startActivity(intent);
+
 		
 	}
 	
@@ -215,6 +246,11 @@ public class SalesOrder extends Activity {
 	public void setNetPayable() {
 		int grandTotal = db.getNetPayable();
 		netPayable.setText("" + grandTotal);
+	}
+	
+	public int getNetPayable() {
+		int grandTotal = db.getNetPayable();
+		return grandTotal;
 	}
 
 	/**

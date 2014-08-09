@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class DashBoardActivity extends Activity {
 
-	String username;
+	static String username;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,9 @@ public class DashBoardActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		username = extras.getString("username");
+
+		Toast.makeText(getApplicationContext(), "Logged in as " + username, Toast.LENGTH_SHORT).show();  
+
 	}
 	
 	public void addProduct(View view){
@@ -46,7 +50,7 @@ public class DashBoardActivity extends Activity {
 	public void userInfo (View view) {
 		Bundle dataBundle = new Bundle();
 		dataBundle.putString("username", username);
-		Intent intent = new Intent(this, PurchaseOrderDealer.class);
+		Intent intent = new Intent(this, UserInfoActivity.class);
 		intent.putExtras(dataBundle);
 		startActivity(intent);
 	}

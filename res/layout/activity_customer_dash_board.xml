@@ -19,7 +19,7 @@
 	    <Button
 	        android:id="@+id/btnCustomerUserInfo"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="150dp"
 	        android:layout_below="@+id/textView1"
 	        android:layout_toRightOf="@+id/textView1"
 	        android:layout_marginTop="25dp"
@@ -37,8 +37,8 @@
 
 	    <Button
 	        android:id="@+id/btnCustomerSeeReports"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="150dp"
+	        android:layout_height="150dp"
 	        android:layout_below="@+id/textView1"
 	        android:layout_toLeftOf="@+id/textView1"
 	        android:layout_marginTop="25dp"
@@ -48,8 +48,8 @@
 
 	    <Button
 	        android:id="@+id/btnCustomerPurchaseOrder"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="150dp"
+	        android:layout_height="150dp"
 	        android:layout_above="@+id/textView1"
 	        android:layout_marginBottom="25dp"
 	        android:layout_marginRight="15dp"
@@ -59,8 +59,8 @@
 
 	    <Button
 	        android:id="@+id/btnCustomerViewInventory"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="150dp"
+	        android:layout_height="150dp"
 	        android:layout_above="@+id/textView1"
 	        android:layout_marginBottom="25dp"
 	        android:layout_marginLeft="15dp"

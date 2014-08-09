@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background"
+    android:background="#EEEEEE"
     tools:context=".SalesOrderAddItem" >
 
     <Spinner
@@ -82,8 +82,9 @@
         android:layout_alignRight="@+id/tvSalesAddItemSubtotal"
         android:layout_below="@+id/tvAddItemTotalPrice"
         android:layout_marginTop="19dp"
-        android:background="@drawable/btn_danger"
+        android:background="@drawable/btn_primary"
         android:onClick="addItem"
+        android:textColor="#ffffff"
         android:text="@string/add_item" />
 
     <TextView
@@ -94,7 +95,6 @@
         android:layout_below="@+id/tvAddItemProductQuantity"
         android:layout_marginTop="14dp"
         android:text="Unit Price:	"
-        android:textColor="#ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -105,7 +105,6 @@
         android:layout_below="@+id/tvAddItemUnitPrice"
         android:layout_marginTop="14dp"
         android:text="Subtotal:		"
-        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -116,7 +115,6 @@
         android:layout_below="@+id/tvAddItemProcductName"
         android:layout_marginTop="14dp"
         android:text="@string/product_quantity"
-        android:textColor="#ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -127,8 +125,7 @@
         android:layout_below="@+id/spAddItemCategory"
         android:layout_marginTop="14dp"
         android:text="@string/product_name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" />
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
         android:id="@+id/tvAddItemCategory"
@@ -137,7 +134,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/spAddItemCategory"
         android:text="@string/product_category"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

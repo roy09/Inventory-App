@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background"
+    android:background="#EEEEEE"
     tools:context=".SalesOrder" >
 
     <TextView
@@ -16,7 +16,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/etSalesCustomerName"
         android:text="SetDate"
-        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -26,7 +25,6 @@
         android:layout_alignBottom="@+id/etSalesCustomerName"
         android:layout_alignParentLeft="true"
         android:text="@string/customer_name"
-        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -36,7 +34,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/btn_danger"
+        android:background="@drawable/btn_primary"
+        android:textColor="#ffffff"
         android:onClick="checkout"
         android:text="Checkout" />
 
@@ -62,7 +61,6 @@
         android:layout_above="@+id/button1"
         android:layout_alignParentLeft="true"
         android:text="@string/net_payable"
-        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -84,7 +82,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Order no: 	"
-        android:textColor="#EEEEEE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -111,7 +108,7 @@
         android:layout_below="@+id/tvSalesCustomer"
         android:layout_marginBottom="14dp"
         android:layout_marginTop="14dp"
-        android:background="#EEEEEE" >
+        android:background="#ffffff" >
 
     </ListView>
 
