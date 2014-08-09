@@ -157,6 +157,8 @@ public class PurchaseOrderAddItem extends Activity {
 		Toast toast = null;
 		String productName = getProductName();
 		int unitPrice = getUnitPrice();
+		String productCatoryx = addedProductCategory();
+		String mrp = getMrp();
 		int quantity = getQuantity();
 		int subtotal = getSubtotal();
 		if (subtotal == 0) {
@@ -165,9 +167,11 @@ public class PurchaseOrderAddItem extends Activity {
 			return;
 		}
 
+//		String productName, String productCategory, int productUnitPrice,
+//		int productQuantity, int subtotalPrice)
 		try {
-			db.addNewItemPurchaseOrder(productName, unitPrice, quantity,
-					subtotal);
+			db.addNewItemPurchaseOrder(productName, productCatoryx, unitPrice, quantity,
+					subtotal, mrp);
 			toast = Toast.makeText(this, "Item successfully added",
 					Toast.LENGTH_LONG);
 		} catch (Exception e) {
@@ -183,6 +187,14 @@ public class PurchaseOrderAddItem extends Activity {
 			startActivity(intent);
 			finish();
 		}
+	}
+
+	private String getMrp() {
+		// TODO Auto-generated method stub
+		String mrp = "";
+		EditText mrpX = (EditText) findViewById(R.id.etMRPPOAI);
+		mrp = mrpX.getText().toString();
+		return mrp;
 	}
 
 	/**
@@ -210,6 +222,14 @@ public class PurchaseOrderAddItem extends Activity {
 		else
 			price = Integer.parseInt(unitPrice);
 		return price;
+	}
+	
+	public String addedProductCategory() {
+		
+		EditText sth = (EditText) findViewById(R.id.etCategoryPOAI);
+		String category= sth.getText().toString();
+		
+		return category;
 	}
 
 	public int getSubtotal() {

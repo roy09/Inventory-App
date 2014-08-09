@@ -73,25 +73,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// references salesNo
 		private static final String ORDER_ID = "purchaseId"; // Primary key of this
 		// table
-		private static final String PURCHASE_ORDER_ADDED_PRODUCT = "addedProduct";
-		private static final String PURCHASE_ORDER_ADDED_PRODUCT_CATEGORY = "addedProductCategory";
-		private static final String PURCHASE_ORDER_PER_UNIT_PRICE = "perUnitPrice";
-		private static final String PURCHASE_ORDER_QUANTITY = "orderQuantity";
-		private static final String PURCHASE_SUBTOTAL_PRICE = "subtotalPrice";
+		private static final String PURCHASE_ORDER_INFO_ADDED_PRODUCT = "addedProduct";
+		private static final String PURCHASE_ORDER_INFO_ADDED_PRODUCT_CATEGORY = "addedProductCategory";
+		private static final String PURCHASE_ORDER_INFO_PER_UNIT_PRICE = "perUnitPrice";
+		private static final String PURCHASE_ORDER_INFO_QUANTITY = "orderQuantity";
+		private static final String PURCHASE_ORDER_INFO_SUBTOTAL_PRICE = "subtotalPrice";
+		private static final String PURCHASE_ORDER_INFO_MRP="mrp";
 
 		private static final String CREATE_PURCHASE_ORDER_INFO_TABLE = "CREATE TABLE IF NOT EXISTS "
 				+ TABLE_PURCHASE_ORDER_INFO
 				+ " ("
 				+ ORDER_ID
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
-				+ PURCHASE_ORDER_ADDED_PRODUCT
+				+ PURCHASE_ORDER_INFO_ADDED_PRODUCT
 				+ " TEXT NOT NULL, "
-				+ PURCHASE_ORDER_PER_UNIT_PRICE
+				+ PURCHASE_ORDER_INFO_ADDED_PRODUCT_CATEGORY
+				+ " TEXT, "
+				+ PURCHASE_ORDER_INFO_PER_UNIT_PRICE
 				+ " INT, "
-				+ PURCHASE_ORDER_QUANTITY
+				+ PURCHASE_ORDER_INFO_QUANTITY
 				+ " INT NOT NULL, "
-				+ PURCHASE_SUBTOTAL_PRICE
+				+ PURCHASE_ORDER_INFO_SUBTOTAL_PRICE
 				+ " INT NOT NULL, "
+				+ PURCHASE_ORDER_INFO_MRP
+				+ " TEXT, "
 				+ ORDER_NO
 				+ " INTEGER REFERENCES "
 				+ TABLE_PURCHASE_ORDER
@@ -168,6 +173,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ ADDED_PRODUCT
 			+ " TEXT NOT NULL, "
+			+ ADDED_PRODUCT_CATEGORY
+			+ "TEXT, "
 			+ PER_UNIT_PRICE
 			+ " INT, "
 			+ ORDER_QUANTITY
@@ -194,7 +201,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ DEALER_ID
 			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ DEALER_NAME
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT, "
 			+ DEALER_PHONE
 			+ " TEXT, "
 			+ DEALER_EMAIL
@@ -747,16 +754,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/**
 	 * table purchase order
 	 */
-	void addNewItemPurchaseOrder(String productName, int productUnitPrice,
-			int productQuantity, int subtotalPrice) {
+	void addNewItemPurchaseOrder(String productName, String productCategory, int productUnitPrice,
+			int productQuantity, int subtotalPrice, String mrp) {
 		// SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(PURCHASE_ORDER_ADDED_PRODUCT, productName);
-		values.put(PURCHASE_ORDER_PER_UNIT_PRICE, productUnitPrice);
-		values.put(PURCHASE_ORDER_QUANTITY, productQuantity);
-		values.put(PURCHASE_SUBTOTAL_PRICE, subtotalPrice);
+		values.put(PURCHASE_ORDER_INFO_ADDED_PRODUCT, productName);
+		values.put(PURCHASE_ORDER_INFO_ADDED_PRODUCT_CATEGORY, productCategory);
+		values.put(PURCHASE_ORDER_INFO_PER_UNIT_PRICE, productUnitPrice);
+		values.put(PURCHASE_ORDER_INFO_QUANTITY, productQuantity);
+		values.put(PURCHASE_ORDER_INFO_SUBTOTAL_PRICE, subtotalPrice);
 		values.put(PURCHASE_ORDER_NO, getSalesOrderNo());
+		values.put(PURCHASE_ORDER_INFO_MRP, mrp);
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.insert(TABLE_PURCHASE_ORDER_INFO, null, values);
@@ -791,7 +800,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		db.delete(TABLE_PURCHASE_ORDER_INFO, PURCHASE_ORDER_NO + " = ? and "
-				+ PURCHASE_ORDER_ADDED_PRODUCT + " = ?",
+				+ PURCHASE_ORDER_INFO_ADDED_PRODUCT + " = ?",
 				new String[] { purchaseNo + "", product });
 
 		db.close();
@@ -878,7 +887,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
-					.getColumnIndex(PURCHASE_ORDER_ADDED_PRODUCT)));
+					.getColumnIndex(PURCHASE_ORDER_INFO_ADDED_PRODUCT)));
 			cursor.moveToNext();
 		}
 
@@ -899,7 +908,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
-					.getColumnIndex(PURCHASE_ADDED_)));
+					.getColumnIndex(PURCHASE_ORDER_INFO_ADDED_PRODUCT_CATEGORY)));
 			cursor.moveToNext();
 		}
 
@@ -952,7 +961,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
-					.getColumnIndex(PURCHASE_ORDER_QUANTITY)));
+					.getColumnIndex(PURCHASE_ORDER_INFO_QUANTITY)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
+	
+	public ArrayList<String> getAllPurchaseAddedProductCategory() {
+		ArrayList<String> array_list = new ArrayList<String>();
+
+		int purchaseNo = getPurchaseOrderNo();
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + TABLE_PURCHASE_ORDER_INFO
+				+ " where " + PURCHASE_ORDER_NO + " = " + purchaseNo, null);
+
+		array_list.add("Quantity");
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(PURCHASE_ORDER_INFO_ADDED_PRODUCT_CATEGORY)));
 			cursor.moveToNext();
 		}
 
@@ -1004,7 +1034,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
-					.getColumnIndex(PURCHASE_ORDER_PER_UNIT_PRICE)));
+					.getColumnIndex(PURCHASE_ORDER_INFO_PER_UNIT_PRICE)));
+			cursor.moveToNext();
+		}
+
+		db.close();
+		return array_list;
+	}
+	
+	public ArrayList<String> getAllPurchaseAddedProductUnitCosting() {
+		ArrayList<String> array_list = new ArrayList<String>();
+
+		int purchaseNo = getPurchaseOrderNo();
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + TABLE_PURCHASE_ORDER_INFO
+				+ " where " + PURCHASE_ORDER_NO + " = " + purchaseNo, null);
+
+		array_list.add("Price");
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(PURCHASE_ORDER_INFO_MRP)));
 			cursor.moveToNext();
 		}
 
@@ -1057,7 +1108,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
-					.getColumnIndex(PURCHASE_SUBTOTAL_PRICE)));
+					.getColumnIndex(PURCHASE_ORDER_INFO_SUBTOTAL_PRICE)));
 			cursor.moveToNext();
 		}
 
@@ -1089,7 +1140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		int purchaseNo = getPurchaseOrderNo();
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("select sum (" + PURCHASE_SUBTOTAL_PRICE + ") from "
+		Cursor cursor = db.rawQuery("select sum (" + PURCHASE_ORDER_INFO_SUBTOTAL_PRICE + ") from "
 				+ TABLE_PURCHASE_ORDER_INFO + " where " + PURCHASE_ORDER_NO + " = "
 				+ purchaseNo, null);
 

@@ -80,6 +80,7 @@ public class PurchaseOrder extends Activity {
 		purchaseOrderNo = (TextView) findViewById(R.id.purchaseOrderNo);
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
 		date = purchaseOrderDate.getText().toString();
+		date = purchaseOrderDate.getText().toString();
 
 		// Adding up stuff to the list
 		productName = db.getAllPurchaseAddedProductName();
@@ -217,43 +218,45 @@ public class PurchaseOrder extends Activity {
 
 		ArrayList<String> productsToAdd = db.getAllPurchaseAddedProductName();
 		ArrayList<String> productAmount = db.getAllPurchaseAddedProductQuantity();
+		ArrayList<String> productCosting = db.getAllPurchaseAddedProductUnitPrice();
+		ArrayList<String> productCategory = db.getAllPurchaseAddedProductCategory();
+		ArrayList<String> productprice = db.getAllPurchaseAddedProductUnitCosting();
 		ArrayList<String> allProducts = db.getAllProductsName();
 		String boughtFrom = dealerName;
 		String date = this.date;
 		
-		Toast notif = Toast.makeText(this, boughtFrom, Toast.LENGTH_SHORT);
-		notif.show();
+		Toast status = Toast.makeText(getApplicationContext(), "atCheckout", Toast.LENGTH_SHORT);
+		status.show();
 				
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
 				if (product != "Item"){
-					
+					String num = productAmount.get(counter);
 					Log.d("baal", productAmount.get(counter));
 					// if not in database, add the product to the database
 					if(!allProducts.contains(product)){
 						Toast msg = Toast.makeText(getApplicationContext(), "bhetore nai", Toast.LENGTH_LONG);
 						msg.show();
-						
-						Product newProduct = new Product();
-						newProduct.setProductName(product);
-						newProduct.setProductCategory(category)
-//						db.addNewProduct(product);
+						db.addNewProduct(new Product(product,productCategory.get(counter),productCosting.get(counter),productprice.get(counter), num ));
+
 					}
 					
 					
-//					db.addNewPurchaseOrder(boughtFrom, date, db.getUnitCostingOfProduct(product)
+					
 					
 					db.updateProductQuantity(product, "positive", Integer.parseInt(productAmount.get(counter)));
 					counter++;
+				} else {
+					Log.e("Product ache", product);
 				}
 			}
 		}
-
+		db.addNewPurchaseOrder(boughtFrom, date, Integer.parseInt(netPayable.getText().toString()));
 		db.removeAllPurchaseAddedProduct();
-//		Intent intent = new Intent(this, DashBoardActivity.class);
-//		startActivity(intent);
-
+		Intent intent = new Intent(this, DashBoardActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 	// /**
