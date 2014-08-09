@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class ViewInventory extends Activity {
-
+	
+	Dialog dialog;
+	
 	ListView listview;
 	List<String> productName = new ArrayList<String>();
 	List<String> productCategory = new ArrayList<String>();
@@ -40,6 +47,8 @@ public class ViewInventory extends Activity {
 	EditText productPriceAB;
 	EditText productCostingAB;
 	EditText productQuantityAB;
+	Button btnOkayAB;
+	Button btnCancelAB;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,18 +114,19 @@ public class ViewInventory extends Activity {
 	        @Override
 	        public void onItemClick(AdapterView<?> parent, View view, int position,
 	                long id) {
-	            // TODO Auto-generated method stub
-	        	Dialog dialog = new Dialog(context);
-	        	dialog.setContentView(R.layout.view_inventory_alert_box);
 	        	
-	        	dialog.setTitle("Edit product info");
+
+	        	
+	        	
+	        	LayoutInflater inflater = getLayoutInflater();
+	        	View dialoglayout = inflater.inflate(R.layout.view_inventory_alert_box, null);
 	        	
 	        	// Itesm of the alert box
-	        	productNameAB = (EditText) dialog.findViewById(R.id.etProductNameAB);
-	        	productCategoryAB = (AutoCompleteTextView) dialog.findViewById(R.id.etCategoryAB);
-	        	productPriceAB = (EditText) dialog.findViewById(R.id.etNormalPriceAB);
-	        	productCostingAB = (EditText) dialog.findViewById(R.id.etCostingPriceAB);
-	        	productQuantityAB = (EditText) dialog.findViewById(R.id.etQuantityAB);
+	        	productNameAB = (EditText) dialoglayout.findViewById(R.id.etProductNameAB);
+	        	productCategoryAB = (AutoCompleteTextView) dialoglayout.findViewById(R.id.etCategoryAB);
+	        	productPriceAB = (EditText) dialoglayout.findViewById(R.id.etNormalPriceAB);
+	        	productCostingAB = (EditText) dialoglayout.findViewById(R.id.etCostingPriceAB);
+	        	productQuantityAB = (EditText) dialoglayout.findViewById(R.id.etQuantityAB);
 	        	
 	        	productNameAB.setText(productName.get(position));
 	        	productCategoryAB.setText(productCategory.get(position));
@@ -125,7 +135,46 @@ public class ViewInventory extends Activity {
 	        	productQuantityAB.setText(productQuantity.get(position));
 	        	
 	        	
-	        	dialog.show();
+	        	AlertDialog.Builder builder = new AlertDialog.Builder(context);
+	        	builder.setView(dialoglayout);
+	        	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+	        	    public void onClick(DialogInterface dialog, int id) {
+	        	        
+	        	     }
+	        	});
+	        	builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	        	    public void onClick(DialogInterface dialog, int id) {
+	        	        
+	        	     }
+	        	});
+	        	builder.show();
+//	        	dialog = new Dialog(context);
+//	        	dialog.setContentView(R.layout.view_inventory_alert_box);
+//	        	
+//	        	dialog.setTitle("Edit product info");
+//	        	
+
+//	        	
+//	        	btnCancelAB = (Button) dialog.findViewById(R.id.btnCancelAB);
+//	        	
+//	        	
+//	        	
+//	        	
+//	        	btnOkayAB = (Button) dialog.findViewById(R.id.btnOkayAB);
+//	        	btnOkayAB.setOnClickListener(new OnClickListener() {
+//					
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						// TODO Auto-generated method stub
+//						dialog.dismiss();
+//					}
+//				});
+//	        	
+//	        	
+//	        	dialog.show();
 	        }});
+		
 	}
+	
+	
 }
