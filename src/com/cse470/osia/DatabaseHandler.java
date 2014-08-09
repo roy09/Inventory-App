@@ -80,7 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		private static final String PURCHASE_SUBTOTAL_PRICE = "subtotalPrice";
 
 		private static final String CREATE_PURCHASE_ORDER_INFO_TABLE = "CREATE TABLE IF NOT EXISTS "
-				+ TABLE_SALES_ORDER_INFO
+				+ TABLE_PURCHASE_ORDER_INFO
 				+ " ("
 				+ ORDER_ID
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
