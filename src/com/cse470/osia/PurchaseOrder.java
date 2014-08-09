@@ -80,10 +80,10 @@ public class PurchaseOrder extends Activity {
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
 
 		// Adding up stuff to the list
-		productName = db.getAllSalesAddedProductName();
-		productQuantity = db.getAllSalesAddedProductQuantity();
-		perUnitPrice = db.getAllSalesAddedProductUnitPrice();
-		subtotal = db.getAllSalesAddedProductSubtotalPrice();
+		productName = db.getAllPurchaseAddedProductName();
+		productQuantity = db.getAllPurchaseAddedProductQuantity();
+		perUnitPrice = db.getAllPurchaseAddedProductUnitPrice();
+		subtotal = db.getAllPurchaseAddedProductSubtotalPrice();
 
 		// For the purchase List
 		purchaseOrderList = (ListView) findViewById(R.id.purchaseOrderList);
@@ -95,7 +95,7 @@ public class PurchaseOrder extends Activity {
 		// setOrderListChoiceModeListener();
 		setNetPayable();
 		setCurrentDate();
-		// setCurrentOrder();
+		setCurrentOrder();
 	}
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,22 +115,22 @@ public class PurchaseOrder extends Activity {
 				adb.setNegativeButton("Cancel", null);
 				adb.setPositiveButton("Okay",
 						new AlertDialog.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-								db.removeSalesAddedItem(productName
-										.get(positionToRemove));
-								// orderListAdapter.notifyDataSetChanged();
-								Intent intent = new Intent(
-										getApplicationContext(),
-										com.cse470.osia.SalesOrder.class);
-								startActivity(intent);
-								Toast.makeText(getApplicationContext(),
-										"Item removed", Toast.LENGTH_SHORT)
-										.show();
+					public void onClick(DialogInterface dialog,
+							int which) {
+						db.removePurchaseAddedItem(productName
+								.get(positionToRemove));
+						// orderListAdapter.notifyDataSetChanged();
+						Intent intent = new Intent(
+								getApplicationContext(),
+								com.cse470.osia.PurchaseOrder.class);
+						startActivity(intent);
+						Toast.makeText(getApplicationContext(),
+								"Item removed", Toast.LENGTH_SHORT)
+								.show();
 
-								finish();
-							}
-						});
+						finish();
+					}
+				});
 				adb.show();
 			}
 		});
@@ -144,7 +144,7 @@ public class PurchaseOrder extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.sales_order, menu);
+		getMenuInflater().inflate(R.menu.purchase_order, menu);
 		return true;
 	}
 
@@ -153,45 +153,45 @@ public class PurchaseOrder extends Activity {
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 
-		case R.id.add_order:
-			Bundle dataBundle = new Bundle();
-			dataBundle.putInt("id", 0);
+		case R.id.purchase_add_order:
+			//			Bundle dataBundle = new Bundle();
+			//			dataBundle.putInt("id", 0);
 			Intent intent = new Intent(getApplicationContext(),
-					com.cse470.osia.SalesOrderAddItem.class);
-			intent.putExtras(dataBundle);
+					com.cse470.osia.PurchaseOrderAddItem.class);
+			//			intent.putExtras(dataBundle);
 			startActivity(intent);
 			// this.finish();
 			return true;
 
-		case R.id.clear_items:
+		case R.id.purchase_clear_items:
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage("You want to clear the list?")
-					.setPositiveButton("Yes",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									db.removeAllSalesAddedProduct();
-									// orderListAdapter.notifyDataSetChanged();
+			.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,
+						int id) {
+					db.removeAllPurchaseAddedProduct();
+					// orderListAdapter.notifyDataSetChanged();
 
-									Intent intent = new Intent(
-											getApplicationContext(),
-											com.cse470.osia.SalesOrder.class);
-									startActivity(intent);
-									Toast.makeText(getApplicationContext(),
-											"List Cleared", Toast.LENGTH_SHORT)
-											.show();
+					Intent intent = new Intent(
+							getApplicationContext(),
+							com.cse470.osia.PurchaseOrder.class);
+					startActivity(intent);
+					Toast.makeText(getApplicationContext(),
+							"List Cleared", Toast.LENGTH_SHORT)
+							.show();
 
-									finish();
+					finish();
 
-								}
-							})
-					.setNegativeButton("No",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// User cancelled the dialog
-								}
-							});
+				}
+			})
+			.setNegativeButton("No",
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,
+						int id) {
+					// User cancelled the dialog
+				}
+			});
 			AlertDialog d = builder.create();
 			d.setTitle("Are you sure");
 			d.show();
@@ -208,14 +208,14 @@ public class PurchaseOrder extends Activity {
 	// //
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 * onClick listener for checkout (salesOrder) insert on TABLE_SALES_ORDER
+	 * onClick listener for checkout (PurchaseOrder) insert on TABLE_Purchase_ORDER
 	 */
 	public void checkout(View v) {
 		DatabaseHandler db = new DatabaseHandler(this);
-		
-		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
-		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
-		
+
+		ArrayList<String> productsToAdd = db.getAllPurchaseAddedProductName();
+		ArrayList<String> productAmount = db.getAllPurchaseAddedProductQuantity();
+
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
@@ -226,11 +226,11 @@ public class PurchaseOrder extends Activity {
 				}
 			}
 		}
-		
-		db.removeAllSalesAddedProduct();
+
+		db.removeAllPurchaseAddedProduct();
 		Intent intent = new Intent(this, DashBoardActivity.class);
 		startActivity(intent);
-		
+
 	}
 
 	// /**
@@ -244,19 +244,19 @@ public class PurchaseOrder extends Activity {
 	// */
 	//
 	public void setNetPayable() {
-		int grandTotal = db.getNetPayable();
+		int grandTotal = db.getPurchaseNetPayable();
 		netPayable.setText("" + grandTotal);
 	}
 
-	//
-	// /**
-	// * set sales orderNo on textView
-	// */
-	// public void setCurrentOrder() {
-	// int salesNo = db.getSalesOrderNo();
-	// purchaseOrderNo.setText("" + salesNo);
-	// }
-	//
+
+	/**
+	 * set Purchase orderNo on textView
+	 */
+	public void setCurrentOrder() {
+		int purchaseNo = db.getPurchaseOrderNo();
+		purchaseOrderNo.setText("" + purchaseNo);
+	}
+
 	/**
 	 * set date on button
 	 */

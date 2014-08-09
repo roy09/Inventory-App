@@ -2,83 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#EEEEEE"
     tools:context="${packageName}.${activityClass}" >
-
-    <TextView
-        android:id="@+id/tvNameOfDealerTO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Dealer Name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/tvDealerPhoneNumberTO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvNameOfDealerTO"
-        android:text="Phone Number"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tvDealerEmailPO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvDealerPhoneNumberTO"
-        android:text="Email"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tvDealerAddressPO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvDealerEmailPO"
-        android:text="Address"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/etDealerNameAD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/tvNameOfDealerTO"
+        android:layout_toRightOf="@+id/tvDealerAddressPO"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/etDealerPhoneAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDealerPhoneNumberTO"
-        android:layout_toRightOf="@+id/tvDealerPhoneNumberTO"
-        android:ems="10"
-        android:inputType="phone" />
-
-    <EditText
-        android:id="@+id/etDealerEmailAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDealerEmailPO"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/tvDealerEmailPO"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/etDealerAddressAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDealerAddressPO"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/tvDealerAddressPO"
-        android:ems="10"
-        android:inputType="textPostalAddress" />
 
     <Button
         android:id="@+id/addDealer"
@@ -87,6 +28,80 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="Add dealer"
+        android:background="@drawable/btn_primary"
+        android:textColor="#ffffff"
         android:onClick="addDealer" />
+
+    <TextView
+        android:id="@+id/tvNameOfDealerTO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etDealerNameAD"
+        android:layout_alignParentLeft="true"
+        android:hint="Name"
+        android:text="Dealer	"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDealerPhoneNumberTO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etDealerPhoneAD"
+        android:layout_alignParentLeft="true"
+        android:text="Phone		"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etDealerPhoneAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etDealerNameAD"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etDealerNameAD"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/etDealerEmailAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvDealerEmailPO"
+        android:layout_alignLeft="@+id/etDealerPhoneAD"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etDealerPhoneAD"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/tvDealerEmailPO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvDealerPhoneNumberTO"
+        android:layout_marginTop="20dp"
+        android:text="Email		"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDealerAddressPO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etDealerAddressAD"
+        android:layout_alignParentLeft="true"
+        android:text="Address		"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etDealerAddressAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etDealerEmailAD"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etDealerEmailAD"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="textPostalAddress" />
 
 </RelativeLayout>

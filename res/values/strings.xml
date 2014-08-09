@@ -32,5 +32,6 @@
     <string name="dashboard">OSIA|Dashboard</string>
     <string name="title_activity_customer_dash_board">CustomerDashBoardActivity</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_purchase_order_add_item">PurchaseOrderAddItem</string>
 
 </resources>

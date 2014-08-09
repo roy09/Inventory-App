@@ -39,7 +39,12 @@ public class AddDealer extends Activity {
 		
 		EditText dealerAddress = (EditText) findViewById(R.id.etDealerAddressAD);
 		this.dealerAddress = dealerAddress.getText().toString();
-		
+		if (this.dealerName.equals("") || this.dealerPhone.equals("")
+				|| !this.dealerEmail.contains("@") || !this.dealerEmail.contains(".com")
+				|| this.dealerAddress.equals("")) {
+			Toast.makeText(this, "Please, fill the informations properly", Toast.LENGTH_LONG).show();
+			return;
+		}
 		Toast toast = null; 
 		try{
 			db.addNewDealer(this.dealerName, this.dealerPhone, this.dealerEmail, this.dealerAddress);

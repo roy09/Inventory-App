@@ -10,7 +10,7 @@
     tools:context="${packageName}.${activityClass}" >
 
     <TextView
-        android:id="@+id/tvProductName"
+        android:id="@+id/tvProductNamePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -20,74 +20,74 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/etNormalPrice"
+        android:id="@+id/etNormalPricePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvNormalPrice"
+        android:layout_alignBottom="@+id/tvNormalPricePOAI"
         android:layout_alignParentRight="true"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
-        android:layout_alignTop="@+id/tvNormalPrice"
-        android:layout_toRightOf="@+id/tvNormalPrice"
+        android:layout_alignTop="@+id/tvNormalPricePOAI"
+        android:layout_toRightOf="@+id/tvNormalPricePOAI"
         android:ems="10" />
 
-    <EditText
-        android:id="@+id/etQuantity"
+    <TextView
+        android:id="@+id/etSubtotalPOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvQuantity"
-        android:layout_alignLeft="@+id/etCostingPrice"
+        android:layout_alignBottom="@+id/tvQuantityPOAI"
+        android:layout_alignLeft="@+id/etQuantityPOAI"
         android:layout_alignParentRight="true"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
-        android:layout_alignTop="@+id/tvQuantity"
+        android:layout_alignTop="@+id/tvQuantityPOAI"
         android:ems="10" />
 
     <EditText
-        android:id="@+id/etCostingPrice"
+        android:id="@+id/etQuantityPOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvCostingPrice"
-        android:layout_alignLeft="@+id/etNormalPrice"
+        android:layout_alignBottom="@+id/tvCostingPricePOAI"
+        android:layout_alignLeft="@+id/etNormalPricePOAI"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/tvCostingPrice"
+        android:layout_alignTop="@+id/tvCostingPricePOAI"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
         android:ems="10" />
 
     <AutoCompleteTextView
-        android:id="@+id/etCategory"
+        android:id="@+id/etCategoryPOAI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvProductCategory"
-        android:layout_alignLeft="@+id/etNormalPrice"
+        android:layout_alignBottom="@+id/tvProductCategoryPOAI"
+        android:layout_alignLeft="@+id/etNormalPricePOAI"
         android:layout_alignParentRight="true"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
-        android:layout_alignTop="@+id/tvProductCategory" />
+        android:layout_alignTop="@+id/tvProductCategoryPOAI" />
 
     <TextView
-        android:id="@+id/tvProductCategory"
+        android:id="@+id/tvProductCategoryPOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvNormalPrice"
-        android:layout_below="@+id/tvProductName"
+        android:layout_alignLeft="@+id/tvNormalPricePOAI"
+        android:layout_below="@+id/tvProductNamePOAI"
         android:layout_marginTop="15dp"
         android:text="@string/product_category"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/etProductName"
+        android:id="@+id/etProductNamePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvProductName"
-        android:layout_alignLeft="@+id/etCategory"
+        android:layout_alignBottom="@+id/tvProductNamePOAI"
+        android:layout_alignLeft="@+id/etCategoryPOAI"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/tvProductName"
+        android:layout_alignTop="@+id/tvProductNamePOAI"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
@@ -97,42 +97,42 @@
     </EditText>
 
     <TextView
-        android:id="@+id/tvNormalPrice"
+        android:id="@+id/tvNormalPricePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvCostingPrice"
-        android:layout_below="@+id/etCategory"
+        android:layout_alignLeft="@+id/tvCostingPricePOAI"
+        android:layout_below="@+id/etCategoryPOAI"
         android:layout_marginTop="14dp"
         android:text="@string/product_price"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/tvCostingPrice"
+        android:id="@+id/tvCostingPricePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvQuantity"
-        android:layout_below="@+id/tvNormalPrice"
+        android:layout_alignLeft="@+id/tvQuantityPOAI"
+        android:layout_below="@+id/tvNormalPricePOAI"
         android:layout_marginTop="14dp"
-        android:text="@string/product_cost"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/tvQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvProductName"
-        android:layout_below="@+id/tvCostingPrice"
-        android:layout_marginTop="15dp"
         android:text="@string/product_quantity"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btnSubmit"
+    <TextView
+        android:id="@+id/tvQuantityPOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvQuantity"
-        android:layout_alignRight="@+id/etQuantity"
-        android:layout_below="@+id/etQuantity"
+        android:layout_alignLeft="@+id/tvProductNamePOAI"
+        android:layout_below="@+id/tvCostingPricePOAI"
+        android:layout_marginTop="15dp"
+        android:text="Subtotal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnSubmitPOAI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvQuantityPOAI"
+        android:layout_alignRight="@+id/etSubtotalPOAI"
+        android:layout_below="@+id/etSubtotalPOAI"
         android:layout_marginTop="26dp"
         android:onClick="validationChecker"
         android:background="@drawable/btn_primary"
