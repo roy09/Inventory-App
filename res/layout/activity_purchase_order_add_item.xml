@@ -84,7 +84,7 @@
         android:text="@string/product_category"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/etProductNamePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
         android:ems="10" >
 
         <requestFocus />
-    </EditText>
+    </AutoCompleteTextView>
 
     <TextView
         android:id="@+id/tvNormalPricePOAI"
@@ -107,7 +107,7 @@
         android:layout_alignLeft="@+id/tvCostingPricePOAI"
         android:layout_below="@+id/etCategoryPOAI"
         android:layout_marginTop="14dp"
-        android:text="Costing"
+        android:text="Unit Price"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -140,11 +140,11 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/etQuantityPOAI"
         android:layout_marginTop="16dp"
-        android:text="Unit Price"
+        android:text="MRP"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/etMRPPOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
@@ -153,6 +153,7 @@
         android:layout_alignTop="@+id/textView1"
         android:background="@drawable/textbox_round_corner"
         android:ems="10"
+        android:hint="@string/mrpHint"
         android:paddingLeft="12dp"
         android:paddingRight="12dp" />
 
