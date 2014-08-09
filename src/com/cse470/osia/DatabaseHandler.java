@@ -395,6 +395,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		while (cursor.isAfterLast() == false) {
 			array_list
 			.add(cursor.getString(cursor.getColumnIndex(PRODUCT_NAME)));
+			
 			cursor.moveToNext();
 		}
 
@@ -499,6 +500,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		while (cursor.isAfterLast() == false) {
 			array_list.add(cursor.getString(cursor
 					.getColumnIndex(PRODUCT_COSTING_PRICE)));
+			cursor.moveToNext();
+		}
+		price = array_list.poll();
+		return price;
+	}
+	
+	// Get a product's category based on product Name
+	public String getCategoryOfProduct(String product) {
+		String price;
+		Queue<String> array_list = new LinkedList<String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db
+				.rawQuery("select * from product where productName = \""
+						+ product + "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(PRODUCT_CATEGORY)));
+			cursor.moveToNext();
+		}
+		price = array_list.poll();
+		return price;
+	}
+	
+	// Get a product's quantity in store
+	public String getQuantityProduct(String product) {
+		String price;
+		Queue<String> array_list = new LinkedList<String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db
+				.rawQuery("select * from product where productName = \""
+						+ product + "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(PRODUCT_QUANTITY)));
 			cursor.moveToNext();
 		}
 		price = array_list.poll();

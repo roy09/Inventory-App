@@ -3,6 +3,7 @@
 
     <string name="app_name">OSIA</string>
     <string name="title_activity_add_product">AddProduct</string>
+    <string name="mrpHint"></string>
     <string name="hello_world">Hello world!</string>
     <string name="product_name">Name</string>
     <string name="product_category">Category</string>
