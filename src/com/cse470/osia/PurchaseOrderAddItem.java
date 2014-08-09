@@ -31,7 +31,9 @@ public class PurchaseOrderAddItem extends Activity {
 	String productUnitPrice; // parse to integer
 	String productQuantity;  // parse to integer
 
-
+	
+	String dealer;
+	
 	/**
 	 * Text Fields
 	 */
@@ -61,7 +63,10 @@ public class PurchaseOrderAddItem extends Activity {
 		subTotal = (TextView) findViewById(R.id.etSubtotalPOAI);		
 		category = (AutoCompleteTextView) findViewById(R.id.etCategoryPOAI);
 		add_item = (Button) findViewById(R.id.btnSubmitPOAI);
-
+		
+		Bundle extras = getIntent().getExtras();
+		dealer = extras.getString("dealer");
+		
 		db = new DatabaseHandler (this);
 
 		categories = db.getDistinctProductsCategory();
@@ -114,7 +119,10 @@ public class PurchaseOrderAddItem extends Activity {
 		}
 		finally {
 			toast.show();
+			Bundle databundle = new Bundle();
+			databundle.putString("dealerName", dealer);
 			Intent intent = new Intent (this, PurchaseOrder.class);
+			intent.putExtras(databundle);
 			startActivity(intent);
 			finish();
 		}

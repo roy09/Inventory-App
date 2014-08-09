@@ -125,14 +125,6 @@
         android:layout_alignParentTop="true"
         android:text="@string/purchaseOrder"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/purchaseOrderNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/subtotalPO"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView
         android:id="@+id/tvSetPurchaseDatePO"
@@ -140,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="SetDate" />
 
     <TextView
@@ -150,5 +143,17 @@
         android:layout_below="@+id/tvDealerAddressHeader"
         android:ems="10"
         android:text="Email" />
+
+    <TextView
+        android:id="@+id/purchaseOrderNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/purchaseOrder"
+        android:layout_alignBottom="@+id/purchaseOrder"
+        android:layout_alignRight="@+id/tvDealerPhoneNo"
+        android:layout_toRightOf="@+id/purchaseOrder"
+        android:text="0"
+        android:paddingLeft="6dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

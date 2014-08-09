@@ -140,12 +140,18 @@ public class SalesOrderAddItem extends Activity {
 			return;
 		}
 		
-		// CHECK AVAILABILITY
-//		if (!itemAvailable()) {
-//			toast = Toast.makeText(this, "This item is out of stock", Toast.LENGTH_LONG);
-//			toast.show();
-//			return;
-//		}
+		int itemStock = getQuantity(productName);
+//		 CHECK AVAILABILITY
+		if (itemStock == 0) {
+			toast = Toast.makeText(this, "This item is out of stock", Toast.LENGTH_LONG);
+			toast.show();
+			return;
+		}
+		if (itemStock < quantity) {
+			toast = Toast.makeText(this, "Quantity available of this item: " + itemStock, Toast.LENGTH_LONG);
+			toast.show();
+			return;
+		}
 		
 		try {
 			db.addNewItemSalesOrder(productName, unitPrice, quantity, subtotal);
@@ -161,6 +167,11 @@ public class SalesOrderAddItem extends Activity {
 			startActivity(intent);
 			finish();
 		}
+	}
+	
+	public int getQuantity(String productName) {
+		int quantity = db.getProductQuantity(productName);
+		return quantity;
 	}
 	
 	/**

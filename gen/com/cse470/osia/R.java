@@ -117,7 +117,7 @@ public final class R {
         public static final int progressBar1=0x7f08005d;
         public static final int purchaseOrder=0x7f080020;
         public static final int purchaseOrderList=0x7f080025;
-        public static final int purchaseOrderNo=0x7f08002c;
+        public static final int purchaseOrderNo=0x7f08002d;
         public static final int purchase_add_order=0x7f08007d;
         public static final int purchase_clear_items=0x7f08007e;
         public static final int signIn=0x7f08005a;
@@ -173,7 +173,7 @@ public final class R {
         public static final int tvSalesNetPayable=0x7f08003f;
         public static final int tvSalesOrder=0x7f080042;
         public static final int tvSalesOrderNo=0x7f080041;
-        public static final int tvSetPurchaseDatePO=0x7f08002d;
+        public static final int tvSetPurchaseDatePO=0x7f08002c;
         public static final int tvSetSalesDate=0x7f08003b;
         public static final int tvSignUpStatement=0x7f080063;
         public static final int username=0x7f080053;
