@@ -194,7 +194,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ DEALER_ID
 			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ DEALER_NAME
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT NOT NULL, "
 			+ DEALER_PHONE
 			+ " TEXT, "
 			+ DEALER_EMAIL
@@ -202,6 +202,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ DEALER_ADDRESS + " TEXT " + ")";
 
 	// Table Sales Order Track
+	private static final String SALES_ORDER_TRACK_ID = "salesTrackId";
 	private static final String SALES_ORDER_TRACK_DATE = "salesDate";
 	private static final String SALES_ORDER_TRACK_NAME_OF_PRODUCT = "salesNameOfProduct";
 	private static final String SALES_ORDER_TRACK_SOLD_TO = "salesSoldTo";
@@ -211,8 +212,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CREATE_SALES_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_SALES_ORDER_TRACK
 			+ " ("
+			+ SALES_ORDER_TRACK_ID
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ SALES_ORDER_TRACK_DATE
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT NOT NULL, "
 			+ SALES_ORDER_TRACK_NAME_OF_PRODUCT
 			+ " TEXT, "
 			+ SALES_ORDER_TRACK_SOLD_TO
@@ -223,6 +226,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ " TEXT " + ")";
 
 	// Table Purchase Order Track
+	private static final String PURCHASE_ORDER_TRACK_ID = "purchaseTrackId";
 	private static final String PURCHASE_ORDER_TRACK_DATE = "purchaseDate";
 	private static final String PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT = "purchaseNameOfProduct";
 	private static final String PURCHASE_ORDER_TRACK_SOLD_TO = "purchaseSoldTo";
@@ -232,8 +236,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CREATE_PURCHASE_ORDER_TRACK_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_PURCHASE_ORDER_TRACK
 			+ " ("
+			+ PURCHASE_ORDER_TRACK_ID
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ PURCHASE_ORDER_TRACK_DATE
-			+ " TEXT PRIMARY KEY, "
+			+ " TEXT NOT NULL, "
 			+ PURCHASES_ORDER_TRACK_NAME_OF_PRODUCT
 			+ " TEXT, "
 			+ PURCHASE_ORDER_TRACK_SOLD_TO
@@ -1174,5 +1180,121 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 	
 	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	/**
+	 * customer report functions
+	 */
+	public int getCustomerBasedTotalAmmountOfAllTransaction(String username) {
+		int totalAmmount;
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery
+				("select sum (totalAmmount) from salesOrder where customer = '" + username + "'", null);
+		
+		cursor.moveToFirst();
+		totalAmmount = cursor.getInt(0);
+		db.close();
+		return totalAmmount;
+	}
+	
+	public double getCustomerBasedAmmountPerTransaction(String username) {
+		int totalAmmount = getCustomerBasedTotalAmmountOfAllTransaction(username);
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery
+				("select count (*) from salesOrder where customer = '" + username + "'", null);
+		
+		cursor.moveToFirst();
+		double averageAmmount = totalAmmount / cursor.getInt(0);
+		db.close();
+		return averageAmmount;
+	}
+	
+	public ArrayList<String> getUserBasedSalesOrderTrackID(String username) {
+			ArrayList<String> array_list = new ArrayList<String>();
 
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery("select * from " + TABLE_SALES_ORDER
+					+ " where " + CUSTOMER_NAME + " = '" + username + "'", null);
+
+			array_list.add("No.");
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list.add(cursor.getString(cursor
+						.getColumnIndex(SALES_NO)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+	}
+	
+	public ArrayList<String> getUserBasedSalesOrderTrackDate(String username) {
+			ArrayList<String> array_list = new ArrayList<String>();
+
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery("select * from " + TABLE_SALES_ORDER
+					+ " where " + CUSTOMER_NAME + " = '" + username + "'", null);
+
+			array_list.add("Date");
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list.add(cursor.getString(cursor
+						.getColumnIndex(SALES_DATE)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+	}
+	
+	public ArrayList<String> getUserBasedSalesOrderTrackAmmount(String username) {
+			ArrayList<String> array_list = new ArrayList<String>();
+
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery("select * from " + TABLE_SALES_ORDER
+					+ " where " + CUSTOMER_NAME + " = '" + username + "'", null);
+
+			array_list.add("Total");
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				array_list.add(cursor.getString(cursor
+						.getColumnIndex(TOTAL_AMMOUNT)));
+				cursor.moveToNext();
+			}
+
+			db.close();
+			return array_list;
+	}
+	/**
+	 * Store see Report
+	 */
+	public int getTotalAmmountOfAllTransaction() {
+		int totalAmmount;
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery
+				("select sum (totalAmmount) from salesOrder", null);
+		
+		cursor.moveToFirst();
+		totalAmmount = cursor.getInt(0);
+		db.close();
+		return totalAmmount;
+	}
+	
+	public double getAmmountPerTransaction() {
+		int totalAmmount = getTotalAmmountOfAllTransaction();
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery
+				("select count (*) from salesOrder", null);
+		
+		cursor.moveToFirst();
+		double averageAmmount = totalAmmount / cursor.getInt(0);
+		db.close();
+		return averageAmmount;
+	}
+
+	
 }

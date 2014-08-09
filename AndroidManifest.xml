@@ -78,6 +78,14 @@
             android:name="com.cse470.osia.PurchaseOrderAddItem"
             android:label="@string/title_activity_purchase_order_add_item" >
         </activity>
+        <activity
+            android:name="com.cse470.osia.CustomerSeeReport"
+            android:label="@string/title_activity_customer_see_report" >
+        </activity>
+        <activity
+            android:name="com.cse470.osia.SeeSalesReport"
+            android:label="@string/title_activity_see_sales_report" >
+        </activity>
     </application>
 
 </manifest>

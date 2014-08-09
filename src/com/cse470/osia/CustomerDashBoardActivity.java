@@ -41,7 +41,10 @@ public class CustomerDashBoardActivity extends Activity {
 	}
 	
 	public void seeReport (View v) {
-		Intent intent = new Intent (this, SeeReport.class);
+		Bundle dataBundle = new Bundle();
+		dataBundle.putString("username", username);
+		Intent intent = new Intent (this, CustomerSeeReport.class);
+		intent.putExtras(dataBundle);
 		startActivity(intent);
 	}
 	

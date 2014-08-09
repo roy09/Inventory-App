@@ -33,5 +33,7 @@
     <string name="title_activity_customer_dash_board">CustomerDashBoardActivity</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_purchase_order_add_item">PurchaseOrderAddItem</string>
+    <string name="title_activity_customer_see_report">CustomerSeeReport</string>
+    <string name="title_activity_see_sales_report">SeeSalesReport</string>
 
 </resources>
