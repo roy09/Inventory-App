@@ -27,6 +27,7 @@ public class PurchaseOrder extends Activity {
 	String dealerPhone;
 	String dealerEmail;
 	String dealerAddress;
+	String date;
 
 	List<String> productName = new ArrayList<String>();
 	List<String> productQuantity = new ArrayList<String>();
@@ -78,6 +79,7 @@ public class PurchaseOrder extends Activity {
 		netPayable = (TextView) findViewById(R.id.totalValuePO);
 		purchaseOrderNo = (TextView) findViewById(R.id.purchaseOrderNo);
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
+		date = purchaseOrderDate.getText().toString();
 
 		// Adding up stuff to the list
 		productName = db.getAllPurchaseAddedProductName();
@@ -215,7 +217,12 @@ public class PurchaseOrder extends Activity {
 
 		ArrayList<String> productsToAdd = db.getAllPurchaseAddedProductName();
 		ArrayList<String> productAmount = db.getAllPurchaseAddedProductQuantity();
-
+		String boughtFrom = dealerName;
+		String date = this.date;
+		
+		Toast notif = Toast.makeText(this, boughtFrom, Toast.LENGTH_SHORT);
+		notif.show();
+				
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){

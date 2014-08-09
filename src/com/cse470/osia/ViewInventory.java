@@ -95,7 +95,6 @@ public class ViewInventory extends Activity {
 		
 
 		
-
 			
 	}
 
