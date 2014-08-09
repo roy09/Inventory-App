@@ -43,6 +43,9 @@
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
         android:layout_alignTop="@+id/tvQuantityPOAI"
+		android:textSize="18dp"
+		android:text=""
+		android:gravity="center_vertical"
         android:ems="10" />
 
     <EditText
@@ -56,6 +59,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
+        android:text=""
         android:ems="10" />
 
     <AutoCompleteTextView

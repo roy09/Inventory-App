@@ -100,12 +100,21 @@ public class ViewInventory extends Activity {
 	}
 
 	private void setInventoryList(String selectedCategory) {
-		productName = db.getCategoryBasedProductName(selectedCategory);
-		productCategory = db.getCategoryBasedCategoryName(selectedCategory);
-		productNormalPrice = db.getCategoryBasedProductNormalPrice(selectedCategory);
-		productCostingPrice = db.getCategoryBasedProductCostingPrice(selectedCategory);
-		productQuantity = db.getCategoryBasedProductQuantity(selectedCategory);
-		
+		if (selectedCategory.equals("Any")) {
+			productName = db.getAllProductsName();
+			productCategory = db.getAllProductsCategory();
+			productNormalPrice = db.getAllProductsNormalPrice();
+			productCostingPrice = db.getAllProductsCostingPrice();
+			productQuantity = db.getAllProductsQuantity();
+			
+		}
+		else {
+			productName = db.getCategoryBasedProductName(selectedCategory);
+			productCategory = db.getCategoryBasedCategoryName(selectedCategory);
+			productNormalPrice = db.getCategoryBasedProductNormalPrice(selectedCategory);
+			productCostingPrice = db.getCategoryBasedProductCostingPrice(selectedCategory);
+			productQuantity = db.getCategoryBasedProductQuantity(selectedCategory);
+		}
 		listview = (ListView) findViewById(R.id.productList);
 		adapter  = new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity);
 		listview.setAdapter(adapter);

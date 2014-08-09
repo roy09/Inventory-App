@@ -139,7 +139,7 @@
         android:layout_below="@+id/textView5"
         android:layout_marginTop="30dp"
         android:layout_marginRight="5dp"
-        android:background="#0b7e0d"
+        android:background="#777777"
         android:onClick="changePassword"
         android:textColor="#ffffff"
         android:text="Change Password" />
@@ -152,7 +152,7 @@
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignRight="@+id/phone"
         android:layout_alignTop="@+id/changePassword"
-        android:background="#dd2c1b"
+        android:background="#FF0033"
         android:onClick="deleteAccount"
         android:textColor="#ffffff"
         android:text="Drop Account" />
@@ -166,7 +166,7 @@
         android:layout_alignRight="@+id/deleteAccount"
         android:layout_below="@+id/changePassword"
         android:layout_marginTop="14dp"
-        android:background="#F6BB42"
+        android:background="#0066CC"
         android:onClick="logout"
         android:textColor="#ffffff"
         android:text="Logout" />
