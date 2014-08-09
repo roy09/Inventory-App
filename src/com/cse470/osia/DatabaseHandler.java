@@ -517,6 +517,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
+	
+	// get quantity of a specific product
+	
+		public int getProductQuantity(String productName) {
+			int quantity;
+
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery("select " + PRODUCT_QUANTITY + " from "
+					+ TABLE_PRODUCT + " where " + PRODUCT_NAME + " = '"
+					+ productName + "'", null);
+
+			cursor.moveToFirst();
+			quantity = Integer.parseInt(cursor.getString(0));
+
+			db.close();
+			return quantity;
+		}
 
 	// Category based updates
 

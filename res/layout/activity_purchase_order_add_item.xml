@@ -134,7 +134,7 @@
         android:layout_alignRight="@+id/etSubtotalPOAI"
         android:layout_below="@+id/etSubtotalPOAI"
         android:layout_marginTop="26dp"
-        android:onClick="validationChecker"
+        android:onClick="addItem"
         android:background="@drawable/btn_primary"
         android:textColor="#ffffff"
         android:text="Add Product" />

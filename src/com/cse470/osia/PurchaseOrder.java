@@ -14,11 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class PurchaseOrder extends Activity {
 
@@ -78,6 +77,7 @@ public class PurchaseOrder extends Activity {
 		dealerAddress.setText(this.dealerAddress);
 
 		netPayable = (TextView) findViewById(R.id.totalValuePO);
+		purchaseOrderNo = (TextView) findViewById(R.id.purchaseOrderNo);
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
 		date = purchaseOrderDate.getText().toString();
 
@@ -125,6 +125,7 @@ public class PurchaseOrder extends Activity {
 						Intent intent = new Intent(
 								getApplicationContext(),
 								com.cse470.osia.PurchaseOrder.class);
+						intent.putExtra("dealerName", dealerName);
 						startActivity(intent);
 						Toast.makeText(getApplicationContext(),
 								"Item removed", Toast.LENGTH_SHORT)
@@ -156,13 +157,12 @@ public class PurchaseOrder extends Activity {
 		switch (item.getItemId()) {
 
 		case R.id.purchase_add_order:
-			//			Bundle dataBundle = new Bundle();
-			//			dataBundle.putInt("id", 0);
-			Intent intent = new Intent(getApplicationContext(),
-					com.cse470.osia.PurchaseOrderAddItem.class);
-			//			intent.putExtras(dataBundle);
+			Bundle dataBundle = new Bundle();
+			dataBundle.putString("dealer", dealerName);
+			Intent intent = new Intent (getApplicationContext(), PurchaseOrderAddItem.class);
+			intent.putExtras(dataBundle);
 			startActivity(intent);
-			// this.finish();
+			this.finish();
 			return true;
 
 		case R.id.purchase_clear_items:
@@ -173,11 +173,11 @@ public class PurchaseOrder extends Activity {
 				public void onClick(DialogInterface dialog,
 						int id) {
 					db.removeAllPurchaseAddedProduct();
-					// orderListAdapter.notifyDataSetChanged();
-
+					
 					Intent intent = new Intent(
 							getApplicationContext(),
 							com.cse470.osia.PurchaseOrder.class);
+					intent.putExtra("dealerName", dealerName);
 					startActivity(intent);
 					Toast.makeText(getApplicationContext(),
 							"List Cleared", Toast.LENGTH_SHORT)
