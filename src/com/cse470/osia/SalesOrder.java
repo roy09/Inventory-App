@@ -137,7 +137,7 @@ public class SalesOrder extends Activity {
             Intent intent = new Intent(getApplicationContext(),com.cse470.osia.SalesOrderAddItem.class);
             intent.putExtras(dataBundle);
             startActivity(intent);
-            //this.finish();
+            finish();
             return true;
 		
 		case R.id.clear_items:
@@ -223,7 +223,7 @@ public class SalesOrder extends Activity {
 		Intent intent = new Intent(this, DashBoardActivity.class);
 		intent.putExtras(dataBundle);
 		startActivity(intent);
-		finish();
+
 		
 	}
 	

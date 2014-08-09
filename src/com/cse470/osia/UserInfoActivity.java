@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserInfoActivity extends Activity {
 	
 	private String username;
 	private String password;
+	private String message;
 	
 	/**
 	 * text fields
@@ -40,7 +44,7 @@ public class UserInfoActivity extends Activity {
 		
 		db = new DatabaseHandler(this);
 		
-		//setInfo();
+		setInfo();
 		
 	}
 
@@ -65,17 +69,50 @@ public class UserInfoActivity extends Activity {
 		
 	}
 	
-	public void deleteAccount (View v) {
-		//db.deleteUser(username);
-		Intent intent = new Intent(this, UserLogin.class);
-		startActivity(intent);
-		finish();
+	public void logout(View v) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("You want to logout?")
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Toast.makeText(getApplicationContext(), "Logged out as " + username, Toast.LENGTH_SHORT).show();  
+				Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+				startActivity(intent);
+				finish();				
+			}
+		})
+		.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				// User cancelled the dialog
+			}
+		});
+		AlertDialog d = builder.create();
+		d.setTitle("Are you sure");
+		d.show();
 	}
 	
-	public void logout (View v) {
-		Intent intent = new Intent(this, UserLogin.class);
-		startActivity(intent);
-		finish();
+	public void deleteAccount(View v) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("You want to delete your account?")
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				db.deleteUser(username);
+
+				Toast.makeText(getApplicationContext(), "Account deleted", Toast.LENGTH_SHORT).show();  
+				Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+				startActivity(intent);
+			
+				finish();
+
+			}
+		})
+		.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				// User cancelled the dialog
+			}
+		});
+		AlertDialog d = builder.create();
+		d.setTitle("Are you sure");
+		d.show();
 	}
 
 }
