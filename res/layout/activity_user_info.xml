@@ -68,6 +68,8 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="name"
+        android:textSize="15dp"
+        android:gravity="center_vertical"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -81,6 +83,9 @@
         android:background="@drawable/textbox_round_corner"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:textSize="15dp"
+        android:gravity="center_vertical"
+        
         android:text="Large email"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -93,6 +98,8 @@
         android:layout_alignRight="@+id/email"
         android:layout_alignTop="@+id/textView5"
         android:background="@drawable/textbox_round_corner"
+        android:textSize="15dp"
+        android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="phone"
@@ -108,6 +115,8 @@
         android:background="@drawable/textbox_round_corner"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:textSize="15dp"
+        android:gravity="center_vertical"
         android:text="username"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -130,9 +139,10 @@
         android:layout_below="@+id/textView5"
         android:layout_marginTop="30dp"
         android:layout_marginRight="5dp"
-        android:background="#8CC152"
+        android:background="#0b7e0d"
         android:onClick="changePassword"
-        android:text="Change password" />
+        android:textColor="#ffffff"
+        android:text="Change Password" />
 
     <Button
         android:id="@+id/deleteAccount"
@@ -142,9 +152,10 @@
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignRight="@+id/phone"
         android:layout_alignTop="@+id/changePassword"
-        android:background="#DA4453"
+        android:background="#dd2c1b"
         android:onClick="deleteAccount"
-        android:text="Drop account" />
+        android:textColor="#ffffff"
+        android:text="Drop Account" />
 
     <Button
         android:id="@+id/logout"
@@ -157,6 +168,7 @@
         android:layout_marginTop="14dp"
         android:background="#F6BB42"
         android:onClick="logout"
+        android:textColor="#ffffff"
         android:text="Logout" />
 
 </RelativeLayout>

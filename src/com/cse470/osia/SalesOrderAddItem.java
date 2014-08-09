@@ -71,11 +71,14 @@ public class SalesOrderAddItem extends Activity {
 		
 		
 		// product categories
-		categories.add("Any");
-		categories.add("Ink");
-		categories.add("Paper");
-		categories.add("Khata");
-		categories.add("Toy");
+//		categories.add("Any");
+//		categories.add("Ink");
+//		categories.add("Paper");
+//		categories.add("Khata");
+//		categories.add("Toy");
+		
+		categories = db.getDistinctProductsCategory();
+		
 		// constructing Spinner;
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, categories);
