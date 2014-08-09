@@ -217,6 +217,7 @@ public class PurchaseOrder extends Activity {
 
 		ArrayList<String> productsToAdd = db.getAllPurchaseAddedProductName();
 		ArrayList<String> productAmount = db.getAllPurchaseAddedProductQuantity();
+		ArrayList<String> allProducts = db.getAllProductsName();
 		String boughtFrom = dealerName;
 		String date = this.date;
 		
@@ -227,7 +228,22 @@ public class PurchaseOrder extends Activity {
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
 				if (product != "Item"){
+					
 					Log.d("baal", productAmount.get(counter));
+					// if not in database, add the product to the database
+					if(!allProducts.contains(product)){
+						Toast msg = Toast.makeText(getApplicationContext(), "bhetore nai", Toast.LENGTH_LONG);
+						msg.show();
+						
+						Product newProduct = new Product();
+						newProduct.setProductName(product);
+						newProduct.setProductCategory(category)
+//						db.addNewProduct(product);
+					}
+					
+					
+//					db.addNewPurchaseOrder(boughtFrom, date, db.getUnitCostingOfProduct(product)
+					
 					db.updateProductQuantity(product, "positive", Integer.parseInt(productAmount.get(counter)));
 					counter++;
 				}
@@ -235,8 +251,8 @@ public class PurchaseOrder extends Activity {
 		}
 
 		db.removeAllPurchaseAddedProduct();
-		Intent intent = new Intent(this, DashBoardActivity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(this, DashBoardActivity.class);
+//		startActivity(intent);
 
 	}
 
