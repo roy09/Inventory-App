@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class ViewInventory extends Activity {
 
@@ -22,19 +27,29 @@ public class ViewInventory extends Activity {
 	List<String> productCostingPrice = new ArrayList<String>();
 	List<String> productQuantity = new ArrayList<String>();
 	
+	Context context;
+	
 	Spinner selectCategory;
 	
 	String selectedCategory;
 	
 	DatabaseHandler db;
 	
+	EditText productNameAB ;
+	AutoCompleteTextView productCategoryAB;
+	EditText productPriceAB;
+	EditText productCostingAB;
+	EditText productQuantityAB;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_inventory);
 		setTitle("View Inventory");
-		
+		context = this;
 		db = new DatabaseHandler(this);
+		
+		
 		
 		selectCategory = (Spinner) findViewById(R.id.VIselectCategory);
 		ArrayList<String> productCategories = db.getDistinctProductsCategory();
@@ -51,6 +66,8 @@ public class ViewInventory extends Activity {
 //				stuff.show();
 				
 				setInventoryList(selectedCategory);
+				
+
 		    }
 
 		    @Override
@@ -80,5 +97,35 @@ public class ViewInventory extends Activity {
 		
 		listview = (ListView) findViewById(R.id.productList);
 		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
+		
+//		productNameAB.setText("alu");
+		
+		listview.setOnItemClickListener(new OnItemClickListener(){
+
+	        @Override
+	        public void onItemClick(AdapterView<?> parent, View view, int position,
+	                long id) {
+	            // TODO Auto-generated method stub
+	        	Dialog dialog = new Dialog(context);
+	        	dialog.setContentView(R.layout.view_inventory_alert_box);
+	        	
+	        	dialog.setTitle("Edit product info");
+	        	
+	        	// Itesm of the alert box
+	        	productNameAB = (EditText) dialog.findViewById(R.id.etProductNameAB);
+	        	productCategoryAB = (AutoCompleteTextView) dialog.findViewById(R.id.etCategoryAB);
+	        	productPriceAB = (EditText) dialog.findViewById(R.id.etNormalPriceAB);
+	        	productCostingAB = (EditText) dialog.findViewById(R.id.etCostingPriceAB);
+	        	productQuantityAB = (EditText) dialog.findViewById(R.id.etQuantityAB);
+	        	
+	        	productNameAB.setText(productName.get(position));
+	        	productCategoryAB.setText(productCategory.get(position));
+	        	productPriceAB.setText(productNormalPrice.get(position));
+	        	productCostingAB.setText(productCostingPrice.get(position));
+	        	productQuantityAB.setText(productQuantity.get(position));
+	        	
+	        	
+	        	dialog.show();
+	        }});
 	}
 }
