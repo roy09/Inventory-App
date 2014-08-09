@@ -409,6 +409,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return array_list;
 	}
 
+	// Get a product's unit costing
+	public String getUnitCostingOfProduct(String product) {
+		String price;
+		Queue<String> array_list = new LinkedList<String>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db
+				.rawQuery("select * from product where productName = \""
+						+ product + "\"", null);
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			array_list.add(cursor.getString(cursor
+					.getColumnIndex(PRODUCT_COSTING_PRICE)));
+			cursor.moveToNext();
+		}
+		price = array_list.poll();
+		return price;
+	}
+	
 	// Get all products quantity
 	public ArrayList<String> getAllProductsQuantity() {
 		ArrayList<String> array_list = new ArrayList<String>();
@@ -822,15 +840,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 	
 	// Adding purchase list log to SALES ORDER TRACK TABLE
-	void addSalesRecord(Product product) {
+	void addSalesRecord(String date, String nameOfProduct, String soldTo, String quantity, String profit) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(SALES_ORDER_TRACK_DATE, product.getProductName());
-		values.put(SALES_ORDER_TRACK_NAME_OF_PRODUCT, product.getProductCategory());
-		values.put(SALES_ORDER_TRACK_SOLD_TO, product.getNormalPrice());
-		values.put(SALES_ORDER_TRACK_QUANTITY, product.getCostingPrice());
-		values.put(SALES_ORDER_TRACK_PROFIT, product.getQuantity());
+		values.put(SALES_ORDER_TRACK_DATE, date);
+		values.put(SALES_ORDER_TRACK_NAME_OF_PRODUCT, nameOfProduct);
+		values.put(SALES_ORDER_TRACK_SOLD_TO, soldTo);
+		values.put(SALES_ORDER_TRACK_QUANTITY, quantity);
+		values.put(SALES_ORDER_TRACK_PROFIT, profit);
 
 		db.insert(TABLE_SALES_ORDER_TRACK, null, values);
 		db.close();

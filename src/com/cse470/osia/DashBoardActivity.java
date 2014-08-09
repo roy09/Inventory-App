@@ -7,7 +7,7 @@ import android.view.View;
 
 public class DashBoardActivity extends Activity {
 
-	String username;
+	static String username;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
