@@ -182,6 +182,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			+ ")" + ")";
 
 	// Table dealer
+	private static final String DEALER_ID = "dealerId";
 	private static final String DEALER_NAME = "dealerName";
 	private static final String DEALER_PHONE = "dealerPhone";
 	private static final String DEALER_EMAIL = "dealerEmail";
@@ -190,6 +191,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CREATE_DEALER_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_DEALER
 			+ " ("
+			+ DEALER_ID
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ DEALER_NAME
 			+ " TEXT PRIMARY KEY, "
 			+ DEALER_PHONE

@@ -188,13 +188,18 @@ public class SalesOrder extends Activity {
 		String date = setDate.getText().toString();
 		String[] profits = new String[productsToAdd.size()];
 		
+		if (soldTo.equals("")) {
+			Toast.makeText(getApplicationContext(), "Customer name required", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
 				if (product != "Item"){
 					Log.d("baal", productAmount.get(counter));
-					db.addNewSalesOrder(date, productsToAdd.get(counter),
-							Integer.parseInt(productAmount.get(counter)));
+					db.addNewSalesOrder(date, soldTo, getNetPayable());
+//							Integer.parseInt(productAmount.get(counter)));
 					db.updateProductQuantity(product, "negative", Integer.parseInt(productAmount.get(counter)));
 					int unitPrice = Integer.parseInt(db.getUnitPriceOfProduct(product));
 					int unitSold = Integer.parseInt(productAmount.get(counter));
@@ -217,12 +222,13 @@ public class SalesOrder extends Activity {
 		db.removeAllSalesAddedProduct();
 //		Intent intent = new Intent(this, DashBoardActivity.class);
 //		startActivity(intent);
-//		finish();
-		Bundle dataBundle = new Bundle();
-		dataBundle.putString("username", com.cse470.osia.DashBoardActivity.username);
-		Intent intent = new Intent(this, DashBoardActivity.class);
-		intent.putExtras(dataBundle);
-		startActivity(intent);
+		finish();
+		
+//		Bundle dataBundle = new Bundle();
+//		dataBundle.putString("username", com.cse470.osia.DashBoardActivity.username);
+//		Intent intent = new Intent(this, DashBoardActivity.class);
+//		intent.putExtras(dataBundle);
+//		startActivity(intent);
 
 		
 	}
@@ -240,6 +246,11 @@ public class SalesOrder extends Activity {
 	public void setNetPayable() {
 		int grandTotal = db.getNetPayable();
 		netPayable.setText("" + grandTotal);
+	}
+	
+	public int getNetPayable() {
+		int grandTotal = db.getNetPayable();
+		return grandTotal;
 	}
 
 	/**
