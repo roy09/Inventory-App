@@ -50,7 +50,7 @@ public class DashBoardActivity extends Activity {
 	public void userInfo (View view) {
 		Bundle dataBundle = new Bundle();
 		dataBundle.putString("username", username);
-		Intent intent = new Intent(this, PurchaseOrderDealer.class);
+		Intent intent = new Intent(this, UserInfoActivity.class);
 		intent.putExtras(dataBundle);
 		startActivity(intent);
 	}

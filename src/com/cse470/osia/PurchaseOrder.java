@@ -115,22 +115,22 @@ public class PurchaseOrder extends Activity {
 				adb.setNegativeButton("Cancel", null);
 				adb.setPositiveButton("Okay",
 						new AlertDialog.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-								db.removeSalesAddedItem(productName
-										.get(positionToRemove));
-								// orderListAdapter.notifyDataSetChanged();
-								Intent intent = new Intent(
-										getApplicationContext(),
-										com.cse470.osia.SalesOrder.class);
-								startActivity(intent);
-								Toast.makeText(getApplicationContext(),
-										"Item removed", Toast.LENGTH_SHORT)
-										.show();
+					public void onClick(DialogInterface dialog,
+							int which) {
+						db.removeSalesAddedItem(productName
+								.get(positionToRemove));
+						// orderListAdapter.notifyDataSetChanged();
+						Intent intent = new Intent(
+								getApplicationContext(),
+								com.cse470.osia.SalesOrder.class);
+						startActivity(intent);
+						Toast.makeText(getApplicationContext(),
+								"Item removed", Toast.LENGTH_SHORT)
+								.show();
 
-								finish();
-							}
-						});
+						finish();
+					}
+				});
 				adb.show();
 			}
 		});
@@ -154,11 +154,11 @@ public class PurchaseOrder extends Activity {
 		switch (item.getItemId()) {
 
 		case R.id.add_order:
-			Bundle dataBundle = new Bundle();
-			dataBundle.putInt("id", 0);
+			//			Bundle dataBundle = new Bundle();
+			//			dataBundle.putInt("id", 0);
 			Intent intent = new Intent(getApplicationContext(),
-					com.cse470.osia.SalesOrderAddItem.class);
-			intent.putExtras(dataBundle);
+					com.cse470.osia.AddProduct.class);
+			//			intent.putExtras(dataBundle);
 			startActivity(intent);
 			// this.finish();
 			return true;
@@ -166,32 +166,32 @@ public class PurchaseOrder extends Activity {
 		case R.id.clear_items:
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage("You want to clear the list?")
-					.setPositiveButton("Yes",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									db.removeAllSalesAddedProduct();
-									// orderListAdapter.notifyDataSetChanged();
+			.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,
+						int id) {
+					db.removeAllSalesAddedProduct();
+					// orderListAdapter.notifyDataSetChanged();
 
-									Intent intent = new Intent(
-											getApplicationContext(),
-											com.cse470.osia.SalesOrder.class);
-									startActivity(intent);
-									Toast.makeText(getApplicationContext(),
-											"List Cleared", Toast.LENGTH_SHORT)
-											.show();
+					Intent intent = new Intent(
+							getApplicationContext(),
+							com.cse470.osia.SalesOrder.class);
+					startActivity(intent);
+					Toast.makeText(getApplicationContext(),
+							"List Cleared", Toast.LENGTH_SHORT)
+							.show();
 
-									finish();
+					finish();
 
-								}
-							})
-					.setNegativeButton("No",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// User cancelled the dialog
-								}
-							});
+				}
+			})
+			.setNegativeButton("No",
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,
+						int id) {
+					// User cancelled the dialog
+				}
+			});
 			AlertDialog d = builder.create();
 			d.setTitle("Are you sure");
 			d.show();
@@ -212,10 +212,10 @@ public class PurchaseOrder extends Activity {
 	 */
 	public void checkout(View v) {
 		DatabaseHandler db = new DatabaseHandler(this);
-		
+
 		ArrayList<String> productsToAdd = db.getAllSalesAddedProductName();
 		ArrayList<String> productAmount = db.getAllSalesAddedProductQuantity();
-		
+
 		int counter = 1;
 		if (productsToAdd.size() > 1){
 			for(String product: productsToAdd){
@@ -226,11 +226,11 @@ public class PurchaseOrder extends Activity {
 				}
 			}
 		}
-		
+
 		db.removeAllSalesAddedProduct();
 		Intent intent = new Intent(this, DashBoardActivity.class);
 		startActivity(intent);
-		
+
 	}
 
 	// /**
