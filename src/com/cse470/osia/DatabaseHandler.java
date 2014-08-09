@@ -576,7 +576,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return array_list;
 	}
-
+	
+	// Update any product row "_id=" + Id;
+	public void updateProductInfo(String prevProductName, String productName, String productCategory, String productPrice, String productCosting, String productQuantity){
+		SQLiteDatabase db = this.getReadableDatabase();
+		ContentValues data = new ContentValues();
+		data.put(PRODUCT_NAME, productName);
+		data.put(PRODUCT_CATEGORY, productCategory);
+		data.put(PRODUCT_NORMAL_PRICE, productPrice);
+		data.put(PRODUCT_COSTING_PRICE, productCosting);
+		data.put(PRODUCT_QUANTITY, productQuantity);
+		
+		db.update(TABLE_PRODUCT, data, PRODUCT_NAME + " = " + '"' + prevProductName + '"', null);
+		db.close();
+		
+	}
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -897,5 +911,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 
 	}
+	
+	
 
 }

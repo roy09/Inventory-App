@@ -9,7 +9,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,6 +35,7 @@ public class ViewInventory extends Activity {
 	List<String> productQuantity = new ArrayList<String>();
 	
 	Context context;
+	BaseAdapter adapter;
 	
 	Spinner selectCategory;
 	
@@ -49,6 +50,7 @@ public class ViewInventory extends Activity {
 	EditText productQuantityAB;
 	Button btnOkayAB;
 	Button btnCancelAB;
+	String prevProductName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,8 @@ public class ViewInventory extends Activity {
 		productQuantity = db.getCategoryBasedProductQuantity(selectedCategory);
 		
 		listview = (ListView) findViewById(R.id.productList);
-		listview.setAdapter(new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity));
+		adapter  = new ProductAdapter(this, productName, productCategory, productNormalPrice, productCostingPrice, productQuantity);
+		listview.setAdapter(adapter);
 		
 //		productNameAB.setText("alu");
 		
@@ -134,12 +137,25 @@ public class ViewInventory extends Activity {
 	        	productCostingAB.setText(productCostingPrice.get(position));
 	        	productQuantityAB.setText(productQuantity.get(position));
 	        	
+	        	prevProductName = productNameAB.getText().toString();
 	        	
 	        	AlertDialog.Builder builder = new AlertDialog.Builder(context);
 	        	builder.setView(dialoglayout);
 	        	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
 	        	    public void onClick(DialogInterface dialog, int id) {
+	        	    	String productNameX = productNameAB.getText().toString();
+	        	    	String productCateogryX = productCategoryAB.getText().toString();
+	        	    	String productPriceX = productPriceAB.getText().toString();
+	        	    	String productCostingX = productCostingAB.getText().toString();
+	        	    	String productQuantityX = productQuantityAB.getText().toString();
+	        	        db.updateProductInfo(prevProductName, productNameX, productCateogryX, productPriceX, productCostingX, productQuantityX);
 	        	        
+	        	        //Dataset Notify didn't work :/
+//	        	        adapter.notifyDataged();
+//	        	        ((BaseAdapter)listview.getAdapter()).notifyDataSetChanged();
+	        	        Intent intent = new Intent(context, ViewInventory.class);
+	        	        startActivity(intent);
+	        	        finish();
 	        	     }
 	        	});
 	        	builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
