@@ -17,9 +17,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/btn_info"
+        android:background="#FF0033"
         android:layout_marginBottom="5dp"
-        android:onClick="puchaseReport"
+        android:onClick="storePurchaseReport"
         android:text="Purchase Report" />
 
     <TextView
@@ -39,8 +39,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/purchaseReport"
         android:layout_marginTop="5dp"
-        android:onClick="salesReport"
-        android:background="@drawable/btn_primary"
+        android:onClick="storeSalesReport"
+        android:background="#128acb"
         android:text="Sales Report" />
 
 </RelativeLayout>

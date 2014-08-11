@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,9 +62,9 @@ public class PurchaseOrder extends Activity {
 		dealerEmail = everythingAboutDealer.get(2);
 		dealerAddress = everythingAboutDealer.get(3);
 
-		Toast test = Toast.makeText(this, this.dealerName + " "
-				+ this.dealerEmail, Toast.LENGTH_LONG);
-		test.show();
+//		Toast test = Toast.makeText(this, this.dealerName + " "
+//				+ this.dealerEmail, Toast.LENGTH_LONG);
+//		test.show();
 
 		TextView dealerPhone = (TextView) findViewById(R.id.tvDealerPhoneNo);
 		dealerPhone.setText(this.dealerPhone);
@@ -79,7 +78,6 @@ public class PurchaseOrder extends Activity {
 		netPayable = (TextView) findViewById(R.id.totalValuePO);
 		purchaseOrderNo = (TextView) findViewById(R.id.purchaseOrderNo);
 		purchaseOrderDate = (TextView) findViewById(R.id.tvSetPurchaseDatePO);
-		date = purchaseOrderDate.getText().toString();
 		date = purchaseOrderDate.getText().toString();
 
 		// Adding up stuff to the list
@@ -174,7 +172,7 @@ public class PurchaseOrder extends Activity {
 				public void onClick(DialogInterface dialog,
 						int id) {
 					db.removeAllPurchaseAddedProduct();
-					
+
 					Intent intent = new Intent(
 							getApplicationContext(),
 							com.cse470.osia.PurchaseOrder.class);
@@ -218,45 +216,58 @@ public class PurchaseOrder extends Activity {
 
 		ArrayList<String> productsToAdd = db.getAllPurchaseAddedProductName();
 		ArrayList<String> productAmount = db.getAllPurchaseAddedProductQuantity();
-		ArrayList<String> productCosting = db.getAllPurchaseAddedProductUnitPrice();
 		ArrayList<String> productCategory = db.getAllPurchaseAddedProductCategory();
-		ArrayList<String> productprice = db.getAllPurchaseAddedProductUnitCosting();
-		ArrayList<String> allProducts = db.getAllProductsName();
+		ArrayList<String> productNormalPrice = db.getAllPurchaseAddedProductNormalPrice();
+		ArrayList<String> productCosting = db.getAllPurchaseAddedProductUnitPrice();
+		ArrayList<String> allItemsInTheDB = db.getAllProductsName();
 		String boughtFrom = dealerName;
-		String date = this.date;
+		String date = getCurrentdate();
+		int totalAmmount = getNetPayable();
 		
-		Toast status = Toast.makeText(getApplicationContext(), "atCheckout", Toast.LENGTH_SHORT);
-		status.show();
-				
-		int counter = 1;
-		if (productsToAdd.size() > 1){
-			for(String product: productsToAdd){
-				if (product != "Item"){
-					String num = productAmount.get(counter);
-					Log.d("baal", productAmount.get(counter));
-					// if not in database, add the product to the database
-					if(!allProducts.contains(product)){
-						Toast msg = Toast.makeText(getApplicationContext(), "bhetore nai", Toast.LENGTH_LONG);
-						msg.show();
-						db.addNewProduct(new Product(product,productCategory.get(counter),productCosting.get(counter),productprice.get(counter), num ));
+		if (totalAmmount == 0) {
+			Toast.makeText(getApplicationContext(),
+					"No item has been added", Toast.LENGTH_SHORT)
+					.show();
+			return;
+		}
 
+		Toast notif = Toast.makeText(this, boughtFrom, Toast.LENGTH_SHORT);
+		notif.show();
+		try {		
+			int counter = 1;
+			if (productsToAdd.size() > 1){
+				for(String product: productsToAdd){
+					if (product != "Item"){
+						if (allItemsInTheDB.contains(product)){
+							db.updateProductQuantity(product, "positive", Integer.parseInt(productAmount.get(counter)));
+							db.updateProductCosting_MRP(product, Integer.parseInt(productCosting.get(counter)), Integer.parseInt(productNormalPrice.get(counter)));
+						} else {
+							db.addNewProduct(new Product(product, productCategory.get(counter), productNormalPrice.get(counter), productCosting.get(counter), productAmount.get(counter) ));
+
+
+						}
+
+						counter++;
 					}
-					
-					
-					
-					
-					db.updateProductQuantity(product, "positive", Integer.parseInt(productAmount.get(counter)));
-					counter++;
-				} else {
-					Log.e("Product ache", product);
 				}
 			}
+		}catch(Exception e) {
+			Toast.makeText(getApplicationContext(),
+					"ERROR: Item couldn't be added", Toast.LENGTH_SHORT)
+					.show();
 		}
-		db.addNewPurchaseOrder(boughtFrom, date, Integer.parseInt(netPayable.getText().toString()));
-		db.removeAllPurchaseAddedProduct();
-		Intent intent = new Intent(this, DashBoardActivity.class);
-		startActivity(intent);
+		try {
+			db.addNewPurchaseOrder(dealerName, date, totalAmmount);
+		}catch(Exception e) {
+
+		}
+
+
+		//		db.removeAllPurchaseAddedProduct();
+		//		Intent intent = new Intent(this, DashBoardActivity.class);
+		//		startActivity(intent);
 		finish();
+
 	}
 
 	// /**
@@ -273,6 +284,11 @@ public class PurchaseOrder extends Activity {
 		int grandTotal = db.getPurchaseNetPayable();
 		netPayable.setText("" + grandTotal);
 	}
+	
+	public int getNetPayable() {
+			int grandTotal = db.getPurchaseNetPayable();
+			return grandTotal;
+	}
 
 
 	/**
@@ -281,6 +297,10 @@ public class PurchaseOrder extends Activity {
 	public void setCurrentOrder() {
 		int purchaseNo = db.getPurchaseOrderNo();
 		purchaseOrderNo.setText("" + purchaseNo);
+	}
+	public String getCurrentdate() {
+		String date = purchaseOrderDate.getText().toString();
+		return date;
 	}
 
 	/**

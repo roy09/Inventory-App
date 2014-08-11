@@ -3,7 +3,6 @@
 
     <string name="app_name">OSIA</string>
     <string name="title_activity_add_product">AddProduct</string>
-    <string name="mrpHint"></string>
     <string name="hello_world">Hello world!</string>
     <string name="product_name">Name</string>
     <string name="product_category">Category</string>
@@ -36,5 +35,6 @@
     <string name="title_activity_purchase_order_add_item">PurchaseOrderAddItem</string>
     <string name="title_activity_customer_see_report">CustomerSeeReport</string>
     <string name="title_activity_see_sales_report">SeeSalesReport</string>
+    <string name="title_activity_see_purchase_report">SeePurchaseReport</string>
 
 </resources>

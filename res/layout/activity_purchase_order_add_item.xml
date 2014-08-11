@@ -24,12 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvNormalPricePOAI"
-        android:layout_alignLeft="@+id/etCategoryPOAI"
+        android:layout_alignLeft="@+id/etProductNamePOAI"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tvNormalPricePOAI"
         android:background="@drawable/textbox_round_corner"
         android:ems="10"
         android:paddingLeft="12dp"
+        android:inputType="number"
         android:paddingRight="12dp" />
 
     <TextView
@@ -60,6 +61,7 @@
         android:paddingRight="12dp"
         android:background="@drawable/textbox_round_corner"
         android:text=""
+        android:inputType="number"
         android:ems="10" />
 
     <AutoCompleteTextView
@@ -67,9 +69,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvProductCategoryPOAI"
+        android:layout_alignLeft="@+id/etNormalPricePOAI"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tvProductCategoryPOAI"
-        android:layout_toRightOf="@+id/textView1"
         android:background="@drawable/textbox_round_corner"
         android:paddingLeft="12dp"
         android:paddingRight="12dp" />
@@ -84,21 +86,21 @@
         android:text="@string/product_category"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/etProductNamePOAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvProductNamePOAI"
-        android:layout_alignLeft="@+id/etCategoryPOAI"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tvProductNamePOAI"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
+        android:layout_toRightOf="@+id/tvNormalPricePOAI"
         android:background="@drawable/textbox_round_corner"
-        android:ems="10" >
+        android:ems="10"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" >
 
         <requestFocus />
-    </AutoCompleteTextView>
+    </EditText>
 
     <TextView
         android:id="@+id/tvNormalPricePOAI"
@@ -140,11 +142,11 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/etQuantityPOAI"
         android:layout_marginTop="16dp"
-        android:text="MRP"
+        android:text="MRP	"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/etMRPPOAI"
+        android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
@@ -153,7 +155,7 @@
         android:layout_alignTop="@+id/textView1"
         android:background="@drawable/textbox_round_corner"
         android:ems="10"
-        android:hint="@string/mrpHint"
+        android:inputType="number"
         android:paddingLeft="12dp"
         android:paddingRight="12dp" />
 

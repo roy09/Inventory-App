@@ -38,6 +38,7 @@ public class PurchaseOrderDealer extends Activity {
 						PurchaseOrder.class);
 				intent.putExtra("dealerName", dealerName);
 				startActivity(intent);
+				finish();
 
 			}
 		});
@@ -50,5 +51,6 @@ public class PurchaseOrderDealer extends Activity {
 	public void addDealer(View view) {
 		Intent intent = new Intent(this, AddDealer.class);
 		startActivity(intent);
+		finish();
 	}
 }

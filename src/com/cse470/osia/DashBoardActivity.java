@@ -38,7 +38,9 @@ public class DashBoardActivity extends Activity {
 	}
 	
 	public void seeReport(View view){
+		
 		Intent intent = new Intent (this, SeeReport.class);
+		intent.putExtra("username", username);
 		startActivity(intent);
 	}
 	
